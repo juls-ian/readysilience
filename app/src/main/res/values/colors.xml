@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+<!--    APP COLOR PALETTE -->
+    <color name="blue">#1DACFF </color>
+    <color name="yellow">#FFB800 </color>
+    <color name="red">#FF0000</color>
+
+    <color name="blue1">#2859C5</color>
+    <color name="blue2">#8FBFFA</color>
+
+    <color name="gray">#b7b7a4</color>
+
+</resources>
