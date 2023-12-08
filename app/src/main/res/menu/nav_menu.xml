@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn = "navigation_view">
+
+
+    <group
+
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/nav_home"
+            android:title="Home"/>
+
+        <item
+            android:id="@+id/nav_firstaid"
+            android:icon="@drawable/tools_firstaid"
+            android:title="First Aid 101"/>
+
+        <item
+            android:id="@+id/nav_supplies"
+            android:icon="@drawable/tools_supplies"
+            android:title="Emergency Supplies"/>
+
+        <item
+            android:id="@+id/nav_checklist"
+            android:icon="@drawable/tools_checklist"
+            android:title="Checklist"/>
+
+        <item
+            android:id="@+id/nav_feedback"
+            android:icon="@drawable/tools_feedback"
+            android:title="Feedback"/>
+    </group>
+    <item
+        android:title="">
+
+        <menu>
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/tools_logout"
+                android:title="Logout"/>
+        </menu>
+
+    </item>
+
+</menu>

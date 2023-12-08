@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home"
+        android:title="Home"
+        android:icon="@drawable/nav_home"
+        />
+
+    <item
+        android:id="@+id/disasterInfo"
+        android:title="Information Center"
+        android:icon="@drawable/nav_info_center"
+        />
+
+    <item
+        android:id="@+id/gap"
+        android:title=""
+        android:enabled="false"
+        />
+
+    <item
+        android:id="@+id/evacuation"
+        android:title="Evacuation Centers"
+        android:icon="@drawable/nav_evacuations"
+        />
+
+    <item
+        android:id="@+id/hotlines"
+        android:title="Emergency Hotlines"
+        android:icon="@drawable/nav_hotline"
+        />
+</menu>

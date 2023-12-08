@@ -1,6 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.Readysilience" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.Readysilience" parent="Theme.MaterialComponents.Light.NoActionBar">
+<!--    <style name="Base.Theme.Readysilience" parent="Theme.Material3.DayNight.NoActionBar">-->
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
 
@@ -8,9 +9,13 @@
         <item name="colorSecondary">@color/yellow</item>
         <item name="colorTertiary">@color/red</item>
 
+        <item name="android:statusBarColor">?attr/colorPrimary</item>
 
+    </style>
 
-
+    <style name="DialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/slide_in</item>
+        <item name="android:windowExitAnimation">@anim/slide_out</item>
     </style>
 
     <style name="Theme.Readysilience" parent="Base.Theme.Readysilience" />

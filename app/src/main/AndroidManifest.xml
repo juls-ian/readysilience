@@ -12,6 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Readysilience"
         tools:targetApi="31">
+
+
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+
         <activity
             android:name=".SuccessSignUp"
             android:exported="false" />

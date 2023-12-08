@@ -16,8 +16,20 @@ public class Login extends AppCompatActivity {
 //        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
 
+        Button logIn = findViewById(R.id.login_button);
         Button signUp = findViewById(R.id.sign_up_button);
         Button forgotPass = findViewById(R.id.forgot_pass_button);
+
+        logIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Create an Intent to switch to the new activity
+                Intent intent = new Intent(Login.this, MainActivity.class);
+
+                // Start the new activity
+                startActivity(intent);
+            }
+        });
 
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,6 +52,7 @@ public class Login extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
 
 
     }
