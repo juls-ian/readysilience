@@ -6,43 +6,45 @@
     tools:showIn = "navigation_view">
 
 
-    <group
-
-        android:checkableBehavior="single">
+    <group android:checkableBehavior="single">
 
         <item
-            android:id="@+id/nav_home"
+            android:id="@+id/drawer_home"
             android:icon="@drawable/nav_home"
             android:title="Home"/>
 
         <item
-            android:id="@+id/nav_firstaid"
+            android:id="@+id/drawer_firstaid"
             android:icon="@drawable/tools_firstaid"
             android:title="First Aid 101"/>
 
         <item
-            android:id="@+id/nav_supplies"
+            android:id="@+id/drawer_supplies"
             android:icon="@drawable/tools_supplies"
             android:title="Emergency Supplies"/>
 
         <item
-            android:id="@+id/nav_checklist"
+            android:id="@+id/drawer_checklist"
             android:icon="@drawable/tools_checklist"
             android:title="Checklist"/>
 
         <item
-            android:id="@+id/nav_feedback"
+            android:id="@+id/drawer_feedback"
             android:icon="@drawable/tools_feedback"
             android:title="Feedback"/>
     </group>
+
     <item
         android:title="">
 
         <menu>
-            <item
-                android:id="@+id/nav_logout"
-                android:icon="@drawable/tools_logout"
-                android:title="Logout"/>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/drawer_logout"
+                    android:icon="@drawable/tools_logout"
+                    android:title="Logout"/>
+            </group>
+
         </menu>
 
     </item>

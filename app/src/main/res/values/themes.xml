@@ -1,22 +1,55 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
+
     <style name="Base.Theme.Readysilience" parent="Theme.MaterialComponents.Light.NoActionBar">
-<!--    <style name="Base.Theme.Readysilience" parent="Theme.Material3.DayNight.NoActionBar">-->
+
+
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:windowActionModeOverlay">true</item>
 
         <item name="colorPrimary">@color/blue</item>
         <item name="colorSecondary">@color/yellow</item>
         <item name="colorTertiary">@color/red</item>
-
         <item name="android:statusBarColor">?attr/colorPrimary</item>
+        <!--        Drawer-->
+        <item name="drawerArrowStyle">@style/DrawerIcon</item>
+
+        <item name="android:listDivider">@android:color/transparent</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
 
     </style>
 
     <style name="DialogAnimation">
-        <item name="android:windowEnterAnimation">@anim/slide_in</item>
-        <item name="android:windowExitAnimation">@anim/slide_out</item>
+        <item name="android:windowEnterAnimation">@anim/dialog_slide_in</item>
+        <item name="android:windowExitAnimation">@anim/dialog_slide_out</item>
     </style>
 
+    //Drawer Font
+
+    <style name="TextViewStyle" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/alatsi</item>
+        <item name="android:textSize">14sp</item>
+
+    </style>
+
+    <style name="DrawerIcon" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="color">#AE000000</item>
+    </style>
+
+
     <style name="Theme.Readysilience" parent="Base.Theme.Readysilience" />
+
+    <style name="Theme.Readysilience.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.Readysilience.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.Readysilience.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
 </resources>

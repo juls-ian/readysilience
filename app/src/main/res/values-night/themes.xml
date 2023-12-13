@@ -2,7 +2,9 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.Readysilience" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:windowActionModeOverlay">true</item>
+
 
 
         <item name="colorPrimary">@color/blue</item>

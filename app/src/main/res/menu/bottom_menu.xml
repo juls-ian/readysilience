@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
         android:id="@+id/home"
         android:title="Home"
         android:icon="@drawable/nav_home"
+        android:enabled="true"
+        app:cnb_iconColor="@color/blue"
+
+
         />
 
     <item
-        android:id="@+id/disasterInfo"
-        android:title="Information Center"
+        android:id="@+id/info_center"
+        android:title="Info"
         android:icon="@drawable/nav_info_center"
+        app:cnb_iconColor="@color/blue"
         />
 
     <item
@@ -21,13 +27,17 @@
 
     <item
         android:id="@+id/evacuation"
-        android:title="Evacuation Centers"
+        android:title="Evac"
         android:icon="@drawable/nav_evacuations"
+        app:cnb_iconColor="@color/blue"
         />
 
     <item
         android:id="@+id/hotlines"
-        android:title="Emergency Hotlines"
+        android:title="Hotline"
         android:icon="@drawable/nav_hotline"
+        app:cnb_iconColor="@color/blue"
         />
+
+
 </menu>

@@ -12,7 +12,7 @@ public class ForgotPassword2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_forgot_password2);
+        setContentView(R.layout.activity_forgot_pass2);
 
         Button enterCode = findViewById(R.id.continue_button);
 
