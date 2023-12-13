@@ -51,5 +51,9 @@
 
     <style name="Theme.Readysilience.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="ThemeOverlay.AppCompat.navTheme">
+        <item name="colorPrimary">@color/white</item>
+    </style>
+
 
 </resources>

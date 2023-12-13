@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/home"
+        android:id="@+id/chip_home"
         android:title="Home"
         android:icon="@drawable/nav_home"
         android:enabled="true"
@@ -13,7 +13,7 @@
         />
 
     <item
-        android:id="@+id/info_center"
+        android:id="@+id/chip_info_center"
         android:title="Info"
         android:icon="@drawable/nav_info_center"
         app:cnb_iconColor="@color/blue"
@@ -26,14 +26,14 @@
         />
 
     <item
-        android:id="@+id/evacuation"
+        android:id="@+id/chip_evacuation"
         android:title="Evac"
         android:icon="@drawable/nav_evacuations"
         app:cnb_iconColor="@color/blue"
         />
 
     <item
-        android:id="@+id/hotlines"
+        android:id="@+id/chip_hotlines"
         android:title="Hotline"
         android:icon="@drawable/nav_hotline"
         app:cnb_iconColor="@color/blue"

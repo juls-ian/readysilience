@@ -27,7 +27,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 import com.example.readysilience.databinding.ActivityMainBinding;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 
@@ -36,6 +38,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     //Vars
     FloatingActionButton floatButton;
     DrawerLayout drawerLayout;
+
+    BottomNavigationView bottomNavigationView;
+
     Toolbar toolbar;
     NavigationView navigationView;
     ChipNavigationBar chipNavigationBar;
@@ -44,6 +49,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     FragmentTransaction fragmentTransaction;
     FrameLayout frameLayout;
 
+    FloatingActionButton fab;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,179 +58,138 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(R.layout.activity_main);
 
-        //IDs
-//        floatButton = findViewById(R.id.fab);
-        drawerLayout = findViewById(R.id.drawer_layout);
+        floatButton = findViewById(R.id.fab);
+
+        //Toolbar + Drawer Nav
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        navigationView = findViewById(R.id.nav_view);
-//        chipNavigationBar = findViewById(R.id.chip_navbar);
-        frameLayout = findViewById(R.id.frame_layout);
-
-
-
-
-        //Drawer Nav
-        navigationView.setNavigationItemSelectedListener(this);
+        drawerLayout = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
-
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, new HomeFrag()).commit();
-            navigationView.setCheckedItem(R.id.drawer_home);
-        }
-        //Hamburger Color
+        navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+                //Hamburger Color
         toggle.getDrawerArrowDrawable().setColor(ContextCompat.getColor(this, R.color.blue));
-
-
         //Actionbar No title
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
 
+        //Chip Nav
+        chipNavigationBar = findViewById(R.id.chip_navbar);
+        chipNavigationBar.setItemSelected(R.id.chip_home, true);
 
 
+        chipNavigationBar.setOnItemSelectedListener(new ChipNavigationBar.OnItemSelectedListener() {
 
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int id = item.getItemId();
-
-                item.setChecked(true);
-                Toast.makeText(MainActivity.this, "Upload video is clicked", Toast.LENGTH_SHORT).show();
+            public void onItemSelected(int id) {
+                Fragment chipFragment = null;
 
                 switch (id) {
-                    case R.id.drawer_home:
-                        switchFrag(new HomeFrag());
+                    case R.id.chip_home:
+                        chipFragment = new HomeFrag();
                         break;
 
-                    case R.id.drawer_firstaid:
-                        switchFrag(new FirstAidFrag());
+                    case R.id.chip_info_center:
+                        chipFragment = new InfoCenterFrag();
                         break;
 
-                    case R.id.drawer_supplies:
-                        switchFrag(new EmergencySupplyFrag());
+                    case R.id.chip_evacuation:
+                        chipFragment = new EvacCenterFrag();
                         break;
 
-                    case R.id.drawer_checklist:
-                        switchFrag(new ChecklistFrag());
+                    case R.id.chip_hotlines:
+                        chipFragment = new HotlinesFrag();
                         break;
-
-                    case R.id.drawer_feedback:
-                        switchFrag(new FeedbackFrag());
-                        break;
-
-                    default:
-                        return false;
                 }
 
-                drawerLayout.closeDrawer(GravityCompat.START);
-                return true;
+                if (chipFragment != null) {
+                    openFragment(chipFragment);
+                }
+            }
+        });
+
+        fragmentManager = getSupportFragmentManager();
+
+        //FAB Dialog Sheet
+        floatButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showBottomDialog();
+                Log.d("NavigationDrawer", "Item selected: " );
+            }
+        });
+
+    }
+
+    private void showBottomDialog() {
+
+
+        Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.bottom_sheet_layout);
+
+        LinearLayout videoLayout = dialog.findViewById(R.id.layoutVideo);
+        ImageView cancelButton = dialog.findViewById(R.id.cancelButton);
+
+        videoLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+                Toast.makeText(MainActivity.this, "Upload video is clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
             }
         });
 
 
-        //Chip Navbar Frag Switching
-
-//        chipNavigationBar.setOnItemSelectedListener(new ChipNavigationBar.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(int id) {
-//                Fragment selectedFragment = null;
-//
-//                switch (id) {
-//                    case R.id.home:
-//                        selectedFragment = new HomeFrag();
-//                        break;
-//
-//                    case R.id.info_center:
-//                        selectedFragment = new InfoCenterFrag();
-//                        break;
-//
-//                    case R.id.evacuation:
-//                        selectedFragment = new EvacCenterFrag();
-//                        break;
-//
-//                    case R.id.hotlines:
-//                        selectedFragment = new HotlinesFrag();
-//                        break;
-//                }
-//
-//                if (selectedFragment != null) {
-//                    switchFrag(selectedFragment);
-//                }
-//            }
-//        });
-
-
-
-
-//        floatButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                showBottomDialog();
-//                Log.d("NavigationDrawer", "Item selected: " );
-//            }
-//        });
-
+        dialog.show();
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+        dialog.getWindow().setGravity(Gravity.BOTTOM);
     }
 
-
-    private void switchFrag(Fragment fragment) {
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.frame_layout, fragment)
-                .commitNow();
-    }
-
-
-//    private void showBottomDialog() {
-//
-//
-//        Dialog dialog = new Dialog(this);
-//        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-//        dialog.setContentView(R.layout.bottom_sheet_layout);
-//
-//        LinearLayout videoLayout = dialog.findViewById(R.id.layoutVideo);
-//        ImageView cancelButton = dialog.findViewById(R.id.cancelButton);
-//
-//        videoLayout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                dialog.dismiss();
-//                Toast.makeText(MainActivity.this, "Upload video is clicked", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//
-//        cancelButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                dialog.dismiss();
-//            }
-//        });
-//
-//
-//        dialog.show();
-//        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-//        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
-//        dialog.getWindow().setGravity(Gravity.BOTTOM);
-//    }
-
-
+    //DRAWER NAV
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.drawer_firstaid:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new FirstAidFrag()).commit();
+        int itemID = item.getItemId();
+        item.setChecked(true);
+
+        switch (itemID) {
+
+            case R.id.drawer_home:
+                getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, new HomeFrag()).commit();
                 break;
 
-            case R.id.drawer_checklist:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ChecklistFrag()).commit();
+            case R.id.drawer_firstaid:
+                getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, new FirstAidFrag()).commit();
                 break;
 
             case R.id.drawer_supplies:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new EmergencySupplyFrag()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, new EmergencySupplyFrag()).commit();
                 break;
+
+            case R.id.drawer_checklist:
+                getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, new ChecklistFrag()).commit();
+                break;
+
+            case R.id.drawer_feedback:
+                getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, new FeedbackFrag()).commit();
+                break;
+
+
+            case R.id.drawer_logout:
+                Toast.makeText(MainActivity.this, "Logout", Toast.LENGTH_SHORT).show();
+                break;
+
         }
 
         drawerLayout.closeDrawer(GravityCompat.START);
@@ -236,6 +202,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }else {
             super.onBackPressed();
         }
+    }
+    private void openFragment (Fragment fragment) {
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.frame_layout, fragment);
+        transaction.commit();
     }
 }
 

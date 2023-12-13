@@ -12,7 +12,7 @@
 
 
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -25,7 +25,8 @@
             app:layout_scrollFlags="scroll|enterAlways"
             android:background="@android:color/transparent"
             app:navigationIconTint="@color/blue"
-            android:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+            />
 
         <FrameLayout
             android:id="@+id/frame_layout"
@@ -35,72 +36,110 @@
 
             />
 
-
-    </LinearLayout>
-
-    <com.google.android.material.navigation.NavigationView
-        android:layout_width="280dp"
-        android:layout_height="match_parent"
-
-        android:id="@+id/nav_view"
-        android:layout_gravity="start"
-        app:headerLayout="@layout/nav_header"
-        app:menu="@menu/drawer_menu"
-        app:itemIconTint="@color/black"
-        app:itemBackground="@drawable/drawer_item_padding"
-        app:itemTextColor="@color/blue1"
-
-        app:itemHorizontalPadding="20dp"/>
-
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/coordinator">
-
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            app:maxImageSize="40dp"
-            android:backgroundTint="@color/blue"
-            app:layout_anchor="@id/bottomAppBar"
-            android:layout_marginBottom="65dp"
-            android:src="@drawable/sos"/>
-
-        <com.google.android.material.bottomappbar.BottomAppBar
-            android:id="@+id/bottomAppBar"
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
-            android:layout_height="85dp"
-            android:layout_gravity="bottom"
-            app:layout_dodgeInsetEdges="bottom"
-            android:background="@color/white"
-            app:fabAlignmentMode="center"
-            app:fabCradleMargin="5dp"
-            app:removeEmbeddedFabElevation="true"
-            app:fabCradleRoundedCornerRadius="30dp" >
+            android:layout_height="match_parent">
 
-            <com.ismaeldivita.chipnavigation.ChipNavigationBar
-                android:id="@+id/chip_navbar"
+            <com.google.android.material.bottomappbar.BottomAppBar
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cnb_menuResource="@menu/bottom_menu"
-                app:cnb_iconSize="30dp"
-                app:cnb_unselectedColor="@color/black"
-                app:cnb_radius="28dp"
-                android:paddingBottom="5dp"
-                android:paddingTop="5dp"
-                android:layout_marginEnd="20dp"
-                android:background="@android:color/transparent"
-
-                />
-
-        </com.google.android.material.bottomappbar.BottomAppBar>
+                android:layout_height="85dp"
+                android:id="@+id/bottom_app_bar"
+                android:layout_gravity="bottom"
+                app:layout_dodgeInsetEdges="bottom"
+                android:background="@color/white"
+                app:fabAlignmentMode="center"
+                app:fabCradleMargin="5dp"
+                app:removeEmbeddedFabElevation="true"
+                app:fabCradleRoundedCornerRadius="30dp" >>
 
 
+                <com.ismaeldivita.chipnavigation.ChipNavigationBar
+                    android:id="@+id/chip_navbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cnb_menuResource="@menu/bottom_menu"
+                    app:cnb_iconSize="30dp"
+                    app:cnb_unselectedColor="@color/black"
+                    app:cnb_radius="28dp"
+                    android:paddingBottom="5dp"
+                    android:paddingTop="5dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@android:color/transparent"
 
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+                    />
+
+            </com.google.android.material.bottomappbar.BottomAppBar>
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/fab"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        app:maxImageSize="40dp"
+                        android:backgroundTint="@color/blue"
+                        app:layout_anchor="@id/bottom_app_bar"
+                        android:layout_marginBottom="65dp"
+                        android:src="@drawable/sos"/>
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+    </RelativeLayout>
+
+        <com.google.android.material.navigation.NavigationView
+            android:layout_width="280dp"
+            android:layout_height="match_parent"
+            android:id="@+id/nav_view"
+            android:layout_gravity="start"
+            android:background="@color/white"
+            app:itemIconTint="@color/black"
+            app:itemTextColor="@color/blue"
+            app:menu="@menu/drawer_menu"
+            android:theme="@style/ThemeOverlay.AppCompat.navTheme"
+            app:headerLayout="@layout/nav_header"
+            app:itemBackground="@drawable/drawer_item_padding"
+            app:itemHorizontalPadding="20dp">
+
+
+
+
+
+        </com.google.android.material.navigation.NavigationView>
+
+
+<!--    <com.google.android.material.navigation.NavigationView-->
+<!--        android:layout_width="280dp"-->
+<!--        android:layout_height="match_parent"-->
+
+
+
+<!--    <androidx.coordinatorlayout.widget.CoordinatorLayout-->
+
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:id="@+id/coordinator">-->
+
+
+<!--        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--            android:id="@+id/fab"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:clickable="true"-->
+<!--            app:maxImageSize="40dp"-->
+<!--            android:backgroundTint="@color/blue"-->
+<!--            app:layout_anchor="@id/bottomAppBar"-->
+<!--            android:layout_marginBottom="65dp"-->
+<!--            android:src="@drawable/sos"/>-->
+
+<!--        <com.google.android.material.bottomappbar.BottomAppBar-->
+
+
+
+
+<!--        </com.google.android.material.bottomappbar.BottomAppBar>-->
+
+
+
+<!--    </androidx.coordinatorlayout.widget.CoordinatorLayout>-->
 
 </androidx.drawerlayout.widget.DrawerLayout>
