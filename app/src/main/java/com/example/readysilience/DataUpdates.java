@@ -1,13 +1,13 @@
 package com.example.readysilience;
 
-public class UpdatesData {
+public class DataUpdates {
 
     private String newsImage;
     private String title;
 
 
 
-    public UpdatesData(String newsImage, String title) {
+    public DataUpdates(String newsImage, String title) {
         this.newsImage = newsImage;
         this.title = title;
     }

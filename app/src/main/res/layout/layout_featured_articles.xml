@@ -24,7 +24,7 @@
             >
 
             <ImageView
-                android:id="@+id/updatesImage"
+                android:id="@+id/articleImage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:scaleType="centerCrop"
@@ -40,14 +40,14 @@
                 android:elevation="5dp">
 
                 <TextView
-                    android:id="@+id/breaking_badge"
-                    android:text="Breaking"
+                    android:id="@+id/featured_badge"
+                    android:text="Featured"
                     android:gravity="center"
                     android:textStyle="bold"
                     android:fontFamily="@font/alatsi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/badge_breaking"
+                    android:background="@drawable/badge_featured"
                     android:padding="4dp"
                     android:layout_marginTop="135dp"
                     android:layout_alignParentLeft="true"
@@ -58,7 +58,7 @@
             </RelativeLayout>
 
             <TextView
-                android:id="@+id/updatesTitle"
+                android:id="@+id/featuredTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="100dp"
                 android:layout_weight="1"
@@ -70,7 +70,7 @@
                 android:textColor="@android:color/white"
                 android:textSize="20dp"
                 android:lineSpacingExtra="1sp"
-                android:layout_below="@+id/breaking_badge"
+                android:layout_below="@+id/featured_badge"
                 android:layout_alignParentBottom="true"
                 tools:ignore="NotSibling" />
 

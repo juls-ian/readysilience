@@ -103,8 +103,9 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Featured"
-        android:gravity="top|center"
+        android:text="Preparedness Matters"
+        android:layout_marginLeft="20dp"
+        android:gravity="top|left"
         android:fontFamily="@font/alata"
         android:textColor="@color/blue1"
         android:textStyle="bold"
@@ -115,7 +116,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-
+        android:paddingBottom="80dp"
         android:layout_margin="16dp"/>
 
 

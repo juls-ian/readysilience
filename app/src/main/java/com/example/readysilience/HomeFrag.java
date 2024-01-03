@@ -27,7 +27,6 @@ public class HomeFrag extends Fragment {
     ViewPager viewPager;
     ArrayList<String> images = new ArrayList<>();
 
-
     ArrayList<CenterData> centerDataList = new ArrayList<>();
 
 
@@ -66,13 +65,11 @@ public class HomeFrag extends Fragment {
 
         //UPDATES
         recyclerView = view.findViewById(R.id.updatesRecyclerView);
-        List<UpdatesData> updateDataList = new ArrayList<>();
-        updateDataList.add(new UpdatesData("https://t3.ftcdn.net/jpg/03/27/55/60/360_F_327556002_99c7QmZmwocLwF7ywQ68ChZaBry1DbtD.jpg", "Live Update: Bagyong Yolanda towards Samar"));
-        updateDataList.add(new UpdatesData("https://media.gettyimages.com/id/1311148884/vector/abstract-globe-background.jpg?s=612x612&w=gi&k=20&c=G5uPfn2VTF3aXCr76pn1T7oWE-aHVQ0rAYMl_MK2OvM=", "Breaking News: Japan Earthquake"));
+        List<DataUpdates> updateDataList = new ArrayList<>();
+        updateDataList.add(new DataUpdates("https://t3.ftcdn.net/jpg/03/27/55/60/360_F_327556002_99c7QmZmwocLwF7ywQ68ChZaBry1DbtD.jpg", "Live Update: Bagyong Yolanda towards Samar"));
+        updateDataList.add(new DataUpdates("https://media.gettyimages.com/id/1311148884/vector/abstract-globe-background.jpg?s=612x612&w=gi&k=20&c=G5uPfn2VTF3aXCr76pn1T7oWE-aHVQ0rAYMl_MK2OvM=", "Breaking News: Japan Earthquake"));
         recyclerView.setAdapter(new AdapterUpdates(getContext(), updateDataList));
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
-
 
 
         //NEARBY CENTERS
@@ -85,6 +82,14 @@ public class HomeFrag extends Fragment {
         viewPager.setAdapter(new AdapterCenters(getContext(), centerDataList));
         viewPager.setPadding(50, 0, 50, 0);
         viewPager.setCurrentItem(initialPosition);
+
+        //FEATURED
+            recyclerView = view.findViewById(R.id.featuredRecyclerView);
+            List<DataFeatured> featuredDataList = new ArrayList<>();
+            featuredDataList.add(new DataFeatured("https://www.japantimes.co.jp/uploads/imported_images/uploads/2019/07/f-quakepredict-a-20190708.jpg", "Seismologists on earthquake preparedness"));
+            featuredDataList.add(new DataFeatured("https://images.caxton.co.za/wp-content/uploads/sites/32/2021/07/fire.jpg", "Fire 101: Tips for prevention and survival"));
+            recyclerView.setAdapter(new AdapterFeatured(getContext(), featuredDataList));
+            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
 
 

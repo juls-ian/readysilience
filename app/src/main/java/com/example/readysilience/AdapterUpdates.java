@@ -16,9 +16,9 @@ import java.util.List;
 // UpdatesAdapter.java
 public class AdapterUpdates extends RecyclerView.Adapter<AdapterUpdates.UpdateViewHolder> {
     private Context context;
-    private List<UpdatesData> updateDataList;
+    private List<DataUpdates> updateDataList;
 
-    public AdapterUpdates(Context context, List<UpdatesData> updateDataList) {
+    public AdapterUpdates(Context context, List<DataUpdates> updateDataList) {
         this.context = context;
         this.updateDataList = updateDataList;
     }
@@ -32,10 +32,10 @@ public class AdapterUpdates extends RecyclerView.Adapter<AdapterUpdates.UpdateVi
 
     @Override
     public void onBindViewHolder(@NonNull UpdateViewHolder holder, int position) {
-        UpdatesData updateData = updateDataList.get(position);
+        DataUpdates updateData = updateDataList.get(position);
         Glide.with(holder.itemView)
                 .load(updateData.getNewsImage())
-                .placeholder(R.drawable.checked)
+                .placeholder(R.drawable.image_icon)
                 .into(holder.imageView);
 
         holder.titleTextView.setText(updateData.getTitle());
