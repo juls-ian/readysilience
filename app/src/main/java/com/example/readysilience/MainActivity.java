@@ -48,7 +48,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
     FrameLayout frameLayout;
-
     FloatingActionButton fab;
 
 
@@ -67,14 +66,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
+
         navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-                //Hamburger Color
+
+        //Hamburger Color
         toggle.getDrawerArrowDrawable().setColor(ContextCompat.getColor(this, R.color.blue));
         //Actionbar No title
+
+
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
+
 
         //Chip Nav
         chipNavigationBar = findViewById(R.id.chip_navbar);
@@ -112,6 +116,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
 
         fragmentManager = getSupportFragmentManager();
+        openFragment(new HomeFrag());
 
         //FAB Dialog Sheet
         floatButton.setOnClickListener(new View.OnClickListener() {

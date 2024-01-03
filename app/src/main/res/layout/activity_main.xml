@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@android:color/transparent"
     android:layout_height="match_parent"
     android:id="@+id/drawer_layout"
     android:fitsSystemWindows="true"
@@ -14,7 +15,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <androidx.appcompat.widget.Toolbar
@@ -24,15 +25,30 @@
             android:elevation="4dp"
             app:layout_scrollFlags="scroll|enterAlways"
             android:background="@android:color/transparent"
-            app:navigationIconTint="@color/blue"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:navigationIconTint="@color/blue">
 
-            />
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profileIcon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@mipmap/ic_launcher"
+                android:layout_gravity="end"
+                android:layout_marginEnd="16dp"
+                android:contentDescription="@string/content_description"
+                app:civ_border_width="2dp"
+                app:civ_border_color="@color/blue"
+                app:civ_border_overlay="true"
+                />
+
+        </androidx.appcompat.widget.Toolbar>
 
         <FrameLayout
             android:id="@+id/frame_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="100dp"
+            android:layout_marginBottom="50dp"
 
             />
 
@@ -50,7 +66,7 @@
                 app:fabAlignmentMode="center"
                 app:fabCradleMargin="5dp"
                 app:removeEmbeddedFabElevation="true"
-                app:fabCradleRoundedCornerRadius="30dp" >>
+                app:fabCradleRoundedCornerRadius="30dp" >
 
 
                 <com.ismaeldivita.chipnavigation.ChipNavigationBar
@@ -70,16 +86,16 @@
 
             </com.google.android.material.bottomappbar.BottomAppBar>
 
-                    <com.google.android.material.floatingactionbutton.FloatingActionButton
-                        android:id="@+id/fab"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:clickable="true"
-                        app:maxImageSize="40dp"
-                        android:backgroundTint="@color/blue"
-                        app:layout_anchor="@id/bottom_app_bar"
-                        android:layout_marginBottom="65dp"
-                        android:src="@drawable/sos"/>
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                app:maxImageSize="40dp"
+                android:backgroundTint="@color/blue"
+                app:layout_anchor="@id/bottom_app_bar"
+                android:layout_marginBottom="65dp"
+                android:src="@drawable/sos"/>
 
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
@@ -94,10 +110,9 @@
             android:background="@color/white"
             app:itemIconTint="@color/black"
             app:itemTextColor="@color/blue"
-            app:menu="@menu/drawer_menu"
             android:theme="@style/ThemeOverlay.AppCompat.navTheme"
+            app:menu="@menu/drawer_menu"
             app:headerLayout="@layout/nav_header"
-            app:itemBackground="@drawable/drawer_item_padding"
             app:itemHorizontalPadding="20dp">
 
 
@@ -107,39 +122,5 @@
         </com.google.android.material.navigation.NavigationView>
 
 
-<!--    <com.google.android.material.navigation.NavigationView-->
-<!--        android:layout_width="280dp"-->
-<!--        android:layout_height="match_parent"-->
-
-
-
-<!--    <androidx.coordinatorlayout.widget.CoordinatorLayout-->
-
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:id="@+id/coordinator">-->
-
-
-<!--        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-<!--            android:id="@+id/fab"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:clickable="true"-->
-<!--            app:maxImageSize="40dp"-->
-<!--            android:backgroundTint="@color/blue"-->
-<!--            app:layout_anchor="@id/bottomAppBar"-->
-<!--            android:layout_marginBottom="65dp"-->
-<!--            android:src="@drawable/sos"/>-->
-
-<!--        <com.google.android.material.bottomappbar.BottomAppBar-->
-
-
-
-
-<!--        </com.google.android.material.bottomappbar.BottomAppBar>-->
-
-
-
-<!--    </androidx.coordinatorlayout.widget.CoordinatorLayout>-->
 
 </androidx.drawerlayout.widget.DrawerLayout>
