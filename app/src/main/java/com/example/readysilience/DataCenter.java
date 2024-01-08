@@ -1,10 +1,10 @@
 package com.example.readysilience;
 
-public class CenterData {
+public class DataCenter {
     private String imageUrl;
     private String text;
 
-    public CenterData(String imageUrl, String text) {
+    public DataCenter(String imageUrl, String text) {
         this.imageUrl = imageUrl;
         this.text = text;
     }

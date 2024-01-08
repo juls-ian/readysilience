@@ -14,6 +14,7 @@ import java.util.List;
 
 
 // UpdatesAdapter.java
+
 public class AdapterFeatured extends RecyclerView.Adapter<AdapterFeatured.FeaturedViewHolder> {
     private Context context;
     private List<DataFeatured> featuredDataList;

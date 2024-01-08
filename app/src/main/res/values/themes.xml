@@ -7,9 +7,9 @@
         <item name="android:windowActionBarOverlay">true</item>
         <item name="android:windowActionModeOverlay">true</item>
 
-        <item name="colorPrimary">@color/blue</item>
-        <item name="colorSecondary">@color/yellow</item>
-        <item name="colorTertiary">@color/red</item>
+        <item name="colorPrimary">@android:color/transparent</item>
+        <item name="colorSecondary">@color/blue</item>
+        <item name="colorTertiary">@color/yellow</item>
         <item name="android:statusBarColor">?attr/colorPrimary</item>
         <!--        Drawer-->
         <item name="drawerArrowStyle">@style/DrawerIcon</item>
@@ -52,6 +52,10 @@
 
     <style name="ThemeOverlay.AppCompat.navTheme">
         <item name="colorPrimary">@color/blue</item>
+    </style>
+
+    <style name="frag_toolbar">
+        <item name="colorPrimary">@android:color/transparent</item>
     </style>
 
 

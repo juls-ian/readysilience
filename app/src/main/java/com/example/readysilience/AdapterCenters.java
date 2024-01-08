@@ -17,13 +17,13 @@ import java.util.ArrayList;
 public class AdapterCenters extends PagerAdapter {
 
     Context context;
-    ArrayList<CenterData> centerDataList;
+    ArrayList<DataCenter> dataCenterList;
 
 
 
-    public AdapterCenters(Context context, ArrayList<CenterData> centerDataList) {
+    public AdapterCenters(Context context, ArrayList<DataCenter> dataCenterList) {
         this.context = context;
-        this.centerDataList = centerDataList;
+        this.dataCenterList = dataCenterList;
     }
 
     @Override
@@ -39,19 +39,19 @@ public class AdapterCenters extends PagerAdapter {
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
-        if (centerDataList.size() == 0) {
+        if (dataCenterList.size() == 0) {
             return new Object(); // Handle empty list to prevent IndexOutOfBoundsException
         }
 
-        int realPosition = position % centerDataList.size();
-        CenterData centerData = centerDataList.get(realPosition);
+        int realPosition = position % dataCenterList.size();
+        DataCenter dataCenter = dataCenterList.get(realPosition);
 
         View view = LayoutInflater.from(context).inflate(R.layout.layout_nearbycenter, null);
         ImageView imageView = view.findViewById(R.id.centerImage);
         TextView textView = view.findViewById(R.id.text1);
 
-        Glide.with(context).asBitmap().load(centerData.getImageUrl()).into(imageView);
-        textView.setText(centerData.getText());
+        Glide.with(context).asBitmap().load(dataCenter.getImageUrl()).into(imageView);
+        textView.setText(dataCenter.getText());
 
         container.addView(view, 0);
         return view;
