@@ -51,7 +51,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/city_name"
-                android:text="Brgy. Sta. Ana"
+                android:text="Office Name"
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="120dp"
                 android:fontFamily="@font/alata"
@@ -84,20 +84,7 @@
                 android:textSize="20sp"
                 tools:ignore="NotSibling" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/directory_desc"
-                android:text="@string/directory_desc"
-                android:textColor="@color/white"
-                android:gravity="left"
-                android:paddingTop="0dp"
-                android:textSize="12sp"
-                android:layout_marginStart="110dp"
-                android:layout_below="@+id/brgy_phone"
-                android:layout_marginEnd="30dp"
-                android:fontFamily="@font/alata"
-                android:layout_marginLeft="20dp"/>
+
 
 
         </RelativeLayout>
