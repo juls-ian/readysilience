@@ -67,4 +67,10 @@
 
     <string name="info_center">Equip yourself with essential disaster information at hand </string>
 
+    <string name="directory_desc">Call Brgy. Sta. Ana\'\s Helpline, 7 days a week, 7:00 AM to 11:00 PM.</string>
+    <string name="sta_ana_phone">+639285670575</string>
+    <string name="fb_link"><a href="https://www.facebook.com/barangay.santaana.9">Visit Us</a></string>
+    <string name="sta_email">brgystaana\.\26@yahoo.com</string>
+
+
 </resources>

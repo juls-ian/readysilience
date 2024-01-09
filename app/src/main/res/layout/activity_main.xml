@@ -18,6 +18,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+
         <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="60dp"
@@ -44,6 +45,7 @@
                 />
 
         </androidx.appcompat.widget.Toolbar>
+
 
         <FrameLayout
             android:id="@+id/frame_layout"
