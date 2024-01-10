@@ -69,9 +69,9 @@
                 app:layout_dodgeInsetEdges="bottom"
                 android:background="@color/white"
                 app:fabAlignmentMode="center"
-                app:fabCradleMargin="5dp"
-                app:removeEmbeddedFabElevation="true"
-                app:fabCradleRoundedCornerRadius="30dp" >
+                app:fabCradleMargin="3dp"
+                app:removeEmbeddedFabElevation="false"
+                app:fabCradleRoundedCornerRadius="25dp" >
 
 
                 <com.ismaeldivita.chipnavigation.ChipNavigationBar
@@ -79,12 +79,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:cnb_menuResource="@menu/bottom_menu"
-                    app:cnb_iconSize="30dp"
+                    app:cnb_iconSize="20dp"
                     app:cnb_unselectedColor="@color/black"
+                    app:cnb_textAppearance="@style/chip_nav_text"
                     app:cnb_radius="28dp"
                     android:paddingBottom="5dp"
                     android:paddingTop="5dp"
                     android:layout_marginEnd="20dp"
+                    android:layout_marginStart="-90dp"
                     android:background="@android:color/transparent"
 
                     />

@@ -57,6 +57,11 @@
     <style name="frag_toolbar">
         <item name="colorPrimary">@android:color/transparent</item>
     </style>
+    
+    <style name="chip_nav_text">
+
+        <item name="android:textSize">10dp</item>
+    </style>
 
 
 </resources>

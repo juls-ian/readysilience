@@ -67,10 +67,24 @@
 
     <string name="info_center">Equip yourself with essential disaster information at hand </string>
 
+<!--    HOTLINES INFO-->
     <string name="directory_desc">Call Brgy. Sta. Ana\'\s Helpline, 7 days a week, 7:00 AM to 11:00 PM.</string>
-    <string name="sta_ana_phone">+639285670575</string>
-    <string name="fb_link"><a href="https://www.facebook.com/barangay.santaana.9">Visit Us</a></string>
+    <string name="sta_ana_phone">0928-567-0575</string>
+    <string name="staana_fb"><a href="https://www.facebook.com/barangay.santaana.9">Visit Us</a></string>
     <string name="sta_email">brgystaana\.\26@yahoo.com</string>
+
+    <string name="stomas_email">stotomaspublicinformation@gmail.com</string>
+    <string name="stomas_phone1">043-784-8482</string>
+    <string name="stomas_phone2">0933-812-2581</string>
+    <string name="stomas_website"><a href="https://cityofstotomas.gov.ph/">Visit Us</a></string>
+
+    <string name="health_office_phone1">043-406-6539</string>
+    <string name="health_office_phone2">0908-865-4814</string>
+    <string name="health_office_fb"><a href="https://www.facebook.com/chocstb/">Visit Us</a></string>
+    <string name="health_office_email">cho.stcb@gmail.com</string>
+
+    <string name="traffic_office_phone1">043-784-6544</string>
+    <string name="traffic_office_phone2">0939-293-8006</string>
 
 
 </resources>

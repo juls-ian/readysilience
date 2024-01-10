@@ -133,6 +133,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
+    //SOS REPORT
     private void showBottomDialog() {
 
 

@@ -47,10 +47,19 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+   >
+
     <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="60dp">
+
+
 
         <TextView
             android:layout_width="match_parent"
@@ -83,7 +92,7 @@
 
             <ImageView
                 android:id="@+id/card_bg_stana"
-                android:src="@drawable/card_bg_blue"
+                android:src="@drawable/card_bg_darkblue"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="top"
@@ -115,13 +124,13 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginLeft="120dp"
                     android:fontFamily="@font/alata"
-                    android:textColor="@color/white"
+                    android:textColor="@color/yellow"
                     android:textStyle="bold"
                     android:textSize="25sp"
                     tools:ignore="NotSibling" />
 
                 <ImageView
-                    android:id="@+id/phone_icon"
+                    android:id="@+id/phone_icon_city"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:scaleType="centerCrop"
@@ -135,11 +144,12 @@
                     android:id="@+id/brgy_phone"
                     android:autoLink="phone"
                     android:text="@string/sta_ana_phone"
+                    android:paddingLeft="10dp"
                     android:layout_marginLeft="150dp"
                     android:layout_below="@+id/brgy_name"
                     android:fontFamily="@font/alata"
                     android:textColor="@color/white"
-                    android:textColorLink="@color/black"
+                    android:textColorLink="@color/white"
                     android:textStyle="bold"
                     android:textSize="20sp"
                     tools:ignore="NotSibling" />
@@ -153,9 +163,9 @@
                     android:gravity="left"
                     android:paddingTop="0dp"
                     android:textSize="12sp"
-                    android:layout_marginStart="110dp"
+                    android:layout_marginStart="130dp"
                     android:layout_below="@+id/brgy_phone"
-                    android:layout_marginEnd="30dp"
+                    android:layout_marginEnd="18dp"
                     android:fontFamily="@font/alata"
                     android:layout_marginLeft="20dp"/>
 
@@ -182,18 +192,18 @@
 
 
                     <ImageView
-                        android:id="@+id/prone_level_pic"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/icon_facebook"
+                        android:src="@drawable/icon_facebook2"
                         android:layout_marginLeft="15dp"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/sta_ana_fb"
-                        android:text="@string/fb_link"
+                        android:text="@string/staana_fb"
+
                         android:paddingLeft="10dp"
                         android:textColorLink="@color/yellow"
                         android:fontFamily="@font/alata"
@@ -202,17 +212,15 @@
                         tools:ignore="NotSibling" />
 
                     <ImageView
-                        android:id="@+id/disaster_related_news"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/icon_email"
+                        android:src="@drawable/icon_email2"
                         android:layout_marginLeft="15dp"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/recent_act"
                         android:autoLink="email"
                         android:text="@string/sta_email"
                         android:textColorLink="@color/white"
@@ -233,23 +241,9 @@
         </com.google.android.material.card.MaterialCardView>
 
 
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:orientation="horizontal">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/sto_tomas"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:src="@drawable/logo_sta_ana"
-            android:layout_gravity="start"
-            app:civ_border_width="2dp"
-            app:civ_border_color="@android:color/transparent"
-            app:civ_border_overlay="true"
-            />
+
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -258,14 +252,455 @@
             android:gravity="left"
             android:textSize="20sp"
             android:fontFamily="@font/alata"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="20dp"
             android:textStyle="bold"
             />
 
+    <!--    CITY DIRECTORY-->
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="340dp"
+        android:layout_height="180dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:elevation="4dp"
+        app:cardCornerRadius="20dp">
+
+
+        <ImageView
+            android:id="@+id/card_stomas"
+            android:src="@drawable/card_bg_darkgreen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:maxHeight="100dp"
+            android:scaleType="fitXY"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/city_icon"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:src="@drawable/logo_sto_tomas"
+                android:layout_gravity="start"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="16dp"
+                app:civ_border_width="2dp"
+                app:civ_border_color="@android:color/transparent"
+                app:civ_border_overlay="true"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/city_name"
+                android:text="Sto. Tomas City"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="120dp"
+                android:fontFamily="@font/alata"
+                android:textColor="@color/yellow"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                tools:ignore="NotSibling" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                android:layout_below="@+id/city_name"
+                android:src="@drawable/icon_phone"
+                android:paddingTop="15dp"
+                android:layout_marginLeft="115dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/stomas_phone1"
+                android:text="@string/stomas_phone1"
+                android:paddingLeft="10dp"
+                android:layout_marginLeft="150dp"
+                android:layout_below="@+id/city_name"
+                android:fontFamily="@font/alata"
+                android:textColor="@color/white"
+                android:textColorLink="@color/white"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                tools:ignore="NotSibling" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/stomas_phone2"
+                android:text="@string/stomas_phone2"
+                android:paddingLeft="10dp"
+                android:layout_marginLeft="150dp"
+                android:layout_below="@+id/stomas_phone1"
+                android:fontFamily="@font/alata"
+                android:textColor="@color/white"
+                android:textColorLink="@color/white"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                tools:ignore="NotSibling" />
+
+
+
+
+        </RelativeLayout>
+
+
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+
+            >
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/icon_website"
+                    android:layout_marginLeft="15dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/stomas_website"
+                    android:text="@string/stomas_website"
+                    android:paddingLeft="10dp"
+                    android:textColorLink="@color/yellow"
+                    android:fontFamily="@font/alata"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    tools:ignore="NotSibling" />
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/icon_email2"
+                    android:layout_marginLeft="15dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:autoLink="email"
+                    android:text="@string/stomas_email"
+                    android:textColorLink="@color/white"
+                    android:paddingLeft="10dp"
+                    android:fontFamily="@font/alata"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    tools:ignore="NotSibling" />
+
+            </LinearLayout>
+
+
+
+
+
+        </RelativeLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+
+<!--    OTHER STO. TOMAS DIRECTORIES-->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="300dp"
+        android:layout_height="170dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:elevation="4dp"
+        app:cardCornerRadius="20dp">
+
+
+        <ImageView
+            android:id="@+id/card_stomas_offices"
+            android:src="@drawable/card_bg_darkyellow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:maxHeight="100dp"
+            android:scaleType="fitXY"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/city_icon2"
+                android:layout_width="85dp"
+                android:layout_height="85dp"
+                android:src="@drawable/logo_city_health_office"
+                android:layout_gravity="start"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="16dp"
+                app:civ_border_width="2dp"
+                app:civ_border_color="@android:color/transparent"
+                app:civ_border_overlay="true"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/office_name"
+                android:text="City Health Office"
+                android:gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="120dp"
+                android:fontFamily="@font/alata"
+                android:textColor="@color/blue"
+                android:textStyle="bold"
+                android:textSize="23sp"
+                tools:ignore="NotSibling" />
+
+            <ImageView
+                android:id="@+id/city_phone_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                android:layout_below="@+id/office_name"
+                android:src="@drawable/icon_phone"
+                android:layout_marginLeft="115dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/health_office_phone1"
+                android:text="@string/health_office_phone1"
+                android:paddingLeft="5dp"
+                android:layout_marginLeft="150dp"
+                android:layout_below="@+id/office_name"
+                android:fontFamily="@font/alata"
+                android:textColor="@color/white"
+
+                android:textStyle="bold"
+                android:textSize="18sp"
+                tools:ignore="NotSibling" />
+
+
+        </RelativeLayout>
+
+
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+
+            >
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+
+                <ImageView
+                    android:id="@+id/prone_level_pic"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/icon_facebook2"
+                    android:layout_marginLeft="15dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/health_office_fb"
+                    android:text="@string/health_office_fb"
+                    android:paddingLeft="10dp"
+                    android:textColorLink="@color/yellow"
+                    android:fontFamily="@font/alata"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    tools:ignore="NotSibling" />
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/icon_email2"
+                    android:layout_marginLeft="15dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:autoLink="email"
+                    android:text="@string/health_office_email"
+                    android:textColorLink="@color/white"
+                    android:paddingLeft="10dp"
+                    android:fontFamily="@font/alata"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    tools:ignore="NotSibling" />
+
+            </LinearLayout>
+
+
+
+
+
+        </RelativeLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="330dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:elevation="4dp"
+            app:cardCornerRadius="20dp">
+
+
+            <ImageView
+                android:src="@drawable/card_bg_darkpink"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:maxHeight="100dp"
+                android:scaleType="fitXY"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="85dp"
+                    android:layout_height="85dp"
+                    android:src="@drawable/logo_sto_tomas2"
+                    android:layout_gravity="start"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="16dp"
+                    app:civ_border_width="2dp"
+                    app:civ_border_color="@android:color/transparent"
+                    app:civ_border_overlay="true"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/traffic_mgmt"
+                    android:text="Traffic Management Office"
+                    android:gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="120dp"
+                    android:fontFamily="@font/alata"
+                    android:textColor="@color/blue"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    tools:ignore="NotSibling" />
+
+                <ImageView
+                    android:id="@+id/city_phone_icon3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerCrop"
+                    android:layout_below="@+id/traffic_mgmt"
+                    android:src="@drawable/icon_phone"
+                    android:paddingTop="15dp"
+                    android:layout_marginLeft="115dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/traffic_mgmt_phone1"
+                    android:text="@string/traffic_office_phone1"
+                    android:paddingLeft="10dp"
+                    android:layout_marginLeft="150dp"
+                    android:layout_below="@+id/traffic_mgmt"
+                    android:fontFamily="@font/alata"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    tools:ignore="NotSibling" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/traffic_mgmt_phone2"
+                    android:text="@string/traffic_office_phone2"
+                    android:paddingLeft="10dp"
+                    android:layout_marginLeft="150dp"
+                    android:layout_below="@+id/traffic_mgmt_phone1"
+                    android:fontFamily="@font/alata"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    tools:ignore="NotSibling" />
+
+
+
+
+            </RelativeLayout>
+
+
+
+
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nationwide Directory"
+            android:textColor="@color/yellow"
+            android:gravity="left"
+            android:textSize="20sp"
+            android:fontFamily="@font/alata"
+            android:layout_marginLeft="20dp"
+            android:textStyle="bold"
+            />
+
+
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/nationalDirectoryRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="15dp"
+                />
+
+
+
     </LinearLayout>
 
-
-
+</ScrollView>
 
 
 </LinearLayout>
