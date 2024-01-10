@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_bubbles1"
+    android:background="@drawable/bg6"
     android:orientation="vertical"
     tools:context=".SignUp">
 
@@ -117,10 +117,10 @@
     </LinearLayout>
 
     <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="45dp"
-        android:layout_marginVertical="10dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
 
         app:cardCornerRadius="25dp">
 
@@ -152,7 +152,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Phone Number"
                 android:padding="15dp"
-                app:hintTextColor="@color/yellow">
+                app:hintTextColor="@color/blue">
 
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -177,6 +177,7 @@
             android:layout_gravity="center"
             android:background="@drawable/rectangle_button"
             android:text="Send OTP"
+            style="@style/buttonTheme"
             android:textColor="#fff" />
 
 

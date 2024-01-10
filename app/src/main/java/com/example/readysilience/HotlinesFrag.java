@@ -75,7 +75,6 @@ public class HotlinesFrag extends Fragment {
 
 
 
-
         //PHONE - STA. ANA
         staAnaPhone = view.findViewById(R.id.brgy_phone);
         staAnaPhone.setOnClickListener(new View.OnClickListener() {

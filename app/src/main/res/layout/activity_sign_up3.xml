@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_bubbles1"
+    android:background="@drawable/bg6"
     android:orientation="vertical"
     tools:context=".SignUp">
 
@@ -141,8 +141,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Enter OTP"
                 android:padding="10dp"
-
-                app:hintTextColor="@color/yellow">
+                app:hintTextColor="@color/blue">
 
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -165,6 +164,7 @@
                 android:layout_gravity="center"
                 android:background="@drawable/rectangle_button"
                 android:text="Continue"
+                style="@style/buttonTheme"
                 android:textColor="#fff" />
 
             <Button

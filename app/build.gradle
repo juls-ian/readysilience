@@ -69,6 +69,7 @@ dependencies {
     implementation 'com.pixplicity.multiviewpager:library:1.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
     implementation 'com.klinkerapps:link_builder:2.0.5'
+    implementation 'com.romandanylyk:pageindicatorview:1.0.3'
 
 
 

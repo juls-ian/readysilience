@@ -18,6 +18,7 @@ import com.denzcoskun.imageslider.models.SlideModel;
 import java.util.ArrayList;
 import java.util.List;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
+import com.rd.PageIndicatorView;
 
 public class HomeFrag extends Fragment {
 
@@ -27,6 +28,7 @@ public class HomeFrag extends Fragment {
     ViewPager viewPager;
 
     ArrayList<DataCenter> dataCenterList = new ArrayList<>();
+
 
 
 
@@ -73,6 +75,7 @@ public class HomeFrag extends Fragment {
 
         //NEARBY CENTERS
         viewPager = view.findViewById(R.id.viewPager);
+
         dataCenterList.add(new DataCenter("https://thumbs.dreamstime.com/b/hospital-building-modern-parking-lot-59693686.jpg", "Center 1"));
         dataCenterList.add(new DataCenter("https://images.unsplash.com/photo-1519494080410-f9aa76cb4283?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aG9zcGl0YWwlMjByb29tfGVufDB8fDB8fHww", "Center 2"));
         dataCenterList.add(new DataCenter("https://thumbs.dreamstime.com/b/doctors-hospital-corridor-nurse-pushing-gurney-stretcher-bed-male-senior-female-patient-32154012.jpg", "Center 3"));
@@ -81,6 +84,8 @@ public class HomeFrag extends Fragment {
         viewPager.setAdapter(new AdapterCenters(getContext(), dataCenterList));
         viewPager.setPadding(50, 0, 50, 0);
         viewPager.setCurrentItem(initialPosition);
+
+
 
         //FEATURED
             recyclerView = view.findViewById(R.id.featuredRecyclerView);

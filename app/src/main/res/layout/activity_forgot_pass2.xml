@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_bubbles2"
+    android:background="@drawable/bg3"
     android:orientation="vertical"
     tools:context=".SignUp">
 
@@ -29,6 +29,7 @@
             android:layout_marginHorizontal="30dp"
             android:gravity="center"
             android:layout_gravity="center"
+            android:textColor="@color/white"
             android:fontFamily="@font/alatsi"
             android:text="Confirm your account"
             android:textSize="20sp" />
@@ -60,6 +61,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/alatsi"
+            android:textColor="@color/white"
             android:text="We sent a code via SMS. Enter that code to confirm your account"
             android:textSize="15sp" />
 

@@ -3,55 +3,32 @@ package com.example.readysilience;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link EvacCenterFrag#newInstance} factory method to
- * create an instance of this fragment.
- */
+import com.rd.PageIndicatorView;
+
+import java.util.ArrayList;
+
 public class EvacCenterFrag extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    ViewPager viewPager;
+    PageIndicatorView pageIndicatorView;
+    ArrayList<DataEvacMaps> evacMapsList = new ArrayList<>();
 
     public EvacCenterFrag() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment EvacCenterFrag.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static EvacCenterFrag newInstance(String param1, String param2) {
-        EvacCenterFrag fragment = new EvacCenterFrag();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+
         }
     }
 
@@ -59,6 +36,40 @@ public class EvacCenterFrag extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_evac_center, container, false);
+        super.onCreate(savedInstanceState);
+        View view = inflater.inflate(R.layout.fragment_evac_center, container, false);
+
+        viewPager = view.findViewById(R.id.maps_viewpager);
+
+        evacMapsList.add(new DataEvacMaps(R.drawable.map_staana_evac, "Sta. Ana Evacuation Map"));
+        evacMapsList.add(new DataEvacMaps(R.drawable.map_staana_evac, "Flood Exposure"));
+
+        int initialPosition = Integer.MAX_VALUE / 2;
+        viewPager.setAdapter(new AdapterEvacMaps(getContext(), evacMapsList));
+        viewPager.setPadding(50, 0, 50, 0);
+        viewPager.setCurrentItem(initialPosition);
+
+        pageIndicatorView = view.findViewById(R.id.pageIndicatorView);
+
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                // Not needed for this implementation
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                // Update the selected page in PageIndicatorView
+                pageIndicatorView.setSelection(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+                // Not needed for this implementation
+            }
+        });
+
+        return view;
     }
+
 }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_bubbles1"
+    android:background="@drawable/bg6"
     android:orientation="vertical"
     tools:context=".SignUp">
 
@@ -142,7 +142,7 @@
                 android:hint="Password"
                 android:padding="10dp"
                 app:passwordToggleEnabled="true"
-                app:hintTextColor="@color/yellow">
+                app:hintTextColor="@color/blue">
 
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -162,7 +162,7 @@
                 android:hint="Confirm Password"
                 android:padding="10dp"
                 app:passwordToggleEnabled="true"
-                app:hintTextColor="@color/yellow">
+                app:hintTextColor="@color/blue">
 
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -182,6 +182,7 @@
                 android:layout_marginBottom="30dp"
                 android:gravity="center"
                 android:layout_gravity="center"
+                style="@style/buttonTheme"
                 android:background="@drawable/rectangle_button"
                 android:text="Create Account"
                 android:textColor="#fff" />
