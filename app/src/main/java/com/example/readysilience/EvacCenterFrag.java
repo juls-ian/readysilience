@@ -8,6 +8,7 @@ import androidx.viewpager.widget.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.rd.PageIndicatorView;
 
@@ -42,14 +43,16 @@ public class EvacCenterFrag extends Fragment {
         viewPager = view.findViewById(R.id.maps_viewpager);
 
         evacMapsList.add(new DataEvacMaps(R.drawable.map_staana_evac, "Sta. Ana Evacuation Map"));
-        evacMapsList.add(new DataEvacMaps(R.drawable.map_staana_evac, "Flood Exposure"));
+        evacMapsList.add(new DataEvacMaps(R.drawable.map_flood_exposure, "Sta. Ana's Flood Exposure Map"));
+        evacMapsList.add(new DataEvacMaps(R.drawable.map_flood_hazard, "Sta. Ana's Flood Hazard Map"));
 
-        int initialPosition = Integer.MAX_VALUE / 2;
+        int initialPosition = evacMapsList.size() / 2;
         viewPager.setAdapter(new AdapterEvacMaps(getContext(), evacMapsList));
         viewPager.setPadding(50, 0, 50, 0);
-        viewPager.setCurrentItem(initialPosition);
+//        viewPager.setCurrentItem(initialPosition);
 
         pageIndicatorView = view.findViewById(R.id.pageIndicatorView);
+        pageIndicatorView.setCount(evacMapsList.size());
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -68,6 +71,9 @@ public class EvacCenterFrag extends Fragment {
                 // Not needed for this implementation
             }
         });
+
+
+
 
         return view;
     }

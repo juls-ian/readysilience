@@ -9,9 +9,11 @@
     android:orientation="horizontal">
 
 
-    <com.google.android.material.card.MaterialCardView
+
+
+    <androidx.cardview.widget.CardView
         android:layout_width="310dp"
-        android:layout_height="240dp"
+        android:layout_height="170dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
@@ -25,17 +27,23 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="top"
-            android:maxHeight="100dp"
-            android:scaleType="fitXY"/>
+            android:maxHeight="200dp"
+            android:scaleType="centerCrop"/>
+
 
         <ImageView
             android:id="@+id/bg"
-            android:src="@drawable/map_overlap"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:src="@drawable/map_overlay"
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:paddingTop="120dp"
             android:layout_gravity="bottom"
-            android:layout_marginBottom="20dp"
+            android:elevation="4dp"
+            android:scaleType="fitXY"
             />
+
+
+
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -48,21 +56,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/map_name"
-                android:paddingLeft="35dp"
+                android:text="sample"
                 android:layout_below="@+id/bg"
+                android:gravity="center"
                 android:paddingTop="45dp"
                 android:paddingBottom="40dp"
                 android:fontFamily="@font/alata"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textStyle="bold"
-                android:textSize="20sp"
+                android:textSize="15sp"
                 tools:ignore="NotSibling" />
 
 
 
         </RelativeLayout>
 
-    </com.google.android.material.card.MaterialCardView>
+    </androidx.cardview.widget.CardView>
 
 
 

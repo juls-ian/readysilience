@@ -72,10 +72,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="-30dp"
+            android:layout_marginTop="-40dp"
             app:piv_dynamicCount="true"
+            app:piv_rtl_mode="on"
+            app:piv_idleDuration="@integer/material_motion_duration_long_1"
             app:piv_selectedColor="@color/blue"
-            app:piv_unselectedColor="@color/yellow" />
+            app:piv_unselectedColor="@color/blue1" />
 
 
     </LinearLayout>
