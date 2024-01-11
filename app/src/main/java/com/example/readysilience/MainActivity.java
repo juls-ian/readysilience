@@ -32,9 +32,15 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+
+    ActivityMainBinding binding;
+    FirebaseAuth auth;
+    FirebaseFirestore firestore;
 
     //Vars
     FloatingActionButton floatButton;
@@ -45,12 +51,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     Toolbar toolbar;
     NavigationView navigationView;
     ChipNavigationBar chipNavigationBar;
-    ActivityMainBinding binding;
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
     FrameLayout frameLayout;
     FloatingActionButton fab;
-
 
 
     @Override
@@ -58,6 +62,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(R.layout.activity_main);
+
+        auth = FirebaseAuth.getInstance();
+        firestore = FirebaseFirestore.getInstance();
 
         floatButton = findViewById(R.id.fab);
 
@@ -80,9 +87,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
-
-
-
 
         //Chip Nav
         chipNavigationBar = findViewById(R.id.chip_navbar);
@@ -132,6 +136,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
 
     }
+
 
     //SOS REPORT
     private void showBottomDialog() {

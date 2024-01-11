@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "644049384573",
+    "project_id": "readysilience",
+    "storage_bucket": "readysilience.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:644049384573:android:c5e47ad201b1154c56ed14",
+        "android_client_info": {
+          "package_name": "com.example.readysilience"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCx7mPIPGl9YUTOV0U0oJUoIGP7Aji4-0I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

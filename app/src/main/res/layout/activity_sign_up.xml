@@ -94,6 +94,27 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+<!--            AGE-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:id="@+id/age"
+                android:hint="Age"
+                android:layout_marginHorizontal="15dp"
+                app:hintTextColor="@color/blue"
+                android:padding="10dp"
+
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
 <!--            SEX-->
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -107,11 +128,11 @@
                 >
 
                 <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/inputTV"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/inputTV"
                     android:inputType="none"
-                    app:simpleItems="@array/options_list"/>
+                    app:simpleItems="@array/options_list" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
