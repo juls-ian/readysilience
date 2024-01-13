@@ -47,33 +47,29 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <ScrollView
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        >
+        android:orientation="vertical"
+        android:layout_gravity="left"
+        android:gravity="left">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_gravity="center"
-            android:layout_marginTop="90dp"
-            android:gravity="left">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Sta. Ana Maps"
-                android:textColor="@color/red"
-                android:gravity="left"
-                android:textSize="20sp"
-                android:paddingLeft="5dp"
-                android:fontFamily="@font/alata"
-                android:layout_marginTop="100dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginBottom="-40dp"
-                android:textStyle="bold"
-                />
+            android:text="Sta. Ana Maps"
+            android:textColor="@color/red"
+            android:gravity="left"
+            android:textSize="20sp"
+            android:paddingLeft="5dp"
+            android:fontFamily="@font/alata"
+            android:layout_marginLeft="20dp"
+            android:textStyle="bold"
+            />
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/maps_viewpager"
@@ -82,6 +78,7 @@
             android:overScrollMode="never"
             android:layout_gravity="start"
             android:clipToPadding="false"
+            android:layout_marginTop="-30dp"
 
 
             >
@@ -101,26 +98,28 @@
             app:piv_unselectedColor="@color/blue1" />
 
 
-        <LinearLayout
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Locations"
+            android:textColor="@color/red"
+            android:gravity="left"
+            android:paddingTop="15dp"
+            android:textSize="20sp"
+            android:paddingLeft="5dp"
+            android:fontFamily="@font/alata"
+            android:layout_marginLeft="20dp"
+            android:textStyle="bold"
+            />
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginBottom="-20dp"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Locations"
-                android:textColor="@color/red"
-                android:gravity="left"
-                android:paddingTop="15dp"
-                android:textSize="20sp"
-                android:paddingLeft="5dp"
-                android:fontFamily="@font/alata"
-                android:layout_marginLeft="20dp"
-                android:textStyle="bold"
-                />
+
 
             <RelativeLayout
                 android:layout_marginTop="5dp"
@@ -136,7 +135,8 @@
                     android:overScrollMode="never"
                     android:layout_gravity="start"
                     android:clipToPadding="false"
-                    android:layout_marginTop="200dp"
+                    android:layout_marginTop="280dp"
+                    android:layout_marginBottom="50dp"
                     android:elevation="5dp"
                     >
 
@@ -146,11 +146,18 @@
             </RelativeLayout>
 
 
-        </LinearLayout>
+        </RelativeLayout>
 
 
     </LinearLayout>
 
-    </ScrollView>
+
+</ScrollView>
+
+
+
+
+
+
 
 </LinearLayout>
