@@ -32,7 +32,7 @@
 
         <ImageView
             android:id="@+id/bg"
-            android:src="@drawable/disasters_cont_bg"
+            android:src="@drawable/bg_disaster_cont_blue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"

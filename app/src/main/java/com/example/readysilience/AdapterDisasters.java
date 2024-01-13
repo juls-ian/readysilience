@@ -44,7 +44,18 @@ public class AdapterDisasters extends RecyclerView.Adapter<AdapterDisasters.Disa
         holder.proneTypeText.setText(disasterData.getProneType());
         holder.activityTypeText.setText(disasterData.getActivityType());
 
+        //TEXT COLORING
+        if ("Natural".equals(disasterData.getDisasterType())) {
+            holder.disasterTypeText.setTextColor(context.getResources().getColor(R.color.yellow)); // Set your green color
+        } else if ("Man-made".equals(disasterData.getDisasterType())) {
+            holder.disasterTypeText.setTextColor(context.getResources().getColor(R.color.brown)); // Set your red color
+        }
 
+        if ("Prone".equals(disasterData.getProneType())) {
+            holder.proneTypeText.setTextColor(context.getResources().getColor(R.color.red)); // Set your green color
+        } else {
+            holder.proneTypeText.setTextColor(context.getResources().getColor(R.color.green)); // Set your red color
+        }
     }
 
     @Override

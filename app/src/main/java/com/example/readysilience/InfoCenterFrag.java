@@ -44,11 +44,13 @@ public class InfoCenterFrag extends Fragment {
 
         disastersDataList.add(new DataDisasters(R.drawable.earthquake, "Typhoon",
                 "An earthquake is a sudden shaking of the ground caused by the movement of tectonic plates beneath the Earth's surface.",
-                "Natural", "Prone", "Inactive"));
+                "Natural", "Low", "Inactive"));
 
         disastersDataList.add(new DataDisasters(R.drawable.earthquake, "Fire",
                 "An earthquake is a sudden shaking of the ground caused by the movement of tectonic plates beneath the Earth's surface.",
                 "Man-made", "Prone", "Inactive"));
+
+
 
 
 
