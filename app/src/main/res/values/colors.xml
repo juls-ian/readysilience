@@ -5,8 +5,17 @@
 
 <!--    APP COLOR PALETTE -->
     <color name="blue">#1DACFF </color>
+    <color name="darkblue">#264653</color>
+
     <color name="yellow">#FFB800 </color>
     <color name="red">#FF0000</color>
+    <color name="red1">#d90429</color>
+    <color name="green">#008000</color>
+    <color name="brown">#582f0e</color>
+    <color name="green1">#70e000</color>
+    <color name="darkgreen">#2a9d8f</color>
+    <color name="teal">#e9c46a</color>
+    <color name="peach">#f4a261</color>
 
     <color name="blue1">#2859C5</color>
     <color name="blue2">#8FBFFA</color>

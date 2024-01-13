@@ -47,12 +47,18 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_gravity="left"
-        android:gravity="left">
+        android:layout_height="match_parent"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:layout_marginTop="100dp"
+            android:gravity="left">
 
 
         <androidx.viewpager.widget.ViewPager
@@ -80,6 +86,55 @@
             app:piv_unselectedColor="@color/blue1" />
 
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Locations"
+                android:textColor="@color/red"
+                android:gravity="left"
+                android:paddingTop="15dp"
+                android:textSize="20sp"
+                android:paddingLeft="5dp"
+                android:fontFamily="@font/alata"
+                android:layout_marginLeft="20dp"
+                android:textStyle="bold"
+                />
+
+            <RelativeLayout
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/map_layout"
+                >
+
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/evacuation_center_viewpager"
+                    android:layout_width="wrap_content"
+                    android:layout_height="340dp"
+                    android:overScrollMode="never"
+                    android:layout_gravity="start"
+                    android:clipToPadding="false"
+                    android:layout_marginTop="200dp"
+                    android:elevation="5dp"
+                    >
+
+
+                </androidx.viewpager.widget.ViewPager>
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+
     </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>

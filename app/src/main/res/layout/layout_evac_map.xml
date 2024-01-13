@@ -60,11 +60,11 @@
                 android:layout_below="@+id/bg"
                 android:gravity="center"
                 android:paddingTop="45dp"
-                android:paddingBottom="40dp"
+                android:paddingBottom="30dp"
                 android:fontFamily="@font/alata"
                 android:textColor="@color/black"
                 android:textStyle="bold"
-                android:textSize="15sp"
+                android:textSize="20sp"
                 tools:ignore="NotSibling" />
 
 
