@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "644049384573",
+    "firebase_url": "https://readysilience-default-rtdb.asia-southeast1.firebasedatabase.app",
     "project_id": "readysilience",
     "storage_bucket": "readysilience.appspot.com"
   },
@@ -12,7 +13,20 @@
           "package_name": "com.example.readysilience"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "644049384573-s33jjirlpfh1o0a3o5u9gt6cuv1fssfq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.readysilience",
+            "certificate_hash": "a61da8ce98dce9f7b50f6f03399f99d8290a6f8f"
+          }
+        },
+        {
+          "client_id": "644049384573-tbisga90lmhlqhvdbungi8oj6i3q1opt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCx7mPIPGl9YUTOV0U0oJUoIGP7Aji4-0I"
@@ -20,7 +34,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "644049384573-tbisga90lmhlqhvdbungi8oj6i3q1opt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

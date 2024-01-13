@@ -1,18 +1,25 @@
 package com.example.readysilience;
 
-public class Users {
+import java.io.Serializable;
 
-    String firstName, lastName, sex, age, houseNumber, purok;
+public class Users implements Serializable {
+
+    String firstName, lastName, age, houseNumber, purok, phoneNumber;
 
     public Users() {
     }
 
-    public Users(String firstName, String lastName, String sex, String houseNumber, String purok) {
+    public Users(String firstName, String lastName, String age, String houseNumber, String purok, String phoneNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.sex = sex;
+        this.age = age;
         this.houseNumber = houseNumber;
         this.purok = purok;
+        this.phoneNumber = phoneNumber;
+    }
+
+    public Users(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getFirstName() {
@@ -31,13 +38,21 @@ public class Users {
         this.lastName = lastName;
     }
 
-    public String getSex() {
-        return sex;
+    public String getAge() {
+        return age;
     }
 
-    public void setSex(String sex) {
-        this.sex = sex;
+    public void setAge(String age) {
+        this.age = age;
     }
+
+//    public String getSex() {
+//        return sex;
+//    }
+//
+//    public void setSex(String sex) {
+//        this.sex = sex;
+//    }
 
     public String getHouseNumber() {
         return houseNumber;
@@ -53,5 +68,13 @@ public class Users {
 
     public void setPurok(String purok) {
         this.purok = purok;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 }

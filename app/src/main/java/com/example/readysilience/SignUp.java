@@ -12,50 +12,67 @@ import com.google.android.material.textfield.MaterialAutoCompleteTextView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.auth.User;
+import android.util.Log;
 
+import androidx.annotation.NonNull;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import android.widget.Toast;
 public class SignUp extends AppCompatActivity {
 
-    ActivitySignUpBinding signUpBinding;
-    String firstName, lastName, sex, houseNumber, purok;
+    ActivitySignUpBinding binding;
+    String firstName, lastName, age, houseNumber, purok, phoneNumber;
     FirebaseDatabase db;
     DatabaseReference reference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        signUpBinding = ActivitySignUpBinding.inflate(getLayoutInflater());
-        setContentView(signUpBinding.getRoot());
-        MaterialAutoCompleteTextView autoCompleteTextView = findViewById(R.id.inputTV);
+        binding = ActivitySignUpBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+//        MaterialAutoCompleteTextView autoCompleteTextView = findViewById(R.id.inputTV);
+//        Button next = findViewById(R.id.continue_button);
 
-        signUpBinding.continueButton.setOnClickListener(new View.OnClickListener() {
+        binding.continueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                firstName = signUpBinding.firstName.getEditText().getText().toString();
-                lastName = signUpBinding.lastName.getEditText().getText().toString();
-                sex = signUpBinding.sex.getEditText().getText().toString();
-                houseNumber = signUpBinding.houseNumber.getEditText().getText().toString();
-                purok = signUpBinding.purok.getEditText().getText().toString();
+                Log.d("SignUpActivity", "Continue Button Clicked");
 
-                if (!firstName.isEmpty() && !lastName.isEmpty() && !sex.isEmpty() && !houseNumber.isEmpty() && !purok.isEmpty()) {
-                    Users users = new Users(firstName, lastName, sex, houseNumber, purok);
-                    db = FirebaseDatabase.getInstance();
-                    reference = db.getReference("Users");
-                    reference.child(firstName).setValue(users);
+                firstName = binding.firstName.getEditText().getText().toString();
+                lastName = binding.lastName.getEditText().getText().toString();
+                age = binding.age.getEditText().getText().toString();
+                houseNumber = binding.houseNumber.getEditText().getText().toString();
+                purok = binding.purok.getEditText().getText().toString();
+
+                Log.d("SignUpActivity", "Input Values: " + firstName + ", " + lastName + ", " + age + ", " + houseNumber + ", " + purok);
+
+                if (!firstName.isEmpty() && !lastName.isEmpty() && !age.isEmpty() && !houseNumber.isEmpty() && !purok.isEmpty()) {
+
+                    Users users = new Users(firstName, lastName, age, houseNumber, purok, phoneNumber);
+//                    db = FirebaseDatabase.getInstance();
+//                    reference = db.getReference("Users");
+
+                    Log.d("SignUpActivity", "Starting SignUp2 activity with data: " +
+                            "firstName=" + firstName +
+                            ", lastName=" + lastName +
+                            ", age=" + age +
+                            ", houseNumber=" + houseNumber +
+                            ", purok=" + purok);
+
+
+                    Intent intent = new Intent(SignUp.this, SignUp2.class);
+                    intent.putExtra("firstName", firstName);
+                    intent.putExtra("lastName", lastName);
+                    intent.putExtra("age", age);
+                    intent.putExtra("houseNumber", houseNumber);
+                    intent.putExtra("purok", purok);
+
+                    startActivity(intent);
+                } else{
+
+                    Toast.makeText(SignUp.this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
                 }
-            }
-        });
-
-        Button next = findViewById(R.id.continue_button);
-
-        next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Create an Intent to switch to the new activity
-                Intent intent = new Intent(SignUp.this, SignUp2.class);
-
-                // Start the new activity
-                startActivity(intent);
             }
         });
     }
