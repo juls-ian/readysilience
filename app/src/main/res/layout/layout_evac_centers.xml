@@ -44,47 +44,47 @@
 
             <!--NAME AND LOC-->
             <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_gravity="top|left"
-                android:layout_marginTop="10dp"
                 android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
                 android:elevation="5dp">
 
                 <TextView
                     android:id="@+id/evac_center_name"
-                    android:text="Sta. Ana Basketball Court"
-                    android:gravity="center"
-                    android:textStyle="bold"
-                    android:fontFamily="@font/alatsi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="2dp"
-                    android:textColor="@color/blue1"
-                    android:padding="4dp"
-                    android:textSize="18sp"
                     android:layout_marginTop="155dp"
+                    android:layout_marginBottom="2dp"
+                    android:fontFamily="@font/alatsi"
+                    android:gravity="center"
+                    android:padding="4dp"
+                    android:text="Sta. Ana Basketball Court"
+                    android:textColor="@color/blue1"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
 
                     />
 
                 <ImageView
+                    android:id="@+id/evac_loc_icon"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:id="@+id/evac_loc_icon"
                     android:layout_below="@id/evac_center_name"
-                    android:src="@drawable/icon_evacenter"/>
+                    android:src="@drawable/icon_evacenter" />
 
                 <TextView
                     android:id="@+id/evac_location"
-                    android:text="Brgy. Sta Ana"
-                    android:gravity="center"
-                    android:fontFamily="@font/alatsi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="4dp"
-                    android:textSize="16sp"
                     android:layout_marginTop="183dp"
                     android:layout_toRightOf="@+id/evac_loc_icon"
+                    android:fontFamily="@font/alatsi"
+                    android:gravity="center"
+                    android:padding="4dp"
+                    android:text="Brgy. Sta Ana"
+                    android:textSize="16sp"
 
                     />
 
@@ -95,25 +95,24 @@
                     android:layout_marginTop="215dp">
 
                     <ImageView
+                        android:id="@+id/waterbottle_icon"
                         android:layout_width="28dp"
                         android:layout_height="28dp"
-                        android:id="@+id/waterbottle_icon"
-                        android:src="@drawable/icon_bottlewater"
-                        android:background="@drawable/bg_3needs_ready"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="5dp"
-                        android:contentDescription="Waterbottle" />
+                        android:background="@drawable/bg_3needs_ready"
+                        android:contentDescription="Waterbottle"
+                        android:src="@drawable/icon_bottlewater" />
 
                     <TextView
                         android:id="@+id/needs_water"
-                        android:text="Equipped"
-                        android:gravity="center"
-                        android:fontFamily="@font/alatsi"
                         android:layout_width="50sp"
                         android:layout_height="wrap_content"
-                        android:textSize="12sp"
                         android:layout_below="@id/waterbottle_icon"
-                        />
+                        android:fontFamily="@font/alatsi"
+                        android:gravity="center"
+                        android:text="Equipped"
+                        android:textSize="12sp" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -122,27 +121,26 @@
                     android:layout_marginTop="215dp">
 
                     <ImageView
+                        android:id="@+id/can_icon"
                         android:layout_width="28dp"
                         android:layout_height="28dp"
-                        android:id="@+id/can_icon"
-                        android:background="@drawable/bg_3needs_ready"
-                        android:src="@drawable/icon_can"
                         android:layout_marginLeft="70dp"
                         android:layout_marginTop="5dp"
+                        android:background="@drawable/bg_3needs_ready"
+                        android:src="@drawable/icon_can"
 
                         />
 
                     <TextView
                         android:id="@+id/needs_can"
-                        android:text="Equipped"
-                        android:gravity="center"
-                        android:fontFamily="@font/alatsi"
                         android:layout_width="50sp"
                         android:layout_height="wrap_content"
-                        android:textSize="12sp"
                         android:layout_below="@id/can_icon"
                         android:layout_marginLeft="60dp"
-                        />
+                        android:fontFamily="@font/alatsi"
+                        android:gravity="center"
+                        android:text="Equipped"
+                        android:textSize="12sp" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -151,57 +149,54 @@
                     android:layout_marginTop="215dp">
 
                     <ImageView
+                        android:id="@+id/blanket_icon"
                         android:layout_width="28dp"
                         android:layout_height="28dp"
-                        android:id="@+id/blanket_icon"
                         android:layout_marginLeft="130dp"
                         android:layout_marginTop="5dp"
-                        android:src="@drawable/icon_blanket"
                         android:background="@drawable/bg_3needs_not"
-                        android:contentDescription="Medic" />
+                        android:contentDescription="Medic"
+                        android:src="@drawable/icon_blanket" />
 
                     <TextView
                         android:id="@+id/needs_blanket"
-                        android:text="Need Donation"
-                        android:gravity="center"
-                        android:fontFamily="@font/alatsi"
                         android:layout_width="50sp"
                         android:layout_height="wrap_content"
-                        android:textSize="12sp"
                         android:layout_below="@id/blanket_icon"
                         android:layout_marginLeft="120dp"
-                        />
+                        android:fontFamily="@font/alatsi"
+                        android:gravity="center"
+                        android:text="Need Donation"
+                        android:textSize="12sp" />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="215dp"
-                    android:layout_marginLeft="60dp">
+                    android:layout_marginLeft="60dp"
+                    android:layout_marginTop="215dp">
 
                     <ImageView
+                        android:id="@+id/medic_icon"
                         android:layout_width="28dp"
                         android:layout_height="28dp"
-                        android:id="@+id/medic_icon"
                         android:layout_marginLeft="130dp"
                         android:layout_marginTop="5dp"
-                        android:src="@drawable/icon_medicsupp"
                         android:background="@drawable/bg_3needs_not"
-                        android:contentDescription="Blanket" />
+                        android:contentDescription="Blanket"
+                        android:src="@drawable/icon_medicsupp" />
 
                     <TextView
                         android:id="@+id/needs_medic"
-                        android:text="Need Donation"
-                        android:gravity="center"
-                        android:fontFamily="@font/alatsi"
                         android:layout_width="50sp"
                         android:layout_height="wrap_content"
-                        android:textSize="12sp"
                         android:layout_below="@id/medic_icon"
                         android:layout_marginLeft="120dp"
-                        />
+                        android:fontFamily="@font/alatsi"
+                        android:gravity="center"
+                        android:text="Need Donation"
+                        android:textSize="12sp" />
                 </RelativeLayout>
-
 
 
                 <RelativeLayout
@@ -210,22 +205,20 @@
 
                     <TextView
                         android:id="@+id/center_availability"
-                        android:background="@drawable/bg_evac_available"
-                        android:text="Available"
-                        android:textStyle="bold"
-                        android:fontFamily="@font/alatsi"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/white"
-                        android:padding="4dp"
-                        android:textSize="13sp"
-                        android:layout_marginTop="115dp"
                         android:layout_marginLeft="155dp"
+                        android:layout_marginTop="115dp"
+                        android:background="@drawable/bg_evac_available"
+                        android:fontFamily="@font/alatsi"
+                        android:padding="4dp"
+                        android:text="Available"
+                        android:textColor="@color/white"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
 
                         />
                 </RelativeLayout>
-
-
 
 
             </RelativeLayout>

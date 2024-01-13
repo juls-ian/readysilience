@@ -57,6 +57,11 @@ public class AdapterEvacCenter extends PagerAdapter {
         TextView textView4 = view.findViewById(id.needs_blanket);
         TextView textView5 = view.findViewById(id.needs_medic);
         TextView textView6 = view.findViewById(id.center_availability);
+        ImageView waterBottleIcon = view.findViewById(id.waterbottle_icon);
+        ImageView cannedFoodIcon = view.findViewById(id.can_icon);
+        ImageView blanketIcon = view.findViewById(id.blanket_icon);
+        ImageView medicIcon = view.findViewById(id.medic_icon);
+
 
         Glide.with(context).asBitmap().load(dataEvacCenters.getEvaCenterPic()).into(imageView);
         textView.setText(dataEvacCenters.getCenterName());
@@ -67,8 +72,25 @@ public class AdapterEvacCenter extends PagerAdapter {
         textView5.setText(dataEvacCenters.getMedicSupply());
         textView6.setText(dataEvacCenters.getCenterAvailability());
 
+
+        setIconBackground(textView2.getText().toString(), waterBottleIcon);
+        setIconBackground(textView3.getText().toString(), cannedFoodIcon);
+        setIconBackground(textView4.getText().toString(), blanketIcon);
+        setIconBackground(textView5.getText().toString(), medicIcon);
+
+
+
         container.addView(view, 0);
         return view;
+    }
+
+    private void setIconBackground(String status, ImageView waterBottleIcon) {
+        if (status.equals("Equipped")) {
+            waterBottleIcon.setBackgroundResource(R.drawable.bg_3needs_ready);
+        } else if (status.equals("Need Donation")) {
+            waterBottleIcon.setBackgroundResource(R.drawable.bg_3needs_not);
+        }
+        // Add more conditions if needed
     }
 
     @Override
