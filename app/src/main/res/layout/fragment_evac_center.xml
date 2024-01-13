@@ -49,7 +49,7 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         >
 
         <LinearLayout
@@ -60,6 +60,20 @@
             android:layout_marginTop="100dp"
             android:gravity="left">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sta. Ana Maps"
+                android:textColor="@color/red"
+                android:gravity="left"
+                android:textSize="20sp"
+                android:paddingLeft="5dp"
+                android:fontFamily="@font/alata"
+                android:layout_marginTop="100dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="-40dp"
+                android:textStyle="bold"
+                />
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/maps_viewpager"
@@ -68,6 +82,7 @@
             android:overScrollMode="never"
             android:layout_gravity="start"
             android:clipToPadding="false"
+
 
             >
 
