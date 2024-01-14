@@ -64,7 +64,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/disaster_desc"
-                android:text=""
+                android:text="HELLO"
                 android:paddingLeft="10dp"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@+id/disaster_name"
