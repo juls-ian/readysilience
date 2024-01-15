@@ -128,7 +128,7 @@
                     android:layout_height="1200dp"
                     android:id="@+id/gridView"
                     android:numColumns="2"
-                    android:columnWidth="150dp"
+                    android:columnWidth="0dp"
                     android:horizontalSpacing="2dp"
                     android:verticalSpacing="8dp"
                     android:stretchMode="columnWidth"
