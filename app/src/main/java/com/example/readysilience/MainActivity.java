@@ -13,6 +13,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -197,7 +198,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
 
             case R.id.drawer_feedback:
-                getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, new FeedbackFrag()).commit();
+                Intent feedbackIntent = new Intent(MainActivity.this, Feedback.class);
+                startActivity(feedbackIntent);
+                finish();
                 break;
 
 

@@ -94,6 +94,28 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
+<!--                EMAIL-->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:id="@+id/email_address"
+                    android:hint="Email"
+                    android:layout_marginHorizontal="15dp"
+                    app:hintTextColor="@color/blue"
+                    android:padding="10dp"
+                    android:layout_marginBottom="10dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
                 <!--            AGE-->
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_height="match_parent"
@@ -115,26 +137,26 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <!--            SEX-->
-<!--                <com.google.android.material.textfield.TextInputLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginHorizontal="15dp"-->
-<!--                    android:padding="10dp"-->
-<!--                    android:id="@+id/sex"-->
-<!--                    android:hint="Sex"-->
-<!--                    app:hintTextColor="@color/blue"-->
-<!--                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"-->
-<!--                    >-->
+<!--                SEX-->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:padding="10dp"
+                    android:id="@+id/sex"
+                    android:hint="Sex"
+                    app:hintTextColor="@color/blue"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    >
 
-<!--                    <com.google.android.material.textfield.MaterialAutoCompleteTextView-->
-<!--                        android:id="@+id/inputTV"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:inputType="none"-->
-<!--                        app:simpleItems="@array/options_list" />-->
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:id="@+id/inputTV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="none"
+                        app:simpleItems="@array/options_list" />
 
-<!--                </com.google.android.material.textfield.TextInputLayout>-->
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <!--            HOUSE NUMBER-->
                 <com.google.android.material.textfield.TextInputLayout
