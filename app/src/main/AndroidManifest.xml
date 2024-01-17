@@ -59,10 +59,10 @@
             android:name=".SignUp"
             android:exported="false" />
         <activity
-            android:name=".Login"
+            android:name=".MainActivity"
             android:exported="false" /> <!-- STARTING POINT -->
         <activity
-            android:name=".MainActivity"
+            android:name=".Login"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

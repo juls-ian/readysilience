@@ -21,17 +21,13 @@ import android.widget.Toast;
 public class SignUp extends AppCompatActivity {
 
     ActivitySignUpBinding binding;
-    String firstName, lastName, age, houseNumber, purok, phoneNumber;
-    FirebaseDatabase db;
-    DatabaseReference reference;
+    String firstName, lastName, email, age, sex, houseNumber, purok, phoneNumber, password, password2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivitySignUpBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-//        MaterialAutoCompleteTextView autoCompleteTextView = findViewById(R.id.inputTV);
-//        Button next = findViewById(R.id.continue_button);
 
         binding.continueButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,22 +37,24 @@ public class SignUp extends AppCompatActivity {
 
                 firstName = binding.firstName.getEditText().getText().toString();
                 lastName = binding.lastName.getEditText().getText().toString();
+                email = binding.email.getEditText().getText().toString();
                 age = binding.age.getEditText().getText().toString();
+                sex = binding.sex.getEditText().getText().toString();
                 houseNumber = binding.houseNumber.getEditText().getText().toString();
                 purok = binding.purok.getEditText().getText().toString();
 
-                Log.d("SignUpActivity", "Input Values: " + firstName + ", " + lastName + ", " + age + ", " + houseNumber + ", " + purok);
+                Log.d("SignUpActivity", "Input Values: " + firstName + ", " + lastName + ", " + email + ", " + age + ", " + houseNumber + ", " + purok);
 
                 if (!firstName.isEmpty() && !lastName.isEmpty() && !age.isEmpty() && !houseNumber.isEmpty() && !purok.isEmpty()) {
 
-                    Users users = new Users(firstName, lastName, age, houseNumber, purok, phoneNumber);
-//                    db = FirebaseDatabase.getInstance();
-//                    reference = db.getReference("Users");
+                    Users users = new Users(firstName, lastName, email, age, sex, houseNumber, purok, phoneNumber, password, password2);
 
                     Log.d("SignUpActivity", "Starting SignUp2 activity with data: " +
                             "firstName=" + firstName +
                             ", lastName=" + lastName +
+                            ", email=" + email +
                             ", age=" + age +
+                            ", sex=" + sex +
                             ", houseNumber=" + houseNumber +
                             ", purok=" + purok);
 
@@ -64,7 +62,9 @@ public class SignUp extends AppCompatActivity {
                     Intent intent = new Intent(SignUp.this, SignUp2.class);
                     intent.putExtra("firstName", firstName);
                     intent.putExtra("lastName", lastName);
+                    intent.putExtra("email", email);
                     intent.putExtra("age", age);
+                    intent.putExtra("sex", sex);
                     intent.putExtra("houseNumber", houseNumber);
                     intent.putExtra("purok", purok);
 

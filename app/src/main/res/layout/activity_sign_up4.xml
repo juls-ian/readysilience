@@ -176,17 +176,16 @@
 
             <Button
                 android:id="@+id/create_button"
+                style="@style/buttonTheme"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginTop="25dp"
                 android:layout_marginBottom="30dp"
-                android:gravity="center"
-                android:layout_gravity="center"
-                style="@style/buttonTheme"
                 android:background="@drawable/rectangle_button"
+                android:gravity="center"
                 android:text="Create Account"
                 android:textColor="#fff" />
-
 
 
         </LinearLayout>
