@@ -38,6 +38,7 @@ public class InfoCenterFrag extends Fragment {
         //DISASTERS
         recyclerView = view.findViewById(R.id.disastersRecyclerView);
         List<DataDisasters> disastersDataList = new ArrayList<>();
+
         disastersDataList.add(new DataDisasters(R.drawable.earthquake, "Earthquake",
                 "An earthquake is a sudden shaking of the ground caused by the movement of tectonic plates beneath the Earth's surface.",
                 "Natural", "Prone", "Active"));

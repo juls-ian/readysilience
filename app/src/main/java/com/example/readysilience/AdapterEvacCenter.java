@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.PagerAdapter;
 
 import com.bumptech.glide.Glide;
@@ -78,6 +79,8 @@ public class AdapterEvacCenter extends PagerAdapter {
         setIconBackground(textView4.getText().toString(), blanketIcon);
         setIconBackground(textView5.getText().toString(), medicIcon);
 
+        setBackgroundColorBasedOnAvailability(dataEvacCenters.getCenterAvailability(), textView6);
+
 
 
         container.addView(view, 0);
@@ -90,7 +93,17 @@ public class AdapterEvacCenter extends PagerAdapter {
         } else if (status.equals("Need Donation")) {
             waterBottleIcon.setBackgroundResource(R.drawable.bg_3needs_not);
         }
-        // Add more conditions if needed
+
+    }
+
+    private void setBackgroundColorBasedOnAvailability(String availabilityStatus, TextView centerAvailabilityTextView) {
+        int backgroundDrawable;
+        if ("Available".equals(availabilityStatus)) {
+            backgroundDrawable = drawable.bg_evac_available;
+        } else {
+            backgroundDrawable = drawable.bg_evac_unavailable;
+        }
+        centerAvailabilityTextView.setBackgroundResource(backgroundDrawable);
     }
 
     @Override
