@@ -164,9 +164,11 @@
             android:layout_width="350dp"
             android:layout_height="match_parent"
             android:id="@+id/email_address"
-            android:hint="Enter comment"
+            android:hint="Describe current situation"
             app:hintTextColor="@color/blue"
             android:padding="10dp"
+            app:cursorColor="@color/blue"
+            app:cursorErrorColor="@color/red"
             style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
             >
 

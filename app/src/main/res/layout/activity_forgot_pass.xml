@@ -92,7 +92,9 @@
                 android:layout_height="wrap_content"
                 android:hint="Email Address"
                 android:padding="15dp"
-                app:hintTextColor="@color/yellow">
+                app:hintTextColor="@color/yellow"
+                app:cursorColor="@color/blue"
+                app:cursorErrorColor="@color/red">
 
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -117,7 +119,8 @@
             android:background="@drawable/rectangle_button"
             android:gravity="center"
             android:text="Send Mail"
-            android:textColor="@color/black" />
+            android:textColor="#fff"
+            />
 
 
     </androidx.cardview.widget.CardView>

@@ -152,7 +152,9 @@
                 android:layout_height="wrap_content"
                 android:hint="Phone Number"
                 android:padding="15dp"
-                app:hintTextColor="@color/blue">
+                app:hintTextColor="@color/blue"
+                app:cursorColor="@color/blue"
+                app:cursorErrorColor="@color/red">
 
 
                 <com.google.android.material.textfield.TextInputEditText

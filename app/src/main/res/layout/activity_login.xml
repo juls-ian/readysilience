@@ -58,6 +58,8 @@
             android:id="@+id/login_Email"
             android:hint="Email Address"
             app:hintTextColor="@color/blue"
+            app:cursorColor="@color/blue"
+            app:cursorErrorColor="@color/red"
             android:padding="10dp"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
@@ -86,6 +88,8 @@
             android:id="@+id/login_Pass"
             android:hint="Password"
             app:hintTextColor="@color/blue"
+            app:cursorColor="@color/blue"
+            app:cursorErrorColor="@color/red"
             app:passwordToggleEnabled="true"
             android:padding="10dp"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">

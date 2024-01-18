@@ -142,6 +142,8 @@
                 android:hint="Password"
                 android:padding="10dp"
                 app:passwordToggleEnabled="true"
+                app:cursorColor="@color/blue"
+                app:cursorErrorColor="@color/red"
                 app:hintTextColor="@color/blue">
 
 
@@ -162,7 +164,9 @@
                 android:hint="Confirm Password"
                 android:padding="10dp"
                 app:passwordToggleEnabled="true"
-                app:hintTextColor="@color/blue">
+                app:hintTextColor="@color/blue"
+                app:cursorColor="@color/blue"
+                app:cursorErrorColor="@color/red">
 
 
                 <com.google.android.material.textfield.TextInputEditText
