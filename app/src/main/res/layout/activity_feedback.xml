@@ -14,9 +14,11 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="50dp"
     android:layout_marginLeft="30dp">
+
     <ImageButton
-        android:layout_width="20dp"
-        android:layout_height="30dp"
+        android:layout_width="15dp"
+        android:layout_height="25dp"
+        android:id="@+id/back_button"
         android:background="@drawable/icon_back"
         android:layout_gravity=""
         />

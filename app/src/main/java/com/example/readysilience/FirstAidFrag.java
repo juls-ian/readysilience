@@ -12,6 +12,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 
+import com.example.readysilience.AdapterGridItems;
+import com.example.readysilience.AdapterInjuries;
+import com.example.readysilience.AdapterVid;
+import com.example.readysilience.DataFirstAidVid;
+import com.example.readysilience.DataInjuries;
+import com.example.readysilience.R;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 

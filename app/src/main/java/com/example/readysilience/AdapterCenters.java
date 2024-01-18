@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
 import com.bumptech.glide.Glide;
+import com.example.readysilience.DataCenter;
+import com.example.readysilience.R;
 
 import java.util.ArrayList;
 

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SuccessChangePass"
-    android:background="@drawable/bg6">
+    android:background="@drawable/bg_confetti">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -28,6 +28,7 @@
             android:gravity="center"
             android:text="Account successfully created"
             android:fontFamily="@font/alatsi"
+            android:textColor="@color/blue"
             android:textSize="30dp"
             android:layout_marginBottom="30dp"/>
 

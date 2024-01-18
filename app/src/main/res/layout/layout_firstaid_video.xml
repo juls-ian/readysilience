@@ -33,7 +33,7 @@
 
                 <ImageView
                     android:id="@+id/thumbnail"
-                    android:src="@drawable/firstaid_basics"
+
                     android:layout_width="300dp"
                     android:layout_height="200dp"
                     android:scaleType="fitXY"

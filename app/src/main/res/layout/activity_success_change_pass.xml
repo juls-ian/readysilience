@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SuccessChangePass"
-    android:background="@drawable/bg3">
+    android:background="@drawable/bg_confetti">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,7 +27,7 @@
             android:layout_marginHorizontal="20dp"
             android:gravity="center"
             android:text="Password successfully changed"
-            android:textColor="@color/white"
+            android:textColor="@color/blue"
             android:fontFamily="@font/alatsi"
             android:textSize="30dp"
             android:layout_marginBottom="30dp"/>

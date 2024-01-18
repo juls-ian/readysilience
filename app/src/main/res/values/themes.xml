@@ -1,16 +1,22 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
 
+
+
+
     <style name="Base.Theme.Readysilience" parent="Theme.MaterialComponents.Light.NoActionBar">
 
         <!-- Customize your light theme here. -->
         <item name="android:windowActionBarOverlay">true</item>
         <item name="android:windowActionModeOverlay">true</item>
 
+
+
         <item name="colorPrimary">@android:color/transparent</item>
         <item name="colorSecondary">@color/blue</item>
         <item name="colorTertiary">@color/yellow</item>
-        <item name="android:statusBarColor">@color/blue</item>
+        <item name="statusBarBackground">@drawable/actionbar_bg1</item>
+
 
 
 
@@ -22,7 +28,11 @@
         <item name="windowNoTitle">true</item>
 
 
+
+
     </style>
+
+
 
 
     <style name="buttonTheme" parent="Widget.AppCompat.Button">
@@ -78,5 +88,17 @@
         <item name="android:textSize">10dp</item>
     </style>
 
+    <style name="AlertDialogTheme" parent="ThemeOverlay.AppCompat.Dialog.Alert">
+        <item name="android:buttonBarNegativeButtonStyle">@style/NegativeButtonStyle</item>
+        <item name="android:buttonBarPositiveButtonStyle">@style/PositiveButtonStyle</item>
+    </style>
 
+    <style name="NegativeButtonStyle" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <item name="android:textColor">@color/blue1</item>
+    </style>
+
+    <style name="PositiveButtonStyle" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <item name="android:textColor">@color/blue</item>
+    </style>
+    
 </resources>

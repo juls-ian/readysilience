@@ -6,13 +6,13 @@
     android:layout_height="180dp"
     android:gravity="bottom"
     android:padding="16dp"
-    android:background="@drawable/headerbg"
+    android:background="@drawable/drawer_header1"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/flag_philippines"/>
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/logo_sta_ana"/>
 
     <TextView
         android:layout_width="wrap_content"

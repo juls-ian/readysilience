@@ -18,7 +18,13 @@ import com.denzcoskun.imageslider.models.SlideModel;
 import java.util.ArrayList;
 import java.util.List;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
-import com.rd.PageIndicatorView;
+import com.example.readysilience.AdapterCenters;
+import com.example.readysilience.AdapterFeatured;
+import com.example.readysilience.AdapterUpdates;
+import com.example.readysilience.DataCenter;
+import com.example.readysilience.DataFeatured;
+import com.example.readysilience.DataUpdates;
+import com.example.readysilience.R;
 
 public class HomeFrag extends Fragment {
 

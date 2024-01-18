@@ -8,6 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.readysilience.R;
+
 import java.util.ArrayList;
 
 public class AdapterGridItems extends BaseAdapter {

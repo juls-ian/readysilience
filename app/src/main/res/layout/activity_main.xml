@@ -26,10 +26,17 @@
             android:elevation="4dp"
             android:fitsSystemWindows="true"
             app:layout_scrollFlags="scroll|enterAlways"
-            android:background="@android:color/transparent"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:navigationIcon="@drawable/icon_tools"
             app:navigationIconTint="@color/blue">
+
+            <ImageView
+                android:layout_width="?attr/windowActionBar"
+                android:layout_height="?attr/actionBarSize"
+                android:scaleType="fitXY"
+                android:src="@drawable/card_bg_wavy_blue"
+                />
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profileIcon"

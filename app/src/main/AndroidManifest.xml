@@ -15,12 +15,21 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/readysilience"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/readysilience_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Readysilience"
         tools:targetApi="31">
+        <activity
+            android:name=".UserProfile"
+            android:exported="false" />
+        <activity
+            android:name=".SuccessSOS"
+            android:exported="false" />
+        <activity
+            android:name=".Checklist"
+            android:exported="false" />
         <activity
             android:name=".Feedback"
             android:exported="false" />

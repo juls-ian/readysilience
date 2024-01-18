@@ -14,6 +14,8 @@ import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.PagerAdapter;
 
 import com.bumptech.glide.Glide;
+import com.example.readysilience.DataEvacCenters;
+import com.example.readysilience.R;
 
 import java.util.ArrayList;
 
