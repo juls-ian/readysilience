@@ -11,11 +11,11 @@
         <item name="android:windowActionModeOverlay">true</item>
 
 
-
         <item name="colorPrimary">@android:color/transparent</item>
         <item name="colorSecondary">@color/blue</item>
         <item name="colorTertiary">@color/yellow</item>
-        <item name="statusBarBackground">@drawable/actionbar_bg1</item>
+<!--        <item name="android:statusBarColor">@color/blue</item>-->
+
 
 
 

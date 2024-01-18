@@ -135,6 +135,7 @@
                 android:layout_marginBottom="30dp"
                 android:gravity="center"
                 android:layout_gravity="center"
+                style="@style/buttonTheme"
                 android:background="@drawable/rectangle_button"
                 android:text="Change Password"
                 android:textColor="#fff" />
