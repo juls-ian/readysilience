@@ -22,7 +22,7 @@
         android:theme="@style/Theme.Readysilience"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".UserProfile"
             android:exported="false"
             android:screenOrientation="portrait"/>
         <activity
@@ -91,7 +91,7 @@
             android:exported="false"
             android:screenOrientation="portrait" /> <!-- STARTING POINT -->
         <activity
-            android:name=".UserProfile"
+            android:name=".MainActivity"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>
