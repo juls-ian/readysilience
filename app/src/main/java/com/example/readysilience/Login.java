@@ -52,7 +52,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Create an Intent to switch to the new activity
-                Intent intent = new Intent(Login.this, SignUp.class);
+                Intent intent = new Intent(Login.this, TCActivity.class);
                 // Start the new activity
                 startActivity(intent);
             }
