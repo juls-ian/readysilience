@@ -42,6 +42,7 @@
           app:iss_delay="0"
           app:iss_text_align="CENTER"
           app:iss_placeholder="@color/blue"
+          android:backgroundTint="@android:color/transparent"
           app:iss_error_image="@color/red"
           app:iss_corner_radius="20"
           android:outlineAmbientShadowColor="@color/blue"

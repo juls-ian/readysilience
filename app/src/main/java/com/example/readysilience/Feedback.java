@@ -73,6 +73,14 @@ public class Feedback extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        // Start MainActivity when the back button is pressed
+        super.onBackPressed();
+        startActivity(new Intent(Feedback.this, MainActivity.class));
+        finish();
+    }
+
     public class FeedbackModel {
         private String comment;
         private String suggestions;

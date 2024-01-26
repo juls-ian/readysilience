@@ -1,12 +1,16 @@
 package com.example.readysilience;
 
-import  android.content.Intent;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
@@ -24,6 +28,7 @@ public class Login extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         setContentView(R.layout.activity_login);
 
         auth = FirebaseAuth.getInstance();
@@ -55,10 +60,8 @@ public class Login extends AppCompatActivity {
         signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Create an Intent to switch to the new activity
-                Intent intent = new Intent(Login.this, SignUp.class);
-                // Start the new activity
-                startActivity(intent);
+                // Start the TermsFrag fragment
+                replaceFragment(new TermsFrag());
             }
         });
 
@@ -71,6 +74,13 @@ public class Login extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    private void replaceFragment(Fragment fragment) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(android.R.id.content, fragment);
+        transaction.addToBackStack(null); // Add to back stack for navigation
+        transaction.commit();
     }
 
     public Boolean validateEmail() {
@@ -135,5 +145,17 @@ public class Login extends AppCompatActivity {
                         }
                     }
                 });
+    }
+    @Override
+    public void onBackPressed() {
+        // Uncomment the next line if you want to do nothing on back press
+        // super.onBackPressed();
+
+        // Alternatively, you can finish the LoginActivity to prevent going back to it
+        super.onBackPressed();
+        finish();
+
+        // If you want to display a Toast message, you can do it like this:
+        // Toast.makeText(this, "Back button pressed. Action cancelled.", Toast.LENGTH_SHORT).show();
     }
 }

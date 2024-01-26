@@ -87,9 +87,59 @@
     <string name="traffic_office_phone2">0939-293-8006</string>
 
     <string name="choking_desc">Choking is a life-threatening emergency where a person\'\s airway is blocked, usually by a foreign object.</string>
-    <string name="bruise_desc">A bruise, or contusion, is a common injury resulting from the breakage of small blood vessels beneath the skin, caused by blunt force or trauma. </string>
+    <string name="bruise_desc">A bruise is skin discoloration caused by an impact that ruptures blood vessels underneath. </string>
     <string name="fracture_desc">A fracture is a broken bone caused by trauma or force. Symptoms include pain and swelling. </string>
     <string name="burn_desc">Burns are classified into first, second, or third-degree based on severity.</string>
 
+    <string name="terms">By signing up you\'\ve read and agreed to our</string>
+    <string name="terms_long_text">
+        Welcome to Readysilience! Before using our disaster preparedness app, please carefully read the following terms and conditions.\n\n\
+
+1. Acceptance of Terms
+
+By accessing or using the Readysilience app, you agree to be bound by these Terms and Conditions. If you do not agree to these terms, please do not use the app.\n\n\
+
+2. Appropriate Use
+
+You agree to use the Readysilience app only for lawful and authorized purposes. You must not engage in any activity that interferes with or disrupts the functionality of the app.\n\n\
+
+3. User Accounts
+
+To access certain features of the app, you may be required to create a user account. You are responsible for maintaining the confidentiality of your account information and for all activities that occur under your account.\n\n\
+
+4. Privacy Policy
+
+Your use of the Readysilience app is also governed by our Privacy Policy, which can be found here. Please review the Privacy Policy to understand how we collect, use, and disclose your information.\n\n\
+
+5. User Content
+
+By using the Readysilience app, you grant us the right to use, store, and process any content you submit, including but not limited to feedback, suggestions, and data related to disaster preparedness.\n\n\
+
+6. Disclaimers
+
+Readysilience is provided "as is" without any warranties, express or implied. We do not guarantee the accuracy, reliability, or availability of the app, and we disclaim all liability for any loss or damage resulting from your use of the app.\n\n\
+
+7. Limitation of Liability
+
+To the maximum extent permitted by law, Readysilience and its affiliates shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues.\n\n\
+
+8. Termination
+
+We reserve the right to terminate or suspend your access to the Readysilience app at any time, without notice, for any reason.\n\n\
+
+9. Governing Law
+
+These Terms and Conditions are governed by and construed in accordance with the laws of Republic of the Philippines.\n\n\
+
+10. Changes to Terms
+
+We may update these Terms and Conditions from time to time. It is your responsibility to review them periodically. Your continued use of the Readysilience app after any changes constitutes acceptance of the modified terms.\n\n\
+
+Contact Information:
+
+If you have any questions or concerns about these Terms and Conditions, please contact us at [Contact Email].\n\n\
+
+Thank you for using Readysilience!
+    </string>
 
 </resources>

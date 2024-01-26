@@ -95,6 +95,8 @@
                 android:hint="Password"
                 android:padding="10dp"
                 app:passwordToggleEnabled="true"
+                app:cursorColor="@color/blue"
+                app:cursorErrorColor="@color/red"
                 app:hintTextColor="@color/yellow">
 
 
@@ -115,7 +117,9 @@
                 android:hint="Confirm Password"
                 android:padding="10dp"
                 app:passwordToggleEnabled="true"
-                app:hintTextColor="@color/yellow">
+                app:hintTextColor="@color/yellow"
+                app:cursorColor="@color/blue"
+                app:cursorErrorColor="@color/red">
 
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -135,6 +139,7 @@
                 android:layout_marginBottom="30dp"
                 android:gravity="center"
                 android:layout_gravity="center"
+                style="@style/buttonTheme"
                 android:background="@drawable/rectangle_button"
                 android:text="Change Password"
                 android:textColor="#fff" />

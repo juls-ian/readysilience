@@ -2,7 +2,6 @@ package com.example.readysilience;
 
 import android.os.Bundle;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,7 +9,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+
+import com.example.readysilience.AdapterDisasters;
+import com.example.readysilience.DataDisasters;
+import com.example.readysilience.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,11 +46,11 @@ public class InfoCenterFrag extends Fragment {
                 "Natural", "Prone", "Active"));
 
         disastersDataList.add(new DataDisasters(R.drawable.earthquake, "Typhoon",
-                "An earthquake is a sudden shaking of the ground caused by the movement of tectonic plates beneath the Earth's surface.",
+                "A typhoon is a mature tropical cyclone that develops in the western part of the North Pacific Ocean.",
                 "Natural", "Low", "Inactive"));
 
         disastersDataList.add(new DataDisasters(R.drawable.earthquake, "Fire",
-                "An earthquake is a sudden shaking of the ground caused by the movement of tectonic plates beneath the Earth's surface.",
+                "Fire is often associated with the process of combustion, where a material reacts with oxygen to produce heat and light.",
                 "Man-made", "Prone", "Inactive"));
 
 

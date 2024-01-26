@@ -1,20 +1,10 @@
 package com.example.readysilience;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.content.ContextCompat;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -30,18 +20,29 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.readysilience.databinding.ActivityMainBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -50,18 +51,25 @@ import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+import de.hdodenhof.circleimageview.CircleImageView;
 
+import com.bumptech.glide.Glide;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
+
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+    private static final String PREFS_NAME = "MyPrefsFile";
+    private static final String KEY_IS_LOGGED_IN = "isLoggedIn";
+    private boolean isSignInAttempted = false;
     ActivityMainBinding binding;
     FirebaseAuth auth;
     FirebaseFirestore firestore;
-
     //Vars
     FloatingActionButton floatButton;
     DrawerLayout drawerLayout;
-
     BottomNavigationView bottomNavigationView;
-
     Toolbar toolbar;
     NavigationView navigationView;
     ChipNavigationBar chipNavigationBar;
@@ -69,7 +77,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     FragmentTransaction fragmentTransaction;
     FrameLayout frameLayout;
     FloatingActionButton fab;
-
     private DatabaseReference reportsReference;
     private FirebaseAuth mAuth;
 
@@ -77,6 +84,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         setContentView(R.layout.activity_main);
 
         auth = FirebaseAuth.getInstance();
@@ -85,11 +93,25 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         floatButton = findViewById(R.id.fab);
 
         mAuth = FirebaseAuth.getInstance();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
+        FirebaseUser currentUser = auth.getCurrentUser();
+        Log.d("MainActivity", "onCreate: Current user: " + currentUser);
 
-        if (currentUser == null) {
+        SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        boolean isLoggedIn = prefs.getBoolean(KEY_IS_LOGGED_IN, false);
+        Log.d("MainActivity", "onCreate: isLoggedIn: " + isLoggedIn);
+
+        if (!isLoggedIn && currentUser == null) {
+            // If the user is not logged in and not previously logged in, finish the activity
+            Intent intent = new Intent(this, Login.class);
+            startActivity(intent);
             finish();
             return;
+        }
+
+        // Save the login state to true when the user is logged in
+        if (currentUser != null) {
+            saveLoginState(true);
+            Log.d("MainActivity", "User is logged in");
         }
 
         reportsReference = FirebaseDatabase.getInstance().getReference("Users Incident Reports").child(currentUser.getUid());
@@ -108,21 +130,33 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-
         //Hamburger Color
         toggle.getDrawerArrowDrawable().setColor(ContextCompat.getColor(this, R.color.blue));
         //Actionbar No title
-
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
 
+        //USER PROFILE
+        CircleImageView userProfileIcon = findViewById(R.id.userProfileIcon);
+
+        // Load user's profile picture
+        loadUserProfileImage(userProfileIcon);
+
+        userProfileIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Open the UserProfile activity when the icon is clicked
+                Intent userProfileIntent = new Intent(MainActivity.this, UserProfile.class);
+                startActivity(userProfileIntent);
+            }
+        });
+
         //Chip Nav
         chipNavigationBar = findViewById(R.id.chip_navbar);
         chipNavigationBar.setItemSelected(R.id.chip_home, true);
+
 
         chipNavigationBar.setOnItemSelectedListener(new ChipNavigationBar.OnItemSelectedListener() {
 
@@ -165,11 +199,35 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Log.d("NavigationDrawer", "Item selected: " );
             }
         });
-
     }
 
+    private void loadUserProfileImage(CircleImageView userProfileIcon) {
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (currentUser != null) {
+            DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("Users").child(currentUser.getUid());
+            userRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    UserProfile.UserProfileData userProfileData = dataSnapshot.getValue(UserProfile.UserProfileData.class);
+                    if (userProfileData != null) {
+                        // Load the profile image from the URL
+                        String profileImageUrl = userProfileData.getProfileImageUrl();
+                        if (profileImageUrl != null && !profileImageUrl.isEmpty()) {
+                            // Use Glide to load the image into the CircleImageView
+                            Glide.with(MainActivity.this).load(profileImageUrl).into(userProfileIcon);
+                        }
+                    }
+                }
 
-    //SOS REPORT
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    // Handle errors
+                    Log.e("MainActivity", "Error loading user profile: " + databaseError.getMessage());
+                }
+            });
+        }
+    }
+
     //SOS REPORT
     private void showBottomDialog() {
         Dialog dialog = new Dialog(this);
@@ -220,6 +278,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Report report = new Report(selectedIncidentType, description);
 
                 // Push the report to the database
+                String finalSelectedIncidentType = selectedIncidentType;
                 reportsReference.push().setValue(report)
                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
@@ -227,6 +286,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                 if (task.isSuccessful()) {
                                     Toast.makeText(MainActivity.this, "Report sent successfully", Toast.LENGTH_SHORT).show();
                                     Log.d("MainActivity", "Report sent successfully");
+
+                                    // Start the SuccessSOS activity
+                                    Intent intent = new Intent(MainActivity.this, SuccessSOS.class);
+                                    intent.putExtra("incidentType", finalSelectedIncidentType);
+                                    intent.putExtra("description", description);
+                                    startActivity(intent);
                                 } else {
                                     Toast.makeText(MainActivity.this, "Failed to send report", Toast.LENGTH_SHORT).show();
                                     Log.e("MainActivity", "Failed to send report", task.getException());
@@ -290,7 +355,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-
     //DRAWER NAV
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -312,7 +376,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
 
             case R.id.drawer_checklist:
-                getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, new ChecklistFrag()).commit();
+                Intent checklistIntent = new Intent(MainActivity.this, Checklist.class);
+                startActivity(checklistIntent);
+                finish();
                 break;
 
             case R.id.drawer_feedback:
@@ -325,10 +391,37 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Log.d("MainActivity", "Logout menu selected");
                 logoutMenu(this);
                 break;
+
         }
 
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        Log.d("MainActivity", "onResume: Checking authentication status");
+
+        // Check authentication status
+        FirebaseUser currentUser = auth.getCurrentUser();
+        Log.d("MainActivity", "onResume: Current user: " + currentUser);
+
+        if (currentUser == null && !isSignInAttempted) {
+            // The user is not signed in, navigate to the login activity
+            Log.d("MainActivity", "onResume: User not signed in, navigating to login activity");
+            Intent intent = new Intent(MainActivity.this, Login.class);
+            startActivity(intent);
+            finish();
+        } else {
+            Log.d("MainActivity", "onResume: User is already signed in");
+            // If the user is already signed in, you can proceed with your app logic
+        }
+    }
+
+    public void logout(View view) {
+        logoutMenu(MainActivity.this);
     }
 
     private void logoutMenu(MainActivity mainActivity) {
@@ -356,22 +449,49 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         builder.show();
     }
 
-
+    private void saveLoginState(boolean isLoggedIn) {
+        // Save the login state using SharedPreferences
+        SharedPreferences.Editor editor = getSharedPreferences(PREFS_NAME, MODE_PRIVATE).edit();
+        editor.putBoolean(KEY_IS_LOGGED_IN, isLoggedIn);
+        editor.apply();
+    }
 
     @Override
     public void onBackPressed() {
-        if(drawerLayout.isDrawerOpen(GravityCompat.START)){
-            drawerLayout.closeDrawer(GravityCompat.START);
-        }else {
-            super.onBackPressed();
+        // Check if there are fragments in the back stack
+        if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+            super.onBackPressed(); // If there are fragments, allow normal back behavior
+        } else {
+            // If no fragments are in the back stack, show exit confirmation dialog
+            showExitConfirmationDialog();
         }
     }
+
+    private void showExitConfirmationDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Exit App");
+        builder.setMessage("Are you sure you want to exit the app?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                // Finish all activities in the task and exit the app
+                finishAffinity();
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                // Dismiss the dialog and do nothing
+                dialogInterface.dismiss();
+            }
+        });
+        builder.show();
+    }
+
     private void openFragment (Fragment fragment) {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.frame_layout, fragment);
         transaction.commit();
     }
-
-
 }
 

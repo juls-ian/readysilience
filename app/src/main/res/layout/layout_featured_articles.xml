@@ -27,7 +27,7 @@
                 android:id="@+id/articleImage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:scaleType="centerCrop"
+                android:scaleType="fitCenter"
 
                 />
 
@@ -68,7 +68,7 @@
                 android:background="@drawable/titles_bg"
                 android:fontFamily="@font/alata"
                 android:textColor="@android:color/white"
-                android:textSize="20dp"
+                android:textSize="18dp"
                 android:lineSpacingExtra="1sp"
                 android:layout_below="@+id/featured_badge"
                 android:layout_alignParentBottom="true"

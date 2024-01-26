@@ -1,6 +1,7 @@
 package com.example.readysilience;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
@@ -17,6 +18,7 @@ public class SuccessChangePass extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         setContentView(R.layout.activity_success_change_pass);
 
         handler.postDelayed(new Runnable() {

@@ -35,9 +35,9 @@ public class EmergencySupplyFrag extends Fragment {
         supplyPics = new ArrayList<>();
         supplyNames = new ArrayList<>();
 
-        supplyPics.addAll(Arrays.asList(R.drawable.supply_battery, R.drawable.supply_blankets, R.drawable.supply_canned_foods,
-                R.drawable.supply_firstaidkit, R.drawable.supply_flashlight, R.drawable.supply_radio, R.drawable.supply_water,
-                R.drawable.supply_whistle));
+        supplyPics.addAll(Arrays.asList(R.drawable.supplies_battery, R.drawable.supplies_blanket, R.drawable.supplies_can,
+                R.drawable.supplies_firstaidkit, R.drawable.supplies_flashlight, R.drawable.supplies_radio, R.drawable.supplies_water,
+                R.drawable.supplies_whistle));
         supplyNames.addAll(Arrays.asList("Batteries", "Blankets", "Canned Goods", "First Aid Kit", "Flashlight",
                 "Radio", "Bottled Water", "Whistle"));
 

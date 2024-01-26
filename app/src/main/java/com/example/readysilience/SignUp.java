@@ -5,19 +5,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.Toast;
 import com.example.readysilience.databinding.ActivitySignUpBinding;
-
-import com.google.android.material.textfield.MaterialAutoCompleteTextView;
+import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.firestore.auth.User;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import android.widget.Toast;
+
 public class SignUp extends AppCompatActivity {
 
     ActivitySignUpBinding binding;
@@ -45,35 +47,62 @@ public class SignUp extends AppCompatActivity {
 
                 Log.d("SignUpActivity", "Input Values: " + firstName + ", " + lastName + ", " + email + ", " + age + ", " + houseNumber + ", " + purok);
 
-                if (!firstName.isEmpty() && !lastName.isEmpty() && !age.isEmpty() && !houseNumber.isEmpty() && !purok.isEmpty()) {
-
-                    Users users = new Users(firstName, lastName, email, age, sex, houseNumber, purok, phoneNumber);
-
-                    Log.d("SignUpActivity", "Starting SignUp2 activity with data: " +
-                            "firstName=" + firstName +
-                            ", lastName=" + lastName +
-                            ", email=" + email +
-                            ", age=" + age +
-                            ", sex=" + sex +
-                            ", houseNumber=" + houseNumber +
-                            ", purok=" + purok);
-
-
-                    Intent intent = new Intent(SignUp.this, SignUp2.class);
-                    intent.putExtra("firstName", firstName);
-                    intent.putExtra("lastName", lastName);
-                    intent.putExtra("email", email);
-                    intent.putExtra("age", age);
-                    intent.putExtra("sex", sex);
-                    intent.putExtra("houseNumber", houseNumber);
-                    intent.putExtra("purok", purok);
-
-                    startActivity(intent);
-                } else{
-
+                if (!firstName.isEmpty() && !lastName.isEmpty() && !email.isEmpty() && !age.isEmpty() && !houseNumber.isEmpty() && !purok.isEmpty()) {
+                    // Check if the email is already used
+                    checkEmailAndProceed();
+                } else {
                     Toast.makeText(SignUp.this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
                 }
             }
         });
+    }
+
+    private void checkEmailAndProceed() {
+        DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference().child("Users");
+
+        Query query = usersRef.orderByChild("email").equalTo(email);
+
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    // Email already exists, set an error
+                    binding.email.setError("Email already used");
+                } else {
+                    // Email is not used, proceed to SignUp2 activity
+                    startSignUp2Activity();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.e("Firebase", "Error checking email", error.toException());
+                Toast.makeText(SignUp.this, "Error checking email", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void startSignUp2Activity() {
+        Users users = new Users(firstName, lastName, email, age, sex, houseNumber, purok, phoneNumber);
+
+        Log.d("SignUpActivity", "Starting SignUp2 activity with data: " +
+                "firstName=" + firstName +
+                ", lastName=" + lastName +
+                ", email=" + email +
+                ", age=" + age +
+                ", sex=" + sex +
+                ", houseNumber=" + houseNumber +
+                ", purok=" + purok);
+
+        Intent intent = new Intent(SignUp.this, SignUp2.class);
+        intent.putExtra("firstName", firstName);
+        intent.putExtra("lastName", lastName);
+        intent.putExtra("email", email);
+        intent.putExtra("age", age);
+        intent.putExtra("sex", sex);
+        intent.putExtra("houseNumber", houseNumber);
+        intent.putExtra("purok", purok);
+
+        startActivity(intent);
     }
 }

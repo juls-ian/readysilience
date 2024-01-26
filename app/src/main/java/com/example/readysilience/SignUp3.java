@@ -50,7 +50,7 @@ public class SignUp3 extends AppCompatActivity {
 
         TextView textMobile = findViewById(R.id.text_Mobile);
         textMobile.setText(String.format(
-                "+63" + phoneNumber, getIntent().getStringExtra("mobile")
+                phoneNumber, getIntent().getStringExtra("mobile")
         ));
 
         inputCode1 = findViewById(R.id.inputCode1);
