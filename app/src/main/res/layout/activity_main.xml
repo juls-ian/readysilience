@@ -11,13 +11,10 @@
     tools:openDrawer="start"
     tools:context=".MainActivity">
 
-
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-
 
         <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
@@ -39,7 +36,7 @@
                 />
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/profileIcon"
+                android:id="@+id/userProfileIcon"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/icon_user"
@@ -52,7 +49,6 @@
                 />
 
         </androidx.appcompat.widget.Toolbar>
-
 
         <FrameLayout
             android:id="@+id/frame_layout"
@@ -129,10 +125,6 @@
             app:menu="@menu/drawer_menu"
             app:headerLayout="@layout/nav_header"
             app:itemHorizontalPadding="20dp">
-
-
-
-
 
         </com.google.android.material.navigation.NavigationView>
 

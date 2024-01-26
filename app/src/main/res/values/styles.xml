@@ -1,0 +1,7 @@
+<resources>
+
+    <style name="ErrorTextAppearance" parent="TextAppearance.Design.Error">
+        <item name="android:textSize">11sp</item> <!-- Adjust the text size as needed -->
+    </style>
+
+</resources>

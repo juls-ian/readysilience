@@ -14,7 +14,7 @@
         <item name="colorPrimary">@android:color/transparent</item>
         <item name="colorSecondary">@color/blue</item>
         <item name="colorTertiary">@color/yellow</item>
-<!--        <item name="android:statusBarColor">@color/blue</item>-->
+        <!--        <item name="android:statusBarColor">@color/blue</item>-->
 
 
 
@@ -82,7 +82,7 @@
     </style>
 
 
-    
+
     <style name="chip_nav_text">
 
         <item name="android:textSize">10dp</item>
@@ -100,5 +100,5 @@
     <style name="PositiveButtonStyle" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
         <item name="android:textColor">@color/blue</item>
     </style>
-    
+
 </resources>

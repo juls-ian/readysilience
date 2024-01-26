@@ -4,12 +4,12 @@ import java.io.Serializable;
 
 public class Users implements Serializable {
 
-    private String firstName, lastName, email, age, sex, houseNumber, purok, phoneNumber, password, password2;
+    private String firstName, lastName, email, age, sex, houseNumber, purok, phoneNumber;
 
     public Users() {
     }
 
-    public Users(String firstName, String lastName, String email, String age, String sex, String houseNumber, String purok, String phoneNumber, String password, String password2) {
+    public Users(String firstName, String lastName, String email, String age, String sex, String houseNumber, String purok, String phoneNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
@@ -18,8 +18,6 @@ public class Users implements Serializable {
         this.houseNumber = houseNumber;
         this.purok = purok;
         this.phoneNumber = phoneNumber;
-        this.password = password;
-        this.password2 = password2;
     }
 
     public String getFirstName() {
@@ -84,21 +82,5 @@ public class Users implements Serializable {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getPassword2() {
-        return password2;
-    }
-
-    public void setPassword2(String password2) {
-        this.password2 = password2;
     }
 }

@@ -46,11 +46,11 @@ public class InfoCenterFrag extends Fragment {
                 "Natural", "Prone", "Active"));
 
         disastersDataList.add(new DataDisasters(R.drawable.earthquake, "Typhoon",
-                "An earthquake is a sudden shaking of the ground caused by the movement of tectonic plates beneath the Earth's surface.",
+                "A typhoon is a mature tropical cyclone that develops in the western part of the North Pacific Ocean.",
                 "Natural", "Low", "Inactive"));
 
         disastersDataList.add(new DataDisasters(R.drawable.earthquake, "Fire",
-                "An earthquake is a sudden shaking of the ground caused by the movement of tectonic plates beneath the Earth's surface.",
+                "Fire is often associated with the process of combustion, where a material reacts with oxygen to produce heat and light.",
                 "Man-made", "Prone", "Inactive"));
 
 

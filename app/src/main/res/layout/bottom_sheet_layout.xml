@@ -80,6 +80,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Fire"
+                android:layout_marginLeft="10dp"
                 android:textColor="@color/blue"/>
 
             <RadioButton
@@ -116,14 +117,15 @@
                 android:layout_height="wrap_content"
                 android:text="Flood"
                 android:textColor="@color/blue"
-                android:layout_marginLeft="10dp"/>
+                android:layout_marginLeft="30dp"/>
 
             <RadioButton
                 android:id="@+id/radioButton5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Landslide"
-                android:textColor="@color/blue"/>
+                android:textColor="@color/blue"
+                android:layout_marginLeft="30dp"/>
 
 
             <RadioButton
@@ -132,9 +134,7 @@
                 android:layout_height="wrap_content"
                 android:text="Others"
                 android:textColor="@color/blue"
-                android:layout_marginLeft="10dp"/>
-
-
+                android:layout_marginLeft="30dp"/>
 
         </RadioGroup>
 
@@ -163,7 +163,8 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="350dp"
             android:layout_height="match_parent"
-            android:id="@+id/email_address"
+            android:id="@+id/situation_report"
+            android:inputType="textMultiLine"
             android:hint="Describe current situation"
             app:hintTextColor="@color/blue"
             android:padding="10dp"
@@ -175,6 +176,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/incident_situation_edit_text"
                 android:inputType="text"
                 />
 

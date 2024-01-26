@@ -25,12 +25,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="30dp"
+            android:fontFamily="@font/alatsi"
             android:gravity="center"
             android:text="Email has been sent"
             android:textColor="@color/white"
-            android:fontFamily="@font/alatsi"
-            android:textSize="30dp"
-            android:layout_marginBottom="30dp"/>
+            android:textSize="30dp" />
 
         <ProgressBar
             android:layout_width="40dp"

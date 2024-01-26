@@ -8,6 +8,8 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
@@ -31,6 +33,13 @@ public class Login extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
 
+        if (AuthManager.isLoggedIn(this)) {
+            // User is logged in, navigate to the main part of the app
+            startActivity(new Intent(this, MainActivity.class));
+            finish(); // Finish the current activity to prevent going back to it
+            return; // Skip the rest of the code in onCreate
+        }
+
         loginEmail = findViewById(R.id.login_Email);
         loginPassword = findViewById(R.id.login_Pass);
         loginButton = findViewById(R.id.login_button);
@@ -51,10 +60,8 @@ public class Login extends AppCompatActivity {
         signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Create an Intent to switch to the new activity
-                Intent intent = new Intent(Login.this, SignUp.class);
-                // Start the new activity
-                startActivity(intent);
+                // Start the TermsFrag fragment
+                replaceFragment(new TermsFrag());
             }
         });
 
@@ -67,6 +74,13 @@ public class Login extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    private void replaceFragment(Fragment fragment) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(android.R.id.content, fragment);
+        transaction.addToBackStack(null); // Add to back stack for navigation
+        transaction.commit();
     }
 
     public Boolean validateEmail() {
@@ -108,6 +122,8 @@ public class Login extends AppCompatActivity {
                         String userId = user.getUid();
                         String userEmailFromAuth = user.getEmail();
 
+                        AuthManager.setLoggedIn(Login.this, true);
+
                         Log.d("LoginActivity", "User ID: " + userId);
                         Log.d("LoginActivity", "User Email: " + userEmailFromAuth);
 
@@ -129,5 +145,17 @@ public class Login extends AppCompatActivity {
                         }
                     }
                 });
+    }
+    @Override
+    public void onBackPressed() {
+        // Uncomment the next line if you want to do nothing on back press
+        // super.onBackPressed();
+
+        // Alternatively, you can finish the LoginActivity to prevent going back to it
+        super.onBackPressed();
+        finish();
+
+        // If you want to display a Toast message, you can do it like this:
+        // Toast.makeText(this, "Back button pressed. Action cancelled.", Toast.LENGTH_SHORT).show();
     }
 }

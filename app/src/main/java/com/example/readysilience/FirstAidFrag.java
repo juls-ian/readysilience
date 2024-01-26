@@ -1,7 +1,9 @@
 package com.example.readysilience;
 
+import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,16 +13,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
+import android.widget.Toast;
 
-import com.example.readysilience.AdapterGridItems;
-import com.example.readysilience.AdapterInjuries;
-import com.example.readysilience.AdapterVid;
-import com.example.readysilience.DataFirstAidVid;
-import com.example.readysilience.DataInjuries;
-import com.example.readysilience.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.ListResult;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.concurrent.atomic.AtomicInteger;
 
 
 public class FirstAidFrag extends Fragment {
@@ -50,17 +55,8 @@ public class FirstAidFrag extends Fragment {
         // Inflate the layout for this fragment
         super.onCreate(savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_first_aid, container, false);
-
-        // VIDEO RESOURCES
         viewPagerVid = view.findViewById(R.id.vids_viewpager);
-        vidList.add(new DataFirstAidVid(R.drawable.firstaid_basics, "First Aid Basic", "11:09", R.drawable.logo_trioshealth));
-        vidList.add(new DataFirstAidVid(R.drawable.firstaid_sling, "Sling Basics", "3:00", R.drawable.logo_stjohn_ambulance));
-        vidList.add(new DataFirstAidVid(R.drawable.firstaid_cuts, "Cuts and Gazes", "1:29", R.drawable.logo_stjohn_ambulance));
-        vidList.add(new DataFirstAidVid(R.drawable.firstaid_primarysurvey, "Primary Survey", "4:02", R.drawable.logo_stjohn_ambulance));
-
-        int initialPosition = vidList.size() / 2;
-        viewPagerVid.setAdapter(new AdapterVid(getContext(), vidList));
-        viewPagerVid.setPadding(50, 0, 50, 0);
+        loadVideosForViewPager();
 
         //INJURIES
         recyclerViewInjury = view.findViewById(R.id.injuries_recycler_view);
@@ -88,5 +84,44 @@ public class FirstAidFrag extends Fragment {
         gridView.setAdapter(adapterGridItems);
 
         return view;
+    }
+
+    private void loadVideosForViewPager() {
+        FirebaseStorage.getInstance().getReference().child("videos").listAll()
+                .addOnSuccessListener(new OnSuccessListener<ListResult>() {
+                    @Override
+                    public void onSuccess(ListResult listResult) {
+                        ArrayList<Video> videoList = new ArrayList<>();
+
+                        for (StorageReference storageReference : listResult.getItems()) {
+                            Video video = new Video();
+                            video.setTitle(storageReference.getName());
+
+                            storageReference.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Uri> task) {
+                                    if (task.isSuccessful()) {
+                                        String url = task.getResult().toString();
+                                        video.setUrl(url);
+                                        videoList.add(video);
+                                    }
+
+                                    // Set up the ViewPager adapter
+                                    AdapterVid adapterVid = new AdapterVid(requireContext(), videoList);
+                                    if (viewPagerVid != null) {
+                                        viewPagerVid.setAdapter(adapterVid);
+                                        viewPagerVid.setPadding(50, 0, 50, 0);
+                                    }
+                                }
+                            });
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(requireContext(), "Failed to retrieve videos", Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 }

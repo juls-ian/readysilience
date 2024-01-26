@@ -28,8 +28,6 @@
 
             </androidx.appcompat.widget.Toolbar>
 
-
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -37,12 +35,11 @@
                 android:textColor="@color/blue"
                 android:gravity="center"
                 android:paddingTop="10dp"
+                android:paddingBottom="10dp"
                 android:textSize="20sp"
                 android:fontFamily="@font/alata"
                 android:layout_gravity="center|bottom"
                 android:textStyle="bold"
-                android:layout_marginBottom="10dp"
-
                 />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
@@ -50,13 +47,14 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <ImageButton
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
         android:id="@+id/back_button_checklist"
         android:background="@drawable/icon_back"
         android:layout_marginTop="-40dp"
         android:layout_marginLeft="30dp"
         />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
