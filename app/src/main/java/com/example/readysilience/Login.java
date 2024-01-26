@@ -1,6 +1,6 @@
 package com.example.readysilience;
 
-import android.content.Intent;
+import  android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -27,6 +27,13 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         auth = FirebaseAuth.getInstance();
+
+        if (AuthManager.isLoggedIn(this)) {
+            // User is logged in, navigate to the main part of the app
+            startActivity(new Intent(this, MainActivity.class));
+            finish(); // Finish the current activity to prevent going back to it
+            return; // Skip the rest of the code in onCreate
+        }
 
         loginEmail = findViewById(R.id.login_Email);
         loginPassword = findViewById(R.id.login_Pass);
@@ -104,6 +111,8 @@ public class Login extends AppCompatActivity {
                         // Now you can get user details from the 'user' object
                         String userId = user.getUid();
                         String userEmailFromAuth = user.getEmail();
+
+                        AuthManager.setLoggedIn(Login.this, true);
 
                         Log.d("LoginActivity", "User ID: " + userId);
                         Log.d("LoginActivity", "User Email: " + userEmailFromAuth);

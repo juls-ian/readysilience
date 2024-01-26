@@ -34,6 +34,10 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".VideoActivity"
+            android:label="Video Activity"
+            android:screenOrientation="landscape"/>
+        <activity
             android:name=".SplashActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
@@ -74,11 +78,11 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Login"
+            android:name=".MainActivity"
             android:exported="false"
             android:screenOrientation="portrait" /> <!-- STARTING POINT -->
         <activity
-            android:name=".MainActivity"
+            android:name=".Login"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>

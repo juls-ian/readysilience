@@ -21,7 +21,7 @@ import android.widget.Toast;
 public class SignUp extends AppCompatActivity {
 
     ActivitySignUpBinding binding;
-    String firstName, lastName, email, age, sex, houseNumber, purok, phoneNumber, password, password2;
+    String firstName, lastName, email, age, sex, houseNumber, purok, phoneNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +47,7 @@ public class SignUp extends AppCompatActivity {
 
                 if (!firstName.isEmpty() && !lastName.isEmpty() && !age.isEmpty() && !houseNumber.isEmpty() && !purok.isEmpty()) {
 
-                    Users users = new Users(firstName, lastName, email, age, sex, houseNumber, purok, phoneNumber, password, password2);
+                    Users users = new Users(firstName, lastName, email, age, sex, houseNumber, purok, phoneNumber);
 
                     Log.d("SignUpActivity", "Starting SignUp2 activity with data: " +
                             "firstName=" + firstName +

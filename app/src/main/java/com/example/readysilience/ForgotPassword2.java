@@ -16,7 +16,7 @@ public class ForgotPassword2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_success_change_pass);
+        setContentView(R.layout.activity_forgot_pass);
 
         handler.postDelayed(new Runnable() {
             @Override

@@ -20,7 +20,7 @@ import java.util.concurrent.TimeUnit;
 public class SignUp2 extends AppCompatActivity {
 
     ActivitySignUp2Binding binding;
-    String firstName, lastName, email, age, sex, houseNumber, purok, phoneNumber, password, password2;
+    String firstName, lastName, email, age, sex, houseNumber, purok, phoneNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
