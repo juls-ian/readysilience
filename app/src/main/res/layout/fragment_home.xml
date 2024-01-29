@@ -33,20 +33,23 @@
       android:layout_gravity="center"
       android:outlineProvider="none">
 
-      <com.denzcoskun.imageslider.ImageSlider
+      <com.smarteist.autoimageslider.SliderView
           android:id="@+id/announcement_slider"
-          android:layout_width="wrap_content"
+          android:layout_width="330dp"
           android:layout_height="200dp"
-          app:iss_auto_cycle="true"
-          app:iss_period="3000"
-          app:iss_delay="0"
-          app:iss_text_align="CENTER"
-          app:iss_placeholder="@color/blue"
-          android:backgroundTint="@android:color/transparent"
-          app:iss_error_image="@color/red"
-          app:iss_corner_radius="20"
-          android:outlineAmbientShadowColor="@color/blue"
-          android:layout_margin="20dp"/>
+          app:sliderAnimationDuration="600"
+          app:sliderAutoCycleDirection="back_and_forth"
+          app:sliderAutoCycleEnabled="true"
+          app:sliderIndicatorAnimationDuration="600"
+          app:sliderIndicatorGravity="center_horizontal|bottom"
+          app:sliderIndicatorMargin="15dp"
+          app:sliderIndicatorOrientation="horizontal"
+          app:sliderIndicatorPadding="3dp"
+          app:sliderIndicatorRadius="2dp"
+          app:sliderIndicatorSelectedColor="#5A5A5A"
+          app:sliderIndicatorUnselectedColor="#FFF"
+          app:sliderScrollTimeInSec="1"
+          app:sliderStartAutoCycle="true" />
 
   </androidx.cardview.widget.CardView>
 
@@ -67,7 +70,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_margin="16dp"/>
+        android:layout_marginHorizontal="16dp"/>
 
     <TextView
         android:layout_width="match_parent"

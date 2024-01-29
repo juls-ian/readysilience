@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ExpandedViews.EmergencySuppDetailsActivity">
+
+    <ImageButton
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:id="@+id/back_button_es"
+        android:background="@drawable/icon_back"
+        android:layout_gravity="left"
+        android:layout_marginTop="20dp"
+        android:elevation="4dp"
+        android:layout_marginStart="10dp"
+        />
+
+    <LinearLayout
+        android:layout_width="220dp"
+        android:layout_height="260dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+
+        android:layout_gravity="center"
+        android:layout_marginEnd="10dp"
+        android:background="@android:color/transparent"
+        app:cardCornerRadius="10dp">
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            >
+
+            <RelativeLayout
+                android:layout_width="220dp"
+                android:layout_height="230dp"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginVertical="50dp"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:elevation="5dp"
+                android:clipToOutline="true"
+                android:outlineProvider="none"
+
+                >
+
+                <ImageView
+                    android:id="@+id/supply_pic"
+                    android:src="@drawable/supplies_battery"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:background="@android:color/transparent"
+                    android:scaleType="centerCrop"
+                    />
+
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="left"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                >
+
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp"
+                    android:id="@+id/platform"
+                    android:src="@drawable/blob"/>
+
+            </RelativeLayout>
+
+
+
+        </RelativeLayout>
+
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/supply_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:fontFamily="@font/alatsi"
+        android:layout_gravity="bottom|center"
+        android:padding="4dp"
+        android:text="Item Name"
+        android:textColor="@color/blue"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:elevation="60dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:fontFamily="@font/alatsi"
+        android:layout_gravity="left"
+        android:padding="4dp"
+        android:text="You can find this at:"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/blue"
+        android:textSize="20sp"
+        />
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewpager_stores_supplies"
+        android:layout_width="wrap_content"
+        android:layout_height="220dp"
+        android:overScrollMode="never"
+        android:layout_gravity="start"
+        android:clipToPadding="false"
+
+        >
+
+    </androidx.viewpager.widget.ViewPager>
+
+
+
+</LinearLayout>

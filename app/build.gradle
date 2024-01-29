@@ -83,6 +83,7 @@ dependencies {
     implementation 'com.klinkerapps:link_builder:2.0.5'
     implementation 'com.romandanylyk:pageindicatorview:1.0.3'
     implementation 'com.github.chrisbanes:PhotoView:2.3.0'
+    implementation 'com.github.smarteist:autoimageslider:1.4.0'
 
 
 

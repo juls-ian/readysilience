@@ -50,11 +50,11 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <ImageButton
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
         android:id="@+id/back_button_checklist"
         android:background="@drawable/icon_back"
-        android:layout_marginTop="-40dp"
+        android:layout_marginTop="-35dp"
         android:layout_marginLeft="30dp"
         />
     <LinearLayout
