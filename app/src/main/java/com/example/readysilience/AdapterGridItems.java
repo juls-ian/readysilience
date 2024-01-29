@@ -1,6 +1,7 @@
 package com.example.readysilience;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.readysilience.ExpandedViews.FASuppDetailsActivity;
 import com.example.readysilience.R;
 
 import java.util.ArrayList;
@@ -20,10 +22,11 @@ public class AdapterGridItems extends BaseAdapter {
     private ArrayList<String> itemDescs;
     private LayoutInflater layoutInflater;
 
-    public AdapterGridItems(Context context, ArrayList<Integer> itemPics, ArrayList<String> itemNames) {
+    public AdapterGridItems(Context context, ArrayList<Integer> itemPics, ArrayList<String> itemNames, ArrayList<String>itemDescs) {
         this.context = context;
         this.itemPics = itemPics;
         this.itemNames = itemNames;
+        this.itemDescs = itemDescs;
         this.layoutInflater = LayoutInflater.from(context);
     }
 
@@ -59,6 +62,18 @@ public class AdapterGridItems extends BaseAdapter {
         imageView.setImageResource(itemPics.get(position));
         textViewName.setText(itemNames.get(position));
 
+
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Handle item click, launch expanded view activity
+                Intent intent = new Intent(context, FASuppDetailsActivity.class);
+                intent.putExtra("item_pic", itemPics.get(position));
+                intent.putExtra("item_name", itemNames.get(position));
+                intent.putExtra("item_desc", itemDescs.get(position));
+                context.startActivity(intent);
+            }
+        });
 
         return convertView;
     }

@@ -62,7 +62,7 @@
                     android:padding="4dp"
                     android:text="Sta. Ana Basketball Court"
                     android:textColor="@color/blue1"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     android:textStyle="bold"
 
                     />
@@ -84,9 +84,20 @@
                     android:gravity="center"
                     android:padding="4dp"
                     android:text="Brgy. Sta Ana"
-                    android:textSize="16sp"
+                    android:textSize="13sp"
 
                     />
+                
+                <ImageButton
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/vector_door"
+                    android:layout_marginTop="-20dp"
+                    android:layout_marginStart="180dp"
+                    android:background="@android:color/transparent"
+                    android:layout_below="@+id/evac_center_name"
+                    />
+                
 
 
                 <RelativeLayout

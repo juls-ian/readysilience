@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".ExpandedViews.FeaturedDetailsActivity">
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:id="@+id/back_button"
+                android:background="@drawable/icon_back"
+                android:layout_gravity="left"
+                android:layout_marginTop="20dp"
+                android:elevation="4dp"
+                android:layout_marginStart="10dp"
+                />
+
+
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/card_bg_wavy_blue"
+                        android:scaleType="centerInside"
+                        android:id="@+id/article_pic"
+
+                        />
+
+
+
+
+
+                </RelativeLayout>
+
+
+
+
+        </RelativeLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bg_expanded_featured"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="-50dp"
+            android:elevation="5dp"
+
+            >
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/headline"
+                android:textSize="25sp"
+                android:fontFamily="@font/alata"
+                android:textStyle="bold"
+                android:lineSpacingMultiplier="0.9"
+                android:gravity="top|left"
+                android:textColor="@color/blue"
+                android:layout_marginHorizontal="15dp"
+                android:text="Headline"
+
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/intro_text"
+                android:text="Intro"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="normal"
+                android:lineSpacingMultiplier="0.9"
+                android:layout_marginHorizontal="10dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Subheading 1"
+                android:id="@+id/parent_subhead1"
+                android:textColor="@color/blue1"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:lineSpacingMultiplier="0.9"
+                android:layout_marginHorizontal="10dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sub-subheading 1"
+                android:id="@+id/child_subhead1"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:lineSpacingMultiplier="0.9"
+                android:layout_marginHorizontal="10dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Subheading 1 Text"
+                android:id="@+id/child_subhead1_details1"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:lineSpacingMultiplier="0.9"
+                android:layout_marginHorizontal="10dp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/child_subhead1_pic"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/supplies_flashlight"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Subheading 1 Text 2"
+                android:id="@+id/child_subhead1_details2"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:lineSpacingMultiplier="0.9"
+                android:layout_marginHorizontal="10dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sub-subheading 2"
+                android:id="@+id/child_subhead2"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:lineSpacingMultiplier="0.9"
+                android:layout_marginHorizontal="10dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Subheading 2 Text"
+                android:id="@+id/second_subheading2_text"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:lineSpacingMultiplier="0.9"
+                android:layout_marginHorizontal="10dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Subheading 2"
+                android:id="@+id/parent_subhead2"
+                android:textColor="@color/blue1"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:lineSpacingMultiplier="0.9"
+                android:layout_marginHorizontal="10dp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/parent_subhead2_pic"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/image_icon"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Subheading 2 Text"
+                android:id="@+id/parent_subhead2_details"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:lineSpacingMultiplier="0.9"
+                android:layout_marginHorizontal="10dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Subheading 3"
+                android:id="@+id/parent_subhead3"
+                android:textColor="@color/blue1"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:lineSpacingMultiplier="0.9"
+                android:layout_marginHorizontal="10dp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/parent_subhead3_pic"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/image_icon"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Subheading 3 Text"
+                android:id="@+id/parent_subhead3_details"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:lineSpacingMultiplier="0.9"
+                android:layout_marginHorizontal="10dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Subheading 4"
+                android:id="@+id/parent_subhead4"
+                android:textColor="@color/blue1"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:lineSpacingMultiplier="0.9"
+                android:layout_marginHorizontal="10dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sub-subheading 4"
+                android:id="@+id/child_subhead3"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:lineSpacingMultiplier="0.9"
+                android:layout_marginHorizontal="10dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Subheading 3 Text"
+                android:id="@+id/child_subhead3_details"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:lineSpacingMultiplier="0.9"
+                android:layout_marginHorizontal="10dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sub-subheading 5"
+                android:id="@+id/child_subhead4"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:lineSpacingMultiplier="0.9"
+                android:layout_marginHorizontal="10dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Subheading 3 Text"
+                android:id="@+id/child_subhead4_details"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:lineSpacingMultiplier="0.9"
+                android:layout_marginHorizontal="10dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sub-subheading 6"
+                android:id="@+id/child_subhead5"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:lineSpacingMultiplier="0.9"
+                android:layout_marginHorizontal="10dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Subheading 3 Text"
+                android:id="@+id/child_subhead5_details"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:lineSpacingMultiplier="0.9"
+                android:layout_marginHorizontal="10dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sub-subheading 6"
+                android:id="@+id/child_subhead6"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:lineSpacingMultiplier="0.9"
+                android:layout_marginHorizontal="10dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Subheading 3 Text"
+                android:id="@+id/child_subhead6_details"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:lineSpacingMultiplier="0.9"
+                android:layout_marginHorizontal="10dp" />
+
+        </LinearLayout>
+
+
+
+
+
+</LinearLayout>
+
+</ScrollView>
