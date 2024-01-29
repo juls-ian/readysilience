@@ -10,11 +10,13 @@ import androidx.viewpager.widget.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.AnimationTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
@@ -28,21 +30,11 @@ import com.example.readysilience.R;
 
 public class HomeFrag extends Fragment {
 
-
     RecyclerView recyclerView;
 
     ViewPager viewPager;
 
     ArrayList<DataCenter> dataCenterList = new ArrayList<>();
-
-
-
-
-    public HomeFrag() {
-        // Required empty public constructor
-
-    }
-
 
         @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -70,7 +62,8 @@ public class HomeFrag extends Fragment {
         imageSlider.setSlideAnimation(AnimationTypes.TOSS);
 
 
-        //UPDATES
+
+//        UPDATES
         recyclerView = view.findViewById(R.id.updatesRecyclerView);
         List<DataUpdates> updateDataList = new ArrayList<>();
         updateDataList.add(new DataUpdates("https://t3.ftcdn.net/jpg/03/27/55/60/360_F_327556002_99c7QmZmwocLwF7ywQ68ChZaBry1DbtD.jpg", "Live Update: Bagyong Yolanda towards Samar"));

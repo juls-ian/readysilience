@@ -118,7 +118,6 @@ public class Login extends AppCompatActivity {
                         Log.d("LoginActivity", "signInWithEmail:success");
                         FirebaseUser user = auth.getCurrentUser();
 
-                        // Now you can get user details from the 'user' object
                         String userId = user.getUid();
                         String userEmailFromAuth = user.getEmail();
 
@@ -127,7 +126,6 @@ public class Login extends AppCompatActivity {
                         Log.d("LoginActivity", "User ID: " + userId);
                         Log.d("LoginActivity", "User Email: " + userEmailFromAuth);
 
-                        // Add your logic to navigate to the next activity
                         Intent intent = new Intent(Login.this, MainActivity.class);
                         intent.putExtra("userId", userId);
                         intent.putExtra("userEmail", userEmailFromAuth);
@@ -148,14 +146,8 @@ public class Login extends AppCompatActivity {
     }
     @Override
     public void onBackPressed() {
-        // Uncomment the next line if you want to do nothing on back press
-        // super.onBackPressed();
 
-        // Alternatively, you can finish the LoginActivity to prevent going back to it
         super.onBackPressed();
         finish();
-
-        // If you want to display a Toast message, you can do it like this:
-        // Toast.makeText(this, "Back button pressed. Action cancelled.", Toast.LENGTH_SHORT).show();
     }
 }

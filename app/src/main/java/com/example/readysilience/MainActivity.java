@@ -58,6 +58,10 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private static final String PREFS_NAME = "MyPrefsFile";
@@ -228,6 +232,82 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
+    public static class Report {
+        private String firstName;
+        private String lastName;
+        private String phoneNumber;
+        private String incidentType;
+        private String description;
+        private long timestamp;
+
+        public Report() {
+        }
+
+        public Report(String firstName, String lastName, String phoneNumber, String incidentType, String description, long timestamp) {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.phoneNumber = phoneNumber;
+            this.incidentType = incidentType;
+            this.description = description;
+            this.timestamp = timestamp;
+        }
+
+        public String getFirstName() {
+            return firstName;
+        }
+
+        public void setFirstName(String firstName) {
+            this.firstName = firstName;
+        }
+
+        public String getLastName() {
+            return lastName;
+        }
+
+        public void setLastName(String lastName) {
+            this.lastName = lastName;
+        }
+
+        public String getPhoneNumber() {
+            return phoneNumber;
+        }
+
+        public void setPhoneNumber(String phoneNumber) {
+            this.phoneNumber = phoneNumber;
+        }
+
+        public String getIncidentType() {
+            return incidentType;
+        }
+
+        public void setIncidentType(String incidentType) {
+            this.incidentType = incidentType;
+        }
+
+        public String getDescription() {
+            return description;
+        }
+
+        public void setDescription(String description) {
+            this.description = description;
+        }
+
+        public long getTimestamp() {
+            return timestamp;
+        }
+
+        public void setTimestamp(long timestamp) {
+            this.timestamp = timestamp;
+        }
+
+        public String getFormattedTimestamp() {
+            Date date = new Date(timestamp);
+
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+            return sdf.format(date);
+        }
+    }
+
     //SOS REPORT
     private void showBottomDialog() {
         Dialog dialog = new Dialog(this);
@@ -241,66 +321,92 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         reportButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                RadioGroup disastersRadioGroup1 = dialog.findViewById(R.id.disasters_radio_group1);
-                RadioGroup disastersRadioGroup2 = dialog.findViewById(R.id.disasters_radio_group2);
+                // Fetch user information from the "Users" database
+                FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+                DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("Users").child(currentUser.getUid());
 
-                int selectedRadioButtonId1 = disastersRadioGroup1.getCheckedRadioButtonId();
-                int selectedRadioButtonId2 = disastersRadioGroup2.getCheckedRadioButtonId();
+                userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        UserProfile.UserProfileData userProfileData = dataSnapshot.getValue(UserProfile.UserProfileData.class);
 
-                RadioButton selectedRadioButton1 = dialog.findViewById(selectedRadioButtonId1);
-                RadioButton selectedRadioButton2 = dialog.findViewById(selectedRadioButtonId2);
+                        if (userProfileData != null) {
+                            String firstName = userProfileData.getFirstName();
+                            String lastName = userProfileData.getLastName();
+                            String phoneNumber = userProfileData.getPhoneNumber();
 
-                String selectedIncidentType = "";
-                if (selectedRadioButton1 != null) {
-                    selectedIncidentType = selectedRadioButton1.getText().toString();
-                } else if (selectedRadioButton2 != null) {
-                    selectedIncidentType = selectedRadioButton2.getText().toString();
-                } else {
-                    Toast.makeText(MainActivity.this, "Please select an incident type", Toast.LENGTH_SHORT).show();
-                    Log.e("MainActivity", "No incident type selected");
-                    return;
-                }
+                            // Find the RadioGroup views
+                            RadioGroup disastersRadioGroup1 = dialog.findViewById(R.id.disasters_radio_group1);
+                            RadioGroup disastersRadioGroup2 = dialog.findViewById(R.id.disasters_radio_group2);
 
-                TextInputLayout textInputLayout = dialog.findViewById(R.id.situation_report);
-                TextInputEditText descriptionEditText = textInputLayout.findViewById(R.id.incident_situation_edit_text);
-                String description = descriptionEditText.getText().toString();
+                            int selectedRadioButtonId1 = disastersRadioGroup1.getCheckedRadioButtonId();
+                            int selectedRadioButtonId2 = disastersRadioGroup2.getCheckedRadioButtonId();
 
-                if (selectedIncidentType.isEmpty() || description.isEmpty()) {
-                    Toast.makeText(MainActivity.this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
-                    Log.e("MainActivity", "Empty incident type or description");
-                    return;
-                }
+                            RadioButton selectedRadioButton1 = dialog.findViewById(selectedRadioButtonId1);
+                            RadioButton selectedRadioButton2 = dialog.findViewById(selectedRadioButtonId2);
 
-                Log.d("MainActivity", "Incident Type: " + selectedIncidentType);
-                Log.d("MainActivity", "Description: " + description);
-
-                // Create a Report object
-                Report report = new Report(selectedIncidentType, description);
-
-                // Push the report to the database
-                String finalSelectedIncidentType = selectedIncidentType;
-                reportsReference.push().setValue(report)
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if (task.isSuccessful()) {
-                                    Toast.makeText(MainActivity.this, "Report sent successfully", Toast.LENGTH_SHORT).show();
-                                    Log.d("MainActivity", "Report sent successfully");
-
-                                    // Start the SuccessSOS activity
-                                    Intent intent = new Intent(MainActivity.this, SuccessSOS.class);
-                                    intent.putExtra("incidentType", finalSelectedIncidentType);
-                                    intent.putExtra("description", description);
-                                    startActivity(intent);
-                                } else {
-                                    Toast.makeText(MainActivity.this, "Failed to send report", Toast.LENGTH_SHORT).show();
-                                    Log.e("MainActivity", "Failed to send report", task.getException());
-                                }
-
-                                // Dismiss the dialog
-                                dialog.dismiss();
+                            String selectedIncidentType = "";
+                            if (selectedRadioButton1 != null) {
+                                selectedIncidentType = selectedRadioButton1.getText().toString();
+                            } else if (selectedRadioButton2 != null) {
+                                selectedIncidentType = selectedRadioButton2.getText().toString();
+                            } else {
+                                Toast.makeText(MainActivity.this, "Please select an incident type", Toast.LENGTH_SHORT).show();
+                                Log.e("MainActivity", "No incident type selected");
+                                return;
                             }
-                        });
+
+                            TextInputLayout textInputLayout = dialog.findViewById(R.id.situation_report);
+                            TextInputEditText descriptionEditText = textInputLayout.findViewById(R.id.incident_situation_edit_text);
+                            String description = descriptionEditText.getText().toString();
+
+                            if (selectedIncidentType.isEmpty() || description.isEmpty()) {
+                                Toast.makeText(MainActivity.this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
+                                Log.e("MainActivity", "Empty incident type or description");
+                                return;
+                            }
+
+                            Log.d("MainActivity", "Incident Type: " + selectedIncidentType);
+                            Log.d("MainActivity", "Description: " + description);
+
+                            Report report = new Report(firstName, lastName, phoneNumber, selectedIncidentType, description, System.currentTimeMillis());
+
+                            String finalSelectedIncidentType = selectedIncidentType;
+                            reportsReference.push().setValue(report)
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()) {
+                                                Toast.makeText(MainActivity.this, "Report sent successfully", Toast.LENGTH_SHORT).show();
+                                                Log.d("MainActivity", "Report sent successfully");
+
+                                                // Start the SuccessSOS activity
+                                                Intent intent = new Intent(MainActivity.this, SuccessSOS.class);
+                                                intent.putExtra("incidentType", finalSelectedIncidentType);
+                                                intent.putExtra("description", description);
+                                                intent.putExtra("timestamp", report.getFormattedTimestamp());
+                                                startActivity(intent);
+                                            } else {
+                                                Toast.makeText(MainActivity.this, "Failed to send report", Toast.LENGTH_SHORT).show();
+                                                Log.e("MainActivity", "Failed to send report", task.getException());
+                                            }
+
+                                            dialog.dismiss();
+                                        }
+                                    });
+                        } else {
+
+                            Toast.makeText(MainActivity.this, "User information not available", Toast.LENGTH_SHORT).show();
+                            Log.e("MainActivity", "User information not available");
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        // Handle errors
+                        Log.e("MainActivity", "Error loading user information: " + databaseError.getMessage());
+                    }
+                });
             }
         });
 
@@ -324,35 +430,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
         dialog.getWindow().setGravity(Gravity.BOTTOM);
-    }
-
-    public static class Report {
-        private String incidentType;
-        private String description;
-
-        public Report() {
-        }
-
-        public Report(String incidentType, String description) {
-            this.incidentType = incidentType;
-            this.description = description;
-        }
-
-        public String getIncidentType() {
-            return incidentType;
-        }
-
-        public String getDescription() {
-            return description;
-        }
-
-        public void setIncidentType(String incidentType) {
-            this.incidentType = incidentType;
-        }
-
-        public void setDescription(String description) {
-            this.description = description;
-        }
     }
 
     //DRAWER NAV
@@ -494,4 +571,3 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         transaction.commit();
     }
 }
-

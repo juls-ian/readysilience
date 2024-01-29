@@ -45,7 +45,7 @@ public class SignUp extends AppCompatActivity {
                 houseNumber = binding.houseNumber.getEditText().getText().toString();
                 purok = binding.purok.getEditText().getText().toString();
 
-                Log.d("SignUpActivity", "Input Values: " + firstName + ", " + lastName + ", " + email + ", " + age + ", " + houseNumber + ", " + purok);
+                Log.d("SignUpActivity", "Input Values: " + firstName + ", " + lastName + ", " + email + ", " + age + ", " + houseNumber + ", " + purok + ", " + sex);
 
                 if (!firstName.isEmpty() && !lastName.isEmpty() && !email.isEmpty() && !age.isEmpty() && !houseNumber.isEmpty() && !purok.isEmpty()) {
                     // Check if the email is already used

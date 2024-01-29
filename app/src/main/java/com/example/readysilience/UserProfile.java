@@ -45,8 +45,8 @@ public class UserProfile extends AppCompatActivity {
     private UserProfileData userProfileData;
     private CircleImageView userIcon;
     private Uri selectedImageUri;
-    private static final int REQUEST_PERMISSION_CODE = 123;  // You can use any integer value
-    private static final int PICK_IMAGE_REQUEST = 1; // You can use any integer value
+    private static final int REQUEST_PERMISSION_CODE = 123;
+    private static final int PICK_IMAGE_REQUEST = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -14,7 +14,6 @@ import android.widget.Button;
 public class TermsFrag extends Fragment {
 
     public TermsFrag() {
-        // Required empty public constructor
     }
 
     @Override
