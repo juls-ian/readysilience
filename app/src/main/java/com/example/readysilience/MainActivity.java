@@ -502,7 +502,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void logoutMenu(MainActivity mainActivity) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(mainActivity);
+        AlertDialog.Builder builder = new AlertDialog.Builder(mainActivity, R.style.AlertDialogTheme);
         builder.setTitle("Logout");
         builder.setMessage("Are you sure you want to Logout?");
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
