@@ -19,19 +19,23 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.denzcoskun.imageslider.models.SlideModel;
 
+
+import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.constants.AnimationTypes;
+import com.denzcoskun.imageslider.models.SlideModel;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.example.readysilience.ExpandedViews.AnnouncementExpandedActivity;
 import com.smarteist.autoimageslider.SliderView;
 
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class HomeFrag extends Fragment {
-
 
     RecyclerView recyclerView;
 
@@ -47,12 +51,14 @@ public class HomeFrag extends Fragment {
 
     RecyclerView updatesRecyclerView;
 
+
+
+
         @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
             updatesRecyclerView = view.findViewById(R.id.updatesRecyclerView);
@@ -79,16 +85,16 @@ public class HomeFrag extends Fragment {
         //NEARBY CENTERS
         viewPager = view.findViewById(R.id.viewPager);
 
-        dataCenterList.add(new DataCenter("https://thumbs.dreamstime.com/b/hospital-building-modern-parking-lot-59693686.jpg", "Center 1"));
-        dataCenterList.add(new DataCenter("https://images.unsplash.com/photo-1519494080410-f9aa76cb4283?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aG9zcGl0YWwlMjByb29tfGVufDB8fDB8fHww", "Center 2"));
-        dataCenterList.add(new DataCenter("https://thumbs.dreamstime.com/b/doctors-hospital-corridor-nurse-pushing-gurney-stretcher-bed-male-senior-female-patient-32154012.jpg", "Center 3"));
+        dataCenterList.add(new DataCenter("https://scontent.fmnl24-1.fna.fbcdn.net/v/t1.6435-9/56629322_2586522344709165_9170986385169973248_n.png?_nc_cat=101&ccb=1-7&_nc_sid=7a1959&_nc_ohc=s8PKBaXt_NcAX83E01N&_nc_ht=scontent.fmnl24-1.fna&oh=00_AfA3Q1QXSC2fcUM-nRn1vk6WzafiwjTKNjJdSNUuCj_miQ&oe=65D46926", "C.P Reyes Hospital"));
+        dataCenterList.add(new DataCenter("https://scontent.fmnl24-1.fna.fbcdn.net/v/t39.30808-6/327295511_1377913956284459_2414036593808725653_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=efb6e6&_nc_ohc=MfEe1hagHWcAX8SplWN&_nc_ht=scontent.fmnl24-1.fna&oh=00_AfDcybo4wtun9NnFL_2HqvGOCcx5QyK8gG5pBR9_BFN3bw&oe=65B1055F", "Cabrini Medical Center"));
+        dataCenterList.add(new DataCenter("https://th.bing.com/th/id/R.94adcbb2ceaf4d112716a87ee6f7b800?rik=K0dBzhDwP5r3DA&riu=http%3a%2f%2fphotos.wikimapia.org%2fp%2f00%2f00%2f83%2f47%2f75_big.jpg&ehk=qyN0J6a9rauCJVojyHfVoE3cSEex1%2fMFpPFnNyhozKc%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1", "DMMC"));
+        dataCenterList.add(new DataCenter("https://th.bing.com/th/id/OIP.l9_QzBq2TczSCEKKpNVvzwAAAA?rs=1&pid=ImgDetMain", "Santo Tomas General Hospital"));
+        dataCenterList.add(new DataCenter("https://static.seriousmd.com/profile_pictures/clinic_11996_5c32b016-a591-4c18-9ed4-0071477a26ef.jpg", "Community General Hospital"));
 
         int initialPosition = Integer.MAX_VALUE / 2;
         viewPager.setAdapter(new AdapterCenters(getContext(), dataCenterList));
-        viewPager.setPadding(50, 0, 50, 0);
+        viewPager.setPadding(100, 0, 0, 0);
         viewPager.setCurrentItem(initialPosition);
-
-
 
         //FEATURED
             recyclerView = view.findViewById(R.id.featuredRecyclerView);
@@ -196,6 +202,9 @@ public class HomeFrag extends Fragment {
 
         return view;
     }
+
+
+
 
     private void getWeatherInfoForLocation() {
         String city = "Santo Tomas";

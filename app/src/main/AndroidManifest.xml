@@ -11,10 +11,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-feature android:name="android.hardware.camera" />
-    <uses-feature android:name="android.hardware.camera.autofocus" />
-    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -26,42 +23,49 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Readysilience"
         tools:targetApi="31">
+        <activity
+            android:name=".ExpandedViews.FASuppDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ExpandedViews.EmergencySuppDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ExpandedViews.AnnouncementExpandedActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ExpandedViews.FeaturedDetailsActivity"
+            android:exported="false" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBn1y7fYsInZOeXsGyixmKzsKmaBsLkHTQ" />
 
-        <activity
-            android:name=".ExpandedViews.FeaturedDetailsActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name=".VideoActivity"
-            android:exported="false"
-            android:screenOrientation="landscape"/>
+
         <activity
             android:name=".TCActivity"
             android:exported="false"
             android:screenOrientation="portrait"/>
         <activity
+            android:name=".VideoActivity"
+            android:label="Video Activity"
+            android:screenOrientation="landscape"/>
+
+        <activity
             android:name=".UserProfile"
             android:exported="false"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".SuccessSOS"
             android:exported="false"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Checklist"
             android:exported="false"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Feedback"
             android:exported="false"
             android:screenOrientation="portrait" />
-
-
-
         <activity
             android:name=".MapFullView"
             android:exported="false"
