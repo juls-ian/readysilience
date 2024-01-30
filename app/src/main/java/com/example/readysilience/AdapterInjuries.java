@@ -47,7 +47,6 @@ public class AdapterInjuries extends RecyclerView.Adapter<AdapterInjuries.Injury
         int typeIcon = getTypeIcon(injuriesData.getInjuryType());
         holder.injuryTypeIcon.setImageResource(typeIcon);
 
-
     }
 
     private int getTypeIcon(String injuryType) {

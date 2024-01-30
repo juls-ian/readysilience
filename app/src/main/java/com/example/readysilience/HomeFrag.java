@@ -11,7 +11,14 @@ import androidx.viewpager.widget.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.denzcoskun.imageslider.models.SlideModel;
 
 import java.util.ArrayList;
@@ -19,6 +26,9 @@ import java.util.List;
 
 import com.example.readysilience.ExpandedViews.AnnouncementExpandedActivity;
 import com.smarteist.autoimageslider.SliderView;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class HomeFrag extends Fragment {
 
@@ -30,13 +40,12 @@ public class HomeFrag extends Fragment {
     ArrayList<DataCenter> dataCenterList = new ArrayList<>();
 
 
-
-
     public HomeFrag() {
         // Required empty public constructor
 
     }
 
+    RecyclerView updatesRecyclerView;
 
         @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -46,7 +55,10 @@ public class HomeFrag extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        //ANNOUNCEMENTS
+            updatesRecyclerView = view.findViewById(R.id.updatesRecyclerView);
+            getWeatherInfoForLocation();
+
+            //ANNOUNCEMENTS
 
             SliderView sliderView = view.findViewById(R.id.announcement_slider);
 
@@ -182,11 +194,59 @@ public class HomeFrag extends Fragment {
             recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
 
-
-
-
         return view;
     }
+
+    private void getWeatherInfoForLocation() {
+        String city = "Santo Tomas";
+        String country = "Philippines";
+
+        String apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "," + country + "&appid=43f6f5726e6143864cf4b139376f2029";
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, apiUrl, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                List<WeatherInfoData> weatherInfoDataList = parseWeatherData(response);
+
+                WeatherAdapter weatherAdapter = new WeatherAdapter(weatherInfoDataList);
+                updatesRecyclerView.setAdapter(weatherAdapter);
+                updatesRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                Toast.makeText(getContext(), error.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        RequestQueue requestQueue = Volley.newRequestQueue(requireContext());
+        requestQueue.add(stringRequest);
+    }
+
+    private List<WeatherInfoData> parseWeatherData(String response) {
+        List<WeatherInfoData> weatherInfoDataList = new ArrayList<>();
+
+        try {
+            JSONObject jsonResponse = new JSONObject(response);
+
+            // Extract necessary information from the JSON response
+            String cityName = jsonResponse.optString("name");
+            String countryName = jsonResponse.optJSONObject("sys").optString("country");
+            double temperature = jsonResponse.optJSONObject("main").optDouble("temp");
+            String description = jsonResponse.optJSONArray("weather").optJSONObject(0).optString("description");
+
+            // Create a WeatherInfoData object and add it to the list
+            WeatherInfoData weatherInfoData = new WeatherInfoData(cityName, countryName, temperature, description);
+            weatherInfoDataList.add(weatherInfoData);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return weatherInfoDataList;
+    }
+
 
     private void showExpandedView(SlideModel slideModel) {
 
