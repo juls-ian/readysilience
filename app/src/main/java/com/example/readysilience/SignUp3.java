@@ -29,7 +29,7 @@ public class SignUp3 extends AppCompatActivity {
 
     private EditText inputCode1, inputCode2, inputCode3, inputCode4, inputCode5, inputCode6;
     private String verificationId;
-    String firstName, lastName, email, age, sex, houseNumber, purok, phoneNumber, password, password2;
+    String firstName, lastName, email, age, sex, houseNumber, purok, phoneNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +50,7 @@ public class SignUp3 extends AppCompatActivity {
 
         TextView textMobile = findViewById(R.id.text_Mobile);
         textMobile.setText(String.format(
-                "+63" + phoneNumber, getIntent().getStringExtra("mobile")
+                phoneNumber, getIntent().getStringExtra("mobile")
         ));
 
         inputCode1 = findViewById(R.id.inputCode1);
@@ -103,7 +103,7 @@ public class SignUp3 extends AppCompatActivity {
                                     Log.d("SignUp3", "onComplete triggered");
                                     if(task.isSuccessful()) {
                                         Log.d("SignUp3", "Verification successful");
-                                        Users users = new Users(firstName, lastName, email, age, sex, houseNumber, purok, phoneNumber, password, password2);
+                                        Users users = new Users(firstName, lastName, email, age, sex, houseNumber, purok, phoneNumber);
 
                                         Log.d("SignUpActivity", "Starting SignUp2 activity with data: " +
                                                 "firstName=" + firstName +
@@ -181,13 +181,14 @@ public class SignUp3 extends AppCompatActivity {
     private void setupOTPInputs() {
         inputCode1.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            public void beforeTextChanged(CharSequence s, int start, int before, int after) {
 
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(!s .toString().trim().isEmpty()) {
+                if (s.length() == 0 && before > 0) {
+                } else if (!s.toString().trim().isEmpty()) {
                     inputCode2.requestFocus();
                 }
             }
@@ -197,6 +198,7 @@ public class SignUp3 extends AppCompatActivity {
 
             }
         });
+
         inputCode2.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -205,7 +207,9 @@ public class SignUp3 extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(!s .toString().trim().isEmpty()) {
+                if (s.length() == 0 && before > 0) {
+                    inputCode1.requestFocus();
+                } else if (!s.toString().trim().isEmpty()) {
                     inputCode3.requestFocus();
                 }
             }
@@ -215,6 +219,7 @@ public class SignUp3 extends AppCompatActivity {
 
             }
         });
+
         inputCode3.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -223,7 +228,9 @@ public class SignUp3 extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(!s .toString().trim().isEmpty()) {
+                if (s.length() == 0 && before > 0) {
+                    inputCode2.requestFocus();
+                } else if (!s.toString().trim().isEmpty()) {
                     inputCode4.requestFocus();
                 }
             }
@@ -233,6 +240,7 @@ public class SignUp3 extends AppCompatActivity {
 
             }
         });
+
         inputCode4.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -241,7 +249,9 @@ public class SignUp3 extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(!s .toString().trim().isEmpty()) {
+                if (s.length() == 0 && before > 0) {
+                    inputCode3.requestFocus();
+                } else if (!s.toString().trim().isEmpty()) {
                     inputCode5.requestFocus();
                 }
             }
@@ -251,6 +261,7 @@ public class SignUp3 extends AppCompatActivity {
 
             }
         });
+
         inputCode5.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -259,7 +270,9 @@ public class SignUp3 extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(!s .toString().trim().isEmpty()) {
+                if (s.length() == 0 && before > 0) {
+                    inputCode4.requestFocus();
+                } else if (!s.toString().trim().isEmpty()) {
                     inputCode6.requestFocus();
                 }
             }
@@ -270,5 +283,24 @@ public class SignUp3 extends AppCompatActivity {
             }
         });
 
+        inputCode6.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (s.length() == 0 && before > 0) {
+                    inputCode5.requestFocus();
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
     }
+
 }

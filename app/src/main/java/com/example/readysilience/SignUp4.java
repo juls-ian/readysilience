@@ -1,7 +1,6 @@
 package com.example.readysilience;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -30,7 +29,6 @@ public class SignUp4 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivitySignUp4Binding.inflate(getLayoutInflater());
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         setContentView(binding.getRoot());
 
         Intent intent = getIntent();
@@ -52,9 +50,14 @@ public class SignUp4 extends AppCompatActivity {
                 password = binding.password.getEditText().getText().toString();
                 password2 = binding.password2.getEditText().getText().toString();
 
+                if (!password2.equals(password)) {
+                    binding.password2.setError("Passwords do not match");
+                    return; // Stop execution if passwords don't match
+                }
+
                 Log.d("SignUpActivity", "Input Values: " + firstName + ", " + lastName + ", " + email + ", " + sex + ", " + age + ", " + houseNumber + ", " + purok);
 
-                if (!password.isEmpty() && !password2.isEmpty()) {
+                if (isPasswordValid(password)) {
 
                     // Email Authentication
                     FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
@@ -73,7 +76,9 @@ public class SignUp4 extends AppCompatActivity {
                                         firebaseUser.updateProfile(profileUpdates);
 
                                         // Database Update
-                                        Users users = new Users(firstName, lastName, email, age, sex, houseNumber, purok, phoneNumber, password, password2);
+                                        // Inside your onComplete method after FirebaseAuth.getInstance().createUserWithEmailAndPassword
+                                        Users users = new Users(firstName, lastName, email, age, sex, houseNumber, purok, phoneNumber); // Change here
+
                                         db = FirebaseDatabase.getInstance();
                                         reference = db.getReference("Users");
 
@@ -97,8 +102,17 @@ public class SignUp4 extends AppCompatActivity {
                                     }
                                 }
                             });
+                } else {
+                    // Password does not meet the criterxia
+                    binding.password.setError("Password must be at least 8 characters long and include letters, numbers, and special characters");
                 }
             }
         });
+    }
+
+    private boolean isPasswordValid(String password) {
+        // Customize the criteria according to your requirements
+        String passwordPattern = "^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[@#$%^&+=!])(?=.*[a-zA-Z\\d@#$%^&+=!]).{8,}$";
+        return password.matches(passwordPattern);
     }
 }

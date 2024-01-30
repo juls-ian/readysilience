@@ -61,8 +61,7 @@
                     android:layout_marginHorizontal="15dp"
                     app:hintTextColor="@color/blue"
                     android:padding="10dp"
-                    app:cursorColor="@color/blue"
-                    app:cursorErrorColor="@color/red"
+
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     >
 
@@ -83,8 +82,7 @@
                     android:layout_marginHorizontal="15dp"
                     app:hintTextColor="@color/blue"
                     android:padding="10dp"
-                    app:cursorColor="@color/blue"
-                    app:cursorErrorColor="@color/red"
+
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     >
 
@@ -106,8 +104,7 @@
                     android:layout_marginHorizontal="15dp"
                     app:hintTextColor="@color/blue"
                     android:padding="10dp"
-                    app:cursorColor="@color/blue"
-                    app:cursorErrorColor="@color/red"
+
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     >
 
@@ -129,8 +126,7 @@
                     android:layout_marginHorizontal="15dp"
                     app:hintTextColor="@color/blue"
                     android:padding="10dp"
-                    app:cursorColor="@color/blue"
-                    app:cursorErrorColor="@color/red"
+
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     >
 
@@ -151,8 +147,6 @@
                     android:id="@+id/sex"
                     android:hint="Sex"
                     app:hintTextColor="@color/blue"
-                    app:cursorColor="@color/blue"
-                    app:cursorErrorColor="@color/red"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                     >
 
@@ -174,15 +168,14 @@
                     android:layout_marginHorizontal="15dp"
                     app:hintTextColor="@color/blue"
                     android:padding="10dp"
-                    app:cursorColor="@color/blue"
-                    app:cursorErrorColor="@color/red"
+
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     >
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="text"
+                        android:inputType="number"
                         />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -197,15 +190,13 @@
                     app:hintTextColor="@color/blue"
                     android:padding="10dp"
                     android:layout_marginBottom="10dp"
-                    app:cursorColor="@color/blue"
-                    app:cursorErrorColor="@color/red"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     >
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="text"
+                        android:inputType="number"
                         />
 
                 </com.google.android.material.textfield.TextInputLayout>

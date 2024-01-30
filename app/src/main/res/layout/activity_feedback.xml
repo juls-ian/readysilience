@@ -9,20 +9,20 @@
     android:background="@drawable/bg3"
     tools:context=".Feedback">
 
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="50dp"
-    android:layout_marginLeft="30dp">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="30dp">
 
-    <ImageButton
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:id="@+id/back_button"
-        android:background="@drawable/icon_back"
-        android:layout_gravity=""
-        />
-</LinearLayout>
+        <ImageButton
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:id="@+id/back_button"
+            android:background="@drawable/icon_back"
+            android:layout_gravity=""
+            />
+    </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
@@ -55,10 +55,11 @@
             android:textStyle="bold"
             />
 
+        <!--USER COMMENT-->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="300dp"
             android:layout_height="match_parent"
-            android:id="@+id/email_address"
+            android:id="@+id/user_comment"
             android:hint="Enter comment"
             app:hintTextColor="@color/blue"
             android:padding="10dp"
@@ -70,6 +71,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/user_comment_edit_text"
                 android:inputType="text"
                 />
 
@@ -94,7 +96,7 @@
             android:textStyle="bold" />
 
         <RatingBar
-            android:id="@+id/ratingBar"
+            android:id="@+id/user_rating_bar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:numStars="5"
@@ -123,10 +125,11 @@
             android:layout_marginTop="3dp"
             android:textStyle="bold" />
 
+        <!--USER SUGGESTION-->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:id="@+id/comment"
+            android:id="@+id/user_suggestions"
             app:hintTextColor="@color/blue"
             android:hint="Enter suggestions"
             android:padding="10dp"
@@ -138,6 +141,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/user_suggestions_edit_text"
                 android:inputType="text"
                 />
 
@@ -145,25 +149,16 @@
 
     </LinearLayout>
 
-
-            <Button
-                android:id="@+id/feedback_button"
-                style="@style/buttonTheme"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="30dp"
-                android:background="@drawable/rounded_button"
-                android:text="Submit"
-                android:textColor="#fff" />
-
-
-
-
-
-
-
-
+    <Button
+        android:id="@+id/feedback_submit_button"
+        style="@style/buttonTheme"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/rounded_button"
+        android:text="Submit"
+        android:textColor="#fff" />
 
 </LinearLayout>

@@ -102,4 +102,15 @@ public class Checklist extends AppCompatActivity implements OnDialogCloseListene
         showData();
         adapter.notifyDataSetChanged();
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        navigateToMainActivity();
+    }
+
+    private void navigateToMainActivity() {
+        startActivity(new Intent(Checklist.this, MainActivity.class));
+        finish();
+    }
 }

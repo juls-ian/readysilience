@@ -18,36 +18,35 @@
 
         >
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center">
-
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/text_margin"
-            android:text="@string/terms_long_text"
-            android:textColor="@color/black"/>
+            android:orientation="vertical"
+            android:gravity="center">
 
-        <Button
-            android:id="@+id/acknowledged_button"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="15dp"
-            android:background="@drawable/rectangle_button"
-            style="@style/buttonTheme"
-            android:text="Acknowledged"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/text_margin"
+                android:text="@string/terms_long_text"
+                android:textColor="@color/black"/>
 
-            android:textColor="#fff" />
+            <Button
+                android:id="@+id/acknowledged_button"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/rectangle_button"
+                style="@style/buttonTheme"
+                android:text="Acknowledged"
+
+                android:textColor="#fff" />
 
 
-    </LinearLayout>
+        </LinearLayout>
 
     </ScrollView>
 
 
 </com.google.android.material.card.MaterialCardView>
-

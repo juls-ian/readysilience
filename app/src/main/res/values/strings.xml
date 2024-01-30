@@ -87,7 +87,7 @@
     <string name="traffic_office_phone2">0939-293-8006</string>
 
     <string name="choking_desc">Choking is a life-threatening emergency where a person\'\s airway is blocked, usually by a foreign object.</string>
-    <string name="bruise_desc">A bruise, or contusion, is a common injury resulting from the breakage of small blood vessels beneath the skin, caused by blunt force or trauma. </string>
+    <string name="bruise_desc">A bruise is skin discoloration caused by an impact that ruptures blood vessels underneath. </string>
     <string name="fracture_desc">A fracture is a broken bone caused by trauma or force. Symptoms include pain and swelling. </string>
     <string name="burn_desc">Burns are classified into first, second, or third-degree based on severity.</string>
 
@@ -141,6 +141,5 @@
 
         Thank you for using Readysilience!
     </string>
-
 
 </resources>

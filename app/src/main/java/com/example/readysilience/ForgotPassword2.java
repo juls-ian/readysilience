@@ -1,7 +1,6 @@
 package com.example.readysilience;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,8 +16,7 @@ public class ForgotPassword2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-        setContentView(R.layout.activity_success_change_pass);
+        setContentView(R.layout.activity_forgot_pass2);
 
         handler.postDelayed(new Runnable() {
             @Override

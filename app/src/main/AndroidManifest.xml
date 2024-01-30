@@ -10,6 +10,8 @@
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -38,22 +40,28 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBn1y7fYsInZOeXsGyixmKzsKmaBsLkHTQ" />
 
+
         <activity
             android:name=".TCActivity"
             android:exported="false"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".VideoActivity"
+            android:label="Video Activity"
+            android:screenOrientation="landscape"/>
+
         <activity
             android:name=".UserProfile"
             android:exported="false"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".SuccessSOS"
             android:exported="false"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Checklist"
             android:exported="false"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Feedback"
             android:exported="false"
@@ -103,11 +111,11 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Login"
+            android:name=".MainActivity"
             android:exported="false"
             android:screenOrientation="portrait" /> <!-- STARTING POINT -->
         <activity
-            android:name=".MainActivity"
+            android:name=".Login"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>

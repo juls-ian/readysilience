@@ -8,6 +8,8 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
@@ -31,6 +33,13 @@ public class Login extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
 
+        if (AuthManager.isLoggedIn(this)) {
+            // User is logged in, navigate to the main part of the app
+            startActivity(new Intent(this, MainActivity.class));
+            finish(); // Finish the current activity to prevent going back to it
+            return; // Skip the rest of the code in onCreate
+        }
+
         loginEmail = findViewById(R.id.login_Email);
         loginPassword = findViewById(R.id.login_Pass);
         loginButton = findViewById(R.id.login_button);
@@ -51,10 +60,8 @@ public class Login extends AppCompatActivity {
         signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Create an Intent to switch to the new activity
-                Intent intent = new Intent(Login.this, TCActivity.class);
-                // Start the new activity
-                startActivity(intent);
+                // Start the TermsFrag fragment
+                replaceFragment(new TermsFrag());
             }
         });
 
@@ -67,6 +74,13 @@ public class Login extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    private void replaceFragment(Fragment fragment) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(android.R.id.content, fragment);
+        transaction.addToBackStack(null); // Add to back stack for navigation
+        transaction.commit();
     }
 
     public Boolean validateEmail() {
@@ -104,14 +118,14 @@ public class Login extends AppCompatActivity {
                         Log.d("LoginActivity", "signInWithEmail:success");
                         FirebaseUser user = auth.getCurrentUser();
 
-                        // Now you can get user details from the 'user' object
                         String userId = user.getUid();
                         String userEmailFromAuth = user.getEmail();
+
+                        AuthManager.setLoggedIn(Login.this, true);
 
                         Log.d("LoginActivity", "User ID: " + userId);
                         Log.d("LoginActivity", "User Email: " + userEmailFromAuth);
 
-                        // Add your logic to navigate to the next activity
                         Intent intent = new Intent(Login.this, MainActivity.class);
                         intent.putExtra("userId", userId);
                         intent.putExtra("userEmail", userEmailFromAuth);
@@ -129,5 +143,11 @@ public class Login extends AppCompatActivity {
                         }
                     }
                 });
+    }
+    @Override
+    public void onBackPressed() {
+
+        super.onBackPressed();
+        finish();
     }
 }
