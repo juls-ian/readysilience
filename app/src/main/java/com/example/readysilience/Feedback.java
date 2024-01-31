@@ -68,7 +68,8 @@ public class Feedback extends AppCompatActivity {
 
                 feedbackReference.push().setValue(feedbackModel);
 
-                Toast.makeText(Feedback.this, "Feedback submitted successfully", Toast.LENGTH_SHORT).show();
+                Intent successIntent = new Intent(Feedback.this, SuccessFeedbackSent.class);
+                startActivity(successIntent);
             }
         });
     }

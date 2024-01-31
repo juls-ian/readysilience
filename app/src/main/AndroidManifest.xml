@@ -11,7 +11,11 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -49,7 +53,14 @@
             android:name=".VideoActivity"
             android:label="Video Activity"
             android:screenOrientation="landscape"/>
-
+        <activity
+            android:name=".SuccessProfileUpdate"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".SuccessFeedbackSent"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".UserProfile"
             android:exported="false"

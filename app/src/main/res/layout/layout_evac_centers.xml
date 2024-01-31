@@ -87,7 +87,7 @@
                     android:textSize="13sp"
 
                     />
-                
+
                 <ImageButton
                     android:layout_width="50dp"
                     android:layout_height="50dp"
@@ -96,8 +96,9 @@
                     android:layout_marginStart="180dp"
                     android:background="@android:color/transparent"
                     android:layout_below="@+id/evac_center_name"
+                    android:id="@+id/checkIn"
                     />
-                
+
 
 
                 <RelativeLayout

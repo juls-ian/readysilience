@@ -9,17 +9,22 @@ import androidx.viewpager.widget.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 import com.rd.PageIndicatorView;
 
 import java.util.ArrayList;
+import android.view.View;
+import android.widget.Toast;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class EvacCenterFrag extends Fragment {
 
     ViewPager viewPagerMaps, viewPagerCenters;
     PageIndicatorView pageIndicatorView;
     ArrayList<DataEvacMaps> evacMapsList = new ArrayList<>();
-
     ArrayList<DataEvacCenters> evacCentersList = new ArrayList<>();
 
     public EvacCenterFrag() {
@@ -97,7 +102,5 @@ public class EvacCenterFrag extends Fragment {
 
         return view;
     }
-
-
 
 }

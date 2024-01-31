@@ -275,12 +275,10 @@ public class UserProfile extends AppCompatActivity {
         databaseReference.child(currentUser.getUid()).setValue(userProfileData)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        // Display a toast indicating successful profile update
-                        Toast.makeText(UserProfile.this, "Profile updated successfully", Toast.LENGTH_SHORT).show();
-                        // Load the updated user profile data
+                        Intent successIntent = new Intent(UserProfile.this, SuccessProfileUpdate.class);
+                        startActivity(successIntent);
                         loadUserProfile();
                     } else {
-                        // Display a toast indicating failed profile update
                         Toast.makeText(UserProfile.this, "Failed to update profile", Toast.LENGTH_SHORT).show();
                         Log.e("UserProfile", "Failed to update profile: " + task.getException().getMessage());
                     }

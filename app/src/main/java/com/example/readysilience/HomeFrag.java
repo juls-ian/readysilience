@@ -52,8 +52,6 @@ public class HomeFrag extends Fragment {
     RecyclerView updatesRecyclerView;
 
 
-
-
         @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -61,8 +59,8 @@ public class HomeFrag extends Fragment {
         super.onCreate(savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-            updatesRecyclerView = view.findViewById(R.id.updatesRecyclerView);
-            getWeatherInfoForLocation();
+//            updatesRecyclerView = view.findViewById(R.id.updatesRecyclerView);
+//            getWeatherInfoForLocation();
 
             //ANNOUNCEMENTS
 
@@ -86,7 +84,7 @@ public class HomeFrag extends Fragment {
         viewPager = view.findViewById(R.id.viewPager);
 
         dataCenterList.add(new DataCenter("https://scontent.fmnl24-1.fna.fbcdn.net/v/t1.6435-9/56629322_2586522344709165_9170986385169973248_n.png?_nc_cat=101&ccb=1-7&_nc_sid=7a1959&_nc_ohc=s8PKBaXt_NcAX83E01N&_nc_ht=scontent.fmnl24-1.fna&oh=00_AfA3Q1QXSC2fcUM-nRn1vk6WzafiwjTKNjJdSNUuCj_miQ&oe=65D46926", "C.P Reyes Hospital"));
-        dataCenterList.add(new DataCenter("https://scontent.fmnl24-1.fna.fbcdn.net/v/t39.30808-6/327295511_1377913956284459_2414036593808725653_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=efb6e6&_nc_ohc=MfEe1hagHWcAX8SplWN&_nc_ht=scontent.fmnl24-1.fna&oh=00_AfDcybo4wtun9NnFL_2HqvGOCcx5QyK8gG5pBR9_BFN3bw&oe=65B1055F", "Cabrini Medical Center"));
+        dataCenterList.add(new DataCenter("https://scontent.fmnl7-1.fna.fbcdn.net/v/t39.30808-1/327295511_1377913956284459_2414036593808725653_n.jpg?stp=dst-jpg_p200x200&_nc_cat=104&ccb=1-7&_nc_sid=596444&_nc_eui2=AeGSQkhKieHa3DAdJwztWafAEmY1PRorAX8SZjU9GisBfwOka2kqt5zmuS7rtn9KyxRjWx4HW3BgE3QibLCcGaV_&_nc_ohc=FjbeE6tiN34AX_nCb5y&_nc_ht=scontent.fmnl7-1.fna&oh=00_AfAjRgkne07Wm8DSR4OzvXw65pfx_sH-JoQQgnS-FJGZIw&oe=65BE1F5D", "Cabrini Medical Center"));
         dataCenterList.add(new DataCenter("https://th.bing.com/th/id/R.94adcbb2ceaf4d112716a87ee6f7b800?rik=K0dBzhDwP5r3DA&riu=http%3a%2f%2fphotos.wikimapia.org%2fp%2f00%2f00%2f83%2f47%2f75_big.jpg&ehk=qyN0J6a9rauCJVojyHfVoE3cSEex1%2fMFpPFnNyhozKc%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1", "DMMC"));
         dataCenterList.add(new DataCenter("https://th.bing.com/th/id/OIP.l9_QzBq2TczSCEKKpNVvzwAAAA?rs=1&pid=ImgDetMain", "Santo Tomas General Hospital"));
         dataCenterList.add(new DataCenter("https://static.seriousmd.com/profile_pictures/clinic_11996_5c32b016-a591-4c18-9ed4-0071477a26ef.jpg", "Community General Hospital"));
@@ -203,58 +201,55 @@ public class HomeFrag extends Fragment {
         return view;
     }
 
-
-
-
-    private void getWeatherInfoForLocation() {
-        String city = "Santo Tomas";
-        String country = "Philippines";
-
-        String apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "," + country + "&appid=43f6f5726e6143864cf4b139376f2029";
-
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, apiUrl, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                List<WeatherInfoData> weatherInfoDataList = parseWeatherData(response);
-
-                WeatherAdapter weatherAdapter = new WeatherAdapter(weatherInfoDataList);
-                updatesRecyclerView.setAdapter(weatherAdapter);
-                updatesRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-                Toast.makeText(getContext(), error.toString(), Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        RequestQueue requestQueue = Volley.newRequestQueue(requireContext());
-        requestQueue.add(stringRequest);
-    }
-
-    private List<WeatherInfoData> parseWeatherData(String response) {
-        List<WeatherInfoData> weatherInfoDataList = new ArrayList<>();
-
-        try {
-            JSONObject jsonResponse = new JSONObject(response);
-
-            // Extract necessary information from the JSON response
-            String cityName = jsonResponse.optString("name");
-            String countryName = jsonResponse.optJSONObject("sys").optString("country");
-            double temperature = jsonResponse.optJSONObject("main").optDouble("temp");
-            String description = jsonResponse.optJSONArray("weather").optJSONObject(0).optString("description");
-
-            // Create a WeatherInfoData object and add it to the list
-            WeatherInfoData weatherInfoData = new WeatherInfoData(cityName, countryName, temperature, description);
-            weatherInfoDataList.add(weatherInfoData);
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        return weatherInfoDataList;
-    }
+//    private void getWeatherInfoForLocation() {
+//        String city = "Santo Tomas";
+//        String country = "Philippines";
+//
+//        String apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "," + country + "&appid=43f6f5726e6143864cf4b139376f2029";
+//
+//        StringRequest stringRequest = new StringRequest(Request.Method.GET, apiUrl, new Response.Listener<String>() {
+//            @Override
+//            public void onResponse(String response) {
+//                List<WeatherInfoData> weatherInfoDataList = parseWeatherData(response);
+//
+//                WeatherAdapter weatherAdapter = new WeatherAdapter(weatherInfoDataList);
+//                updatesRecyclerView.setAdapter(weatherAdapter);
+//                updatesRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+//            }
+//        }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//
+//                Toast.makeText(getContext(), error.toString(), Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//
+//        RequestQueue requestQueue = Volley.newRequestQueue(requireContext());
+//        requestQueue.add(stringRequest);
+//    }
+//
+//    private List<WeatherInfoData> parseWeatherData(String response) {
+//        List<WeatherInfoData> weatherInfoDataList = new ArrayList<>();
+//
+//        try {
+//            JSONObject jsonResponse = new JSONObject(response);
+//
+//            // Extract necessary information from the JSON response
+//            String cityName = jsonResponse.optString("name");
+//            String countryName = jsonResponse.optJSONObject("sys").optString("country");
+//            double temperature = jsonResponse.optJSONObject("main").optDouble("temp");
+//            String description = jsonResponse.optJSONArray("weather").optJSONObject(0).optString("description");
+//
+//            // Create a WeatherInfoData object and add it to the list
+//            WeatherInfoData weatherInfoData = new WeatherInfoData(cityName, countryName, temperature, description);
+//            weatherInfoDataList.add(weatherInfoData);
+//
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
+//
+//        return weatherInfoDataList;
+//    }
 
 
     private void showExpandedView(SlideModel slideModel) {

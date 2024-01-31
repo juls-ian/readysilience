@@ -75,10 +75,10 @@
             android:id="@+id/maps_viewpager"
             android:layout_width="wrap_content"
             android:layout_height="270dp"
-            android:overScrollMode="never"
             android:layout_gravity="start"
-            android:clipToPadding="false"
             android:layout_marginTop="-30dp"
+            android:clipToPadding="false"
+            android:overScrollMode="never"
 
 
             >
@@ -120,25 +120,22 @@
             android:orientation="vertical">
 
 
-
             <RelativeLayout
-                android:layout_marginTop="5dp"
+                android:id="@+id/map_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/map_layout"
-                >
+                android:layout_marginTop="5dp">
 
                 <androidx.viewpager.widget.ViewPager
                     android:id="@+id/evacuation_center_viewpager"
                     android:layout_width="wrap_content"
                     android:layout_height="340dp"
-                    android:overScrollMode="never"
                     android:layout_gravity="start"
-                    android:clipToPadding="false"
                     android:layout_marginTop="280dp"
                     android:layout_marginBottom="50dp"
+                    android:clipToPadding="false"
                     android:elevation="5dp"
-                    >
+                    android:overScrollMode="never">
 
 
                 </androidx.viewpager.widget.ViewPager>

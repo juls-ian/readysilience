@@ -216,8 +216,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     if (userProfileData != null) {
                         // Load the profile image from the URL
                         String profileImageUrl = userProfileData.getProfileImageUrl();
-                        if (profileImageUrl != null && !profileImageUrl.isEmpty()) {
-                            // Use Glide to load the image into the CircleImageView
+                        if (profileImageUrl != null && !profileImageUrl.isEmpty() && !isDestroyed()) {
+                            // Use Glide to load the image into the CircleImageView only if the activity is not destroyed
                             Glide.with(MainActivity.this).load(profileImageUrl).into(userProfileIcon);
                         }
                     }
@@ -321,7 +321,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         reportButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Fetch user information from the "Users" database
                 FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
                 DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("Users").child(currentUser.getUid());
 
@@ -335,7 +334,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             String lastName = userProfileData.getLastName();
                             String phoneNumber = userProfileData.getPhoneNumber();
 
-                            // Find the RadioGroup views
                             RadioGroup disastersRadioGroup1 = dialog.findViewById(R.id.disasters_radio_group1);
                             RadioGroup disastersRadioGroup2 = dialog.findViewById(R.id.disasters_radio_group2);
 
@@ -380,7 +378,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                                 Toast.makeText(MainActivity.this, "Report sent successfully", Toast.LENGTH_SHORT).show();
                                                 Log.d("MainActivity", "Report sent successfully");
 
-                                                // Start the SuccessSOS activity
                                                 Intent intent = new Intent(MainActivity.this, SuccessSOS.class);
                                                 intent.putExtra("incidentType", finalSelectedIncidentType);
                                                 intent.putExtra("description", description);
@@ -545,7 +542,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void showExitConfirmationDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialogTheme);
         builder.setTitle("Exit App");
         builder.setMessage("Are you sure you want to exit the app?");
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {

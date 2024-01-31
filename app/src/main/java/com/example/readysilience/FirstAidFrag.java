@@ -98,6 +98,11 @@ public class FirstAidFrag extends Fragment {
     }
 
     private void loadVideosForViewPager() {
+        if (!isAdded()) {
+            // Fragment is not attached, avoid unnecessary operations
+            return;
+        }
+
         FirebaseStorage.getInstance().getReference().child("videos").listAll()
                 .addOnSuccessListener(new OnSuccessListener<ListResult>() {
                     @Override
@@ -111,15 +116,15 @@ public class FirstAidFrag extends Fragment {
                             storageReference.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Uri> task) {
-                                    if (task.isSuccessful()) {
+                                    if (isAdded() && task.isSuccessful()) {
                                         String url = task.getResult().toString();
                                         video.setUrl(url);
                                         videoList.add(video);
                                     }
 
                                     // Set up the ViewPager adapter
-                                    AdapterVid adapterVid = new AdapterVid(requireContext(), videoList);
-                                    if (viewPagerVid != null) {
+                                    if (isAdded() && viewPagerVid != null) {
+                                        AdapterVid adapterVid = new AdapterVid(requireContext(), videoList);
                                         viewPagerVid.setAdapter(adapterVid);
                                         viewPagerVid.setPadding(50, 0, 50, 0);
                                     }
@@ -131,7 +136,9 @@ public class FirstAidFrag extends Fragment {
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(requireContext(), "Failed to retrieve videos", Toast.LENGTH_SHORT).show();
+                        if (isAdded()) {
+                            Toast.makeText(requireContext(), "Failed to retrieve videos", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
     }
