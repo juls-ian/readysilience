@@ -48,6 +48,22 @@ public class MapFragment extends Fragment {
         mapView.getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(@NonNull GoogleMap googleMap) {
+
+                LatLng location1 = new LatLng(14.067446613892669, 121.19462593518556); // Sta. Ana Basketball Court
+                LatLng location2 = new LatLng(14.107370804876277, 121.13893671320922); // Sto. Tomas Evac Center
+                LatLng location3 = new LatLng(14.072573669982877, 121.19574727683766); // Sta. Ana Elementary School
+
+                MarkerOptions markerOptions1 = new MarkerOptions().position(location1).title("Sta. Ana Gymnasium ");
+                MarkerOptions markerOptions2 = new MarkerOptions().position(location2).title("City Evacuation Center of Sto. Tomas, Batangas");
+                MarkerOptions markerOptions3 = new MarkerOptions().position(location3).title("Sta. Ana Elementary School");
+
+                googleMap.addMarker(markerOptions1);
+                googleMap.addMarker(markerOptions2);
+                googleMap.addMarker(markerOptions3);
+
+                // Set the initial camera position
+                LatLng initialLocation = location1;
+                googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(initialLocation, 13));
                 googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
                     @Override
                     public void onMapClick(@NonNull LatLng latLng) {
@@ -55,7 +71,7 @@ public class MapFragment extends Fragment {
                         markerOptions.position(latLng);
                         markerOptions.title(latLng.latitude + "kg" + latLng.longitude);
                         googleMap.clear();
-                        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 20));
+                        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 40));
                         googleMap.addMarker(markerOptions);
                     }
                 });

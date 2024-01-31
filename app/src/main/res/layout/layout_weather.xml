@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+
+    android:gravity="center"
+    android:orientation="horizontal">
+
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="310dp"
+        android:layout_height="240dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:outlineProvider="none"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:elevation="4dp"
+        app:cardCornerRadius="20dp">
+
+
+
+        <ImageView
+            android:id="@+id/disaster_pic"
+            android:src="@drawable/final_weatherbg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:layout_marginTop="-20dp"
+            android:maxHeight="100dp"
+            android:scaleType="fitStart"/>
+
+        <ImageView
+            android:id="@+id/bg"
+            android:src="@drawable/weather_bg2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:scaleType="fitXY"/>
+
+        <ImageView
+            android:id="@+id/indication_icon"
+            android:src="@drawable/weather_sunny"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_gravity="bottom"
+            android:layout_marginStart="195dp"
+            android:layout_marginBottom="50dp"
+            android:elevation="5dp"
+            android:scaleType="fitXY"/>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="5dp"
+
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/temperature"
+                android:text="63"
+                android:paddingLeft="10dp"
+                android:layout_alignParentLeft="true"
+                android:fontFamily="@font/alata"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="40sp"
+                tools:ignore="NotSibling" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/loc_name"
+                android:text="Brgy. Sta Ana"
+                android:paddingLeft="10dp"
+                android:layout_marginTop="-10dp"
+                android:layout_below="@+id/temperature"
+                android:fontFamily="@font/alata"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                tools:ignore="NotSibling" />
+
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@+id/loc_name"
+                android:id="@+id/layout_humidity"
+                android:layout_marginHorizontal="15dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/weather_humidity"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/humidity"
+                    android:text="Humidity"
+                    android:paddingLeft="5dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@+id/loc_name"
+                    android:fontFamily="@font/alata"
+                    android:textColor="@color/white"
+                    android:textSize="13sp"
+                    tools:ignore="NotSibling" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/layout_atmospheric_pressure"
+                android:layout_below="@+id/layout_humidity"
+                android:layout_marginHorizontal="15dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/weather_atmospheric_pressure"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/atmospheric_pressure"
+                    android:text="Atmospheric Pressure"
+                    android:paddingLeft="5dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@+id/humidity"
+                    android:fontFamily="@font/alata"
+                    android:textColor="@color/white"
+                    android:textSize="13sp"
+                    tools:ignore="NotSibling" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/layout_windpressure"
+                android:orientation="horizontal"
+                android:layout_below="@+id/layout_atmospheric_pressure"
+                android:layout_marginHorizontal="15dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/weather_air_pressure"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/wind_speed_pressure"
+                    android:text="Wind Pressure"
+                    android:paddingLeft="5dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@+id/atmospheric_pressure"
+                    android:fontFamily="@font/alata"
+                    android:textColor="@color/white"
+                    android:textSize="13sp"
+                    tools:ignore="NotSibling" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/layout_visibility"
+                android:layout_below="@+id/layout_windpressure"
+                android:orientation="horizontal"
+                android:layout_marginHorizontal="15dp">
+
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/weather_visibility"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/visibility"
+                    android:text="Visibility"
+                    android:paddingLeft="5dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@+id/wind_speed_pressure"
+                    android:fontFamily="@font/alata"
+                    android:textColor="@color/white"
+                    android:textSize="13sp"
+                    tools:ignore="NotSibling" />
+            </LinearLayout>
+
+
+
+
+
+
+
+
+
+        </RelativeLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+
+
+
+
+</RelativeLayout>

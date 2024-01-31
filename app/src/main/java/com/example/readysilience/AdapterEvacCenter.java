@@ -29,6 +29,7 @@ public class AdapterEvacCenter extends PagerAdapter {
     public AdapterEvacCenter(Context context, ArrayList<DataEvacCenters> evacCentersList) {
         this.context = context;
         this.evacCentersList = evacCentersList;
+
     }
 
     @Override
@@ -115,6 +116,10 @@ public class AdapterEvacCenter extends PagerAdapter {
 
     @Override
     public float getPageWidth(int position) {
-        return 0.9f;
+        return 0.8f;
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(String address);
     }
 }
