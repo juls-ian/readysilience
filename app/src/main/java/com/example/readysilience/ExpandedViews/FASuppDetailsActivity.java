@@ -56,8 +56,9 @@ public class FASuppDetailsActivity extends AppCompatActivity {
         viewPager = findViewById(R.id.viewpager_fa_stores);
         ArrayList<DataStoresFirstaid> storesFirstaidsList = new ArrayList<>();
 
-        storesFirstaidsList.add(new DataStoresFirstaid(R.drawable.supplies_store4, "Clinic 1"));
-        storesFirstaidsList.add(new DataStoresFirstaid(R.drawable.supplies_store2, "Clinic 2"));
+        storesFirstaidsList.add(new DataStoresFirstaid("https://maps.app.goo.gl/xPvV3bvvwZLeDNov9", "CM Pharmacy"));
+        storesFirstaidsList.add(new DataStoresFirstaid("https://maps.app.goo.gl/UCQeD92ppKNqtjTb9", "Generika Drugstore"));
+        storesFirstaidsList.add(new DataStoresFirstaid("https://maps.app.goo.gl/UCQeD92ppKNqtjTb9", "Botika Ni Poggs"));
 
 
         int initialPosition = Integer.MAX_VALUE / 2;

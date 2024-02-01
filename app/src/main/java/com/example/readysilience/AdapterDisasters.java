@@ -35,7 +35,7 @@ public class AdapterDisasters extends RecyclerView.Adapter<AdapterDisasters.Disa
     public void onBindViewHolder(@NonNull DisasterViewHolder holder, int position) {
         DataDisasters disasterData = disastersDataList.get(position);
         Glide.with(holder.itemView)
-                .load(disasterData.getImagePic())
+                .load(disasterData.getDisasterPic())
                 .placeholder(R.drawable.image_icon)
                 .into(holder.imageView);
 
@@ -45,11 +45,53 @@ public class AdapterDisasters extends RecyclerView.Adapter<AdapterDisasters.Disa
         holder.proneTypeText.setText(disasterData.getProneType());
         holder.activityTypeText.setText(disasterData.getActivityType());
 
+
+        //BG COLORING
+
+        if ("Earthquake".equals(disasterData.getDisasterName())) {
+            Glide.with(holder.itemView)
+                    .load(R.drawable.bg_disaster_cont_blue)
+                    .placeholder(R.drawable.image_icon)
+                    .into(holder.bg);
+        } else if ("Typhoon".equals(disasterData.getDisasterName())) {
+            Glide.with(holder.itemView)
+                    .load(R.drawable.bg_disaster_cont_darkgreen)
+                    .placeholder(R.drawable.image_icon)
+                    .into(holder.bg);
+        } else if ("Fire".equals(disasterData.getDisasterName())) {
+            Glide.with(holder.itemView)
+                    .load(R.drawable.bg_disaster_cont_gray)
+                    .placeholder(R.drawable.image_icon)
+                    .into(holder.bg);
+        }else if ("Flood".equals(disasterData.getDisasterName())) {
+            Glide.with(holder.itemView)
+                    .load(R.drawable.bg_disaster_cont_yellow)
+                    .placeholder(R.drawable.image_icon)
+                    .into(holder.bg);
+        }else if ("Deforestation".equals(disasterData.getDisasterName())) {
+            Glide.with(holder.itemView)
+                    .load(R.drawable.bg_disaster_cont_pink)
+                    .placeholder(R.drawable.image_icon)
+                    .into(holder.bg);
+        }else if ("Volcanic Eruption".equals(disasterData.getDisasterName())) {
+            Glide.with(holder.itemView)
+                    .load(R.drawable.bg_disaster_cont_red)
+                    .placeholder(R.drawable.image_icon)
+                    .into(holder.bg);
+        }
+
+
+
+
+
+
         //TEXT COLORING
         if ("Natural".equals(disasterData.getDisasterType())) {
-            holder.disasterTypeText.setTextColor(context.getResources().getColor(R.color.yellow)); // Set your green color
+            holder.disasterTypeText.setTextColor(context.getResources().getColor(R.color.green1)); // Set your green color
         } else if ("Man-made".equals(disasterData.getDisasterType())) {
-            holder.disasterTypeText.setTextColor(context.getResources().getColor(R.color.brown)); // Set your red color
+            holder.disasterTypeText.setTextColor(context.getResources().getColor(R.color.yellow)); // Set your red color
+        }else if ("Both".equals((disasterData.getDisasterType()))){
+            holder.disasterTypeText.setTextColor(context.getResources().getColor(R.color.white));
         }
 
         if ("Prone".equals(disasterData.getProneType())) {
@@ -57,6 +99,9 @@ public class AdapterDisasters extends RecyclerView.Adapter<AdapterDisasters.Disa
         } else {
             holder.proneTypeText.setTextColor(context.getResources().getColor(R.color.green)); // Set your red color
         }
+
+
+
     }
 
     @Override
@@ -72,6 +117,7 @@ public class AdapterDisasters extends RecyclerView.Adapter<AdapterDisasters.Disa
         TextView disasterTypeText;
         TextView proneTypeText;
         TextView activityTypeText;
+        ImageView bg;
 
 
 
@@ -83,6 +129,8 @@ public class AdapterDisasters extends RecyclerView.Adapter<AdapterDisasters.Disa
             disasterTypeText = itemView.findViewById(R.id.disaster_type);
             proneTypeText = itemView.findViewById(R.id.prone_level);
             activityTypeText = itemView.findViewById(R.id.recent_act);
+            bg = itemView.findViewById(R.id.bg);
+
 
         }
     }

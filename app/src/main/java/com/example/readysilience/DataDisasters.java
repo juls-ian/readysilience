@@ -12,6 +12,7 @@ public class DataDisasters {
 
     private String activityType;
 
+
     public DataDisasters(int disasterPic, String disasterName, String bitDesc, String disasterType, String proneType, String
                          activityType) {
         this.disasterPic = disasterPic;
@@ -22,7 +23,7 @@ public class DataDisasters {
         this.activityType = activityType;
     }
 
-    public int getImagePic() {
+    public int getDisasterPic() {
         return disasterPic;
     }
 

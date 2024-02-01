@@ -1,15 +1,15 @@
 package com.example.readysilience;
 
 public class DataStoresFirstaid {
-    private int storePic;
+    private String storePic;
     private String storeName;
 
-    public DataStoresFirstaid(int storePic, String storeName) {
+    public DataStoresFirstaid(String storePic, String storeName) {
         this.storePic = storePic;
         this.storeName = storeName;
     }
 
-    public int getStorePic() {
+    public String getStorePic() {
         return storePic;
     }
 
