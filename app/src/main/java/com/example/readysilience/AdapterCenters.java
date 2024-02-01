@@ -1,6 +1,8 @@
 package com.example.readysilience;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +22,7 @@ public class AdapterCenters extends PagerAdapter {
 
     Context context;
     ArrayList<DataCenter> dataCenterList;
+    private AdapterEvacCenter.OnItemClickListener onItemClickListener;
 
 
 
@@ -28,9 +31,14 @@ public class AdapterCenters extends PagerAdapter {
         this.dataCenterList = dataCenterList;
     }
 
+    public void setOnItemClickListener(AdapterEvacCenter.OnItemClickListener listener) {
+        this.onItemClickListener = listener;
+    }
+
     @Override
     public int getCount() {
-        return Integer.MAX_VALUE;
+//        return Integer.MAX_VALUE;
+        return dataCenterList.size();
     }
 
     @Override
@@ -53,10 +61,37 @@ public class AdapterCenters extends PagerAdapter {
         TextView textView = view.findViewById(R.id.text1);
 
         Glide.with(context).asBitmap().load(dataCenter.getImageUrl()).into(imageView);
-        textView.setText(dataCenter.getText());
+        textView.setText(dataCenter.getCenterName());
+
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                int realPosition = position % dataCenterList.size();
+                DataCenter dataCenters = dataCenterList.get(realPosition);
+
+                // Open Google Maps with the address
+                openGoogleMaps(dataCenters.getCenterName(), dataCenters.getHospitalLatitude(), dataCenters.getHospitalLongitude());
+            }
+        });
+
+
+
 
         container.addView(view, 0);
         return view;
+    }
+
+    private void openGoogleMaps(String locationName, double latitude, double longitude) {
+        // Construct a Google Maps URI with the precise location
+        String uri = "https://www.google.com/maps/search/?api=1" +
+                "&query=" + Uri.encode(locationName) +
+                "&ll=" + latitude + "," + longitude;
+
+        Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(uri));
+        context.startActivity(intent);
+
+
     }
 
     @Override

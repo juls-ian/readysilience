@@ -21,9 +21,8 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 
-import com.denzcoskun.imageslider.ImageSlider;
-import com.denzcoskun.imageslider.constants.AnimationTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
+
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +36,7 @@ import org.json.JSONObject;
 
 public class HomeFrag extends Fragment {
 
+
     RecyclerView recyclerView;
 
     ViewPager viewPager;
@@ -44,12 +44,12 @@ public class HomeFrag extends Fragment {
     ArrayList<DataCenter> dataCenterList = new ArrayList<>();
 
 
+
+
     public HomeFrag() {
         // Required empty public constructor
 
     }
-
-    RecyclerView updatesRecyclerView;
 
 
         @Override
@@ -57,10 +57,23 @@ public class HomeFrag extends Fragment {
                              Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-//            updatesRecyclerView = view.findViewById(R.id.updatesRecyclerView);
-//            getWeatherInfoForLocation();
+        //WEATHER
+
+            recyclerView = view.findViewById(R.id.weather_recycler_view);
+            List<DataWeather> weatherDataList = new ArrayList<>();
+            weatherDataList.add(new DataWeather("63",
+                    "Humidity",
+                    "Atmospheric Pressure",
+                    "Wind Pressure",
+                    "Visibility",
+                    R.drawable.weather_sunny
+                    ));
+            recyclerView.setAdapter(new AdapterWeather(getContext(), weatherDataList));
+            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
 
             //ANNOUNCEMENTS
 
@@ -71,28 +84,34 @@ public class HomeFrag extends Fragment {
 
 
 
-        //UPDATES
-        recyclerView = view.findViewById(R.id.updatesRecyclerView);
-        List<DataUpdates> updateDataList = new ArrayList<>();
-        updateDataList.add(new DataUpdates("https://t3.ftcdn.net/jpg/03/27/55/60/360_F_327556002_99c7QmZmwocLwF7ywQ68ChZaBry1DbtD.jpg", "Live Update: Bagyong Yolanda towards Samar"));
-        updateDataList.add(new DataUpdates("https://media.gettyimages.com/id/1311148884/vector/abstract-globe-background.jpg?s=612x612&w=gi&k=20&c=G5uPfn2VTF3aXCr76pn1T7oWE-aHVQ0rAYMl_MK2OvM=", "Breaking News: Japan Earthquake"));
-        recyclerView.setAdapter(new AdapterUpdates(getContext(), updateDataList));
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
 
         //NEARBY CENTERS
         viewPager = view.findViewById(R.id.viewPager);
 
-        dataCenterList.add(new DataCenter("https://scontent.fmnl24-1.fna.fbcdn.net/v/t1.6435-9/56629322_2586522344709165_9170986385169973248_n.png?_nc_cat=101&ccb=1-7&_nc_sid=7a1959&_nc_ohc=s8PKBaXt_NcAX83E01N&_nc_ht=scontent.fmnl24-1.fna&oh=00_AfA3Q1QXSC2fcUM-nRn1vk6WzafiwjTKNjJdSNUuCj_miQ&oe=65D46926", "C.P Reyes Hospital"));
-        dataCenterList.add(new DataCenter("https://scontent.fmnl7-1.fna.fbcdn.net/v/t39.30808-1/327295511_1377913956284459_2414036593808725653_n.jpg?stp=dst-jpg_p200x200&_nc_cat=104&ccb=1-7&_nc_sid=596444&_nc_eui2=AeGSQkhKieHa3DAdJwztWafAEmY1PRorAX8SZjU9GisBfwOka2kqt5zmuS7rtn9KyxRjWx4HW3BgE3QibLCcGaV_&_nc_ohc=FjbeE6tiN34AX_nCb5y&_nc_ht=scontent.fmnl7-1.fna&oh=00_AfAjRgkne07Wm8DSR4OzvXw65pfx_sH-JoQQgnS-FJGZIw&oe=65BE1F5D", "Cabrini Medical Center"));
-        dataCenterList.add(new DataCenter("https://th.bing.com/th/id/R.94adcbb2ceaf4d112716a87ee6f7b800?rik=K0dBzhDwP5r3DA&riu=http%3a%2f%2fphotos.wikimapia.org%2fp%2f00%2f00%2f83%2f47%2f75_big.jpg&ehk=qyN0J6a9rauCJVojyHfVoE3cSEex1%2fMFpPFnNyhozKc%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1", "DMMC"));
-        dataCenterList.add(new DataCenter("https://th.bing.com/th/id/OIP.l9_QzBq2TczSCEKKpNVvzwAAAA?rs=1&pid=ImgDetMain", "Santo Tomas General Hospital"));
-        dataCenterList.add(new DataCenter("https://static.seriousmd.com/profile_pictures/clinic_11996_5c32b016-a591-4c18-9ed4-0071477a26ef.jpg", "Community General Hospital"));
+        dataCenterList.add(new DataCenter("https://www.health-core.org/wp-content/uploads/2017/10/st_cabrini_nabh_accreditation.jpg",
+                "St. Frances Cabrini Medical Center",
+                14.126479887369038, 121.13823613703165));
+
+            dataCenterList.add(new DataCenter("https://lh5.googleusercontent.com/p/AF1QipNUgJelQ_Ouu4UY4gbXwgwSJdR2uFrMbXy9ROQZ=w480-h300-k-n-rw",
+                    "Santo Tomas General Hospital",
+                    14.098478505443497, 121.147269723536));
+
+            dataCenterList.add(new DataCenter("https://lh5.googleusercontent.com/p/AF1QipOpq_BLB9TFCcIsqYXD8SEmTwc7W0B76fK4A9cS=w408-h306-k-no",
+                    "St. John Diagnostic and Medical Clinic",
+                    14.092505553654314, 121.14888583433017));
+
+            dataCenterList.add(new DataCenter("https://jodans.com.ph/projects/148687922512.jpg",
+                    "C.P. Reyes Hospital",
+                    14.084706256479368, 121.14956283887555));
+
 
         int initialPosition = Integer.MAX_VALUE / 2;
         viewPager.setAdapter(new AdapterCenters(getContext(), dataCenterList));
-        viewPager.setPadding(100, 0, 0, 0);
+        viewPager.setPadding(50, 0, 50, 0);
         viewPager.setCurrentItem(initialPosition);
+
+
 
         //FEATURED
             recyclerView = view.findViewById(R.id.featuredRecyclerView);
@@ -187,6 +206,78 @@ public class HomeFrag extends Fragment {
 
 
             //DATA 2 - Image Resolution:
+            featuredDataList.add(new DataFeatured("https://shutgun.ca/wp-content/uploads/2023/02/inspecting-fire-extinguihser.jpg",
+                    "Know the Importance of a Fire Extinguisher",
+                    "You cannot tell when a fire will happen. Before you know it, the flames have spread, damaging the vicinity and endangering lives. \n" +
+                            "\n" +
+                            "Fire extinguishers are your first line of defense. But how exactly do these fire protection devices work? Do they work on all kinds of fires? \n" +
+                            "\n" +
+                            "In this article, you’ll learn the importance of fire extinguishers in the workplace and at home. This article will also discuss its types and advantages and disadvantages. ",
+                    "",
+                    "What is a Fire Extinguisher?",
+                    "A fire extinguisher is a device used for extinguishing small fires or controlling their spread and damage before the firefighters arrive. It usually contains dry or wet chemicals specifically formulated to counter flames.  \n" +
+                            "\n" +
+                            "Fire extinguishers come in various sizes, but they’re generally portable. They’re usually located in accessible places, so people can quickly grab them in case of emergency. \n" +
+                            "\n" +
+                            "Does a fire extinguisher expire? Yes, it does.\n" +
+                            "\n" +
+                            "However, the lifespan of a fire extinguisher is generally long. If you’re wondering how many years is a fire extinguisher good for, know that a fire extinguisher can last between 10 and 12 years if its vessel is properly maintained. ",
+                    "https://25174313.fs1.hubspotusercontent-eu1.net/hub/25174313/hubfs/Pics%20for%20blog%20-%20600x400-Jun-19-2023-07-55-01-7730-AM.png?width=674&height=449&name=Pics%20for%20blog%20-%20600x400-Jun-19-2023-07-55-01-7730-AM.png",
+                    "Is it important to have a fire extinguisher at home? Yes—fires can happen anywhere, so a fire extinguisher is necessary in homes, shops, and offices, among others. \n" +
+                            "\n" +
+                            "Place fire extinguishers across your property, including all the floors of your home, your garage, bedrooms, and most importantly, near a heat source such as the kitchen. \n" +
+                            "\n" +
+                            "If you're running a business, you’ll have to secure a Fire Safety Inspection Certificate.[1] Fire extinguishers are among this certificate’s requirements. \n" +
+                            "\n" +
+                            "There are also fire extinguishers designed for car owners. It may not seem immediately obvious that you need one, but remember that your car runs on fuel and some of its parts are made of combustible material. ",
+                    "Pros of Using a Fire Extinguisher ",
+                    "\uD83D\uDC4D Useful During Emergencies \n" +
+                            "The importance of a fire extinguisher is evident during emergencies. In the hands of an alert individual, this device can control the size and spread of the fire before firefighters arrive. It can also completely kill small fires.  \n" +
+                            "\n" +
+                            "\uD83D\uDC4D Relatively Affordable \n" +
+                            "Fire extinguishers are relatively inexpensive, costing between ₱500 to ₱1,000. You can buy them online via shopping platforms like Lazada or Shopee.  \n" +
+                            "\n" +
+                            "\uD83D\uDC4D Portable\n" +
+                            "Fire extinguishers are light and portable, which means you can place them wherever necessary. Take them with you if you’re moving to a new home or office. You can even keep a smaller variant in your car. \n" +
+                            "\n" +
+                            "\uD83D\uDC4D Easy to Use \n" +
+                            "Since fire extinguishers are lightweight and portable, anyone can singlehandedly operate them. Some extinguishers even come with instructions to guide those using them for the first time.   ",
+                    "",
+                    "https://25174313.fs1.hubspotusercontent-eu1.net/hub/25174313/hubfs/Pics%20for%20blog%20-%20600x400%20(2)-Jun-19-2023-08-07-41-1959-AM.png?width=674&height=449&name=Pics%20for%20blog%20-%20600x400%20(2)-Jun-19-2023-08-07-41-1959-AM.png",
+                    "The importance of a fire extinguisher is evident during emergencies. In the hands of an alert individual, this device can control the size and spread of the fire before firefighters arrive. It can also completely kill small fires",
+                    "Types of Fire Extinguishers",
+                    "https://25174313.fs1.hubspotusercontent-eu1.net/hub/25174313/hubfs/Pics%20for%20blog%20-%20600x400%20(1)-Jun-19-2023-07-57-30-2514-AM.png?width=675&height=450&name=Pics%20for%20blog%20-%20600x400%20(1)-Jun-19-2023-07-57-30-2514-AM.png",
+                    "\uD83D\uDD25 Water Fire Extinguisher \n" +
+                            "Water fire extinguishers use high-pressure water to douse fires. They’re also mixed with certain additives to increase effectiveness. They generally come in two types: water spray and dry water mist. \n" +
+                            "\n" +
+                            "Water spray extinguishers are suitable for Class A fires or flames that involve solid materials, such as paper, plastic, and textile. However, they may not be suitable for fires that involve oil and electrical equipment. \n" +
+                            "\n" +
+                            "On the other hand, dry water mist extinguishers can fight almost all kinds of fires. \n" +
+                            "\n" +
+                            "\uD83D\uDD25 Powder Fire Extinguisher \n" +
+                            "Powder fire extinguishers use dry chemical powder to combat fires. The ABC powder extinguisher is one of its most common kinds. \n" +
+                            "\n" +
+                            "As the name suggests, the ABC powder extinguisher can fight class A, B, and C fires. However, it can also combat electrical fires since its powder does not conduct electricity.  \n" +
+                            "\n" +
+                            "\uD83D\uDD25 Carbon Dioxide Fire Extinguisher \n" +
+                            "You can easily identify this fire extinguisher as it bears the text CO2. Fire extinguishers under this classification are designed to combat Class B and electrical fires. They work by displacing and reducing the amount of oxygen—an element that triggers fires—in the vicinity.[3]\n" +
+                            "\n" +
+                            "\uD83D\uDD25 Foam Fire Extinguisher \n" +
+                            "Foam fire extinguishers produce foam that can blanket flames while keeping the vapor from reignition. They’re made of water with foaming additives.\n" +
+                            "\n" +
+                            "These fire extinguishers can combat class A and B flames. \n" +
+                            "\n" +
+                            "\uD83D\uDD25 Wet Chemical Fire Extinguisher\n" +
+                            "Wet chemical fire extinguishers usually contain water, potassium acetate, and potassium carbonate. These are suitable for killing class F fires, which possess extremely high temperatures. However, some variations are designed to combat class A flames. ",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""));
 
 
 //            featuredDataList.add(new DataFeatured("https://www.japantimes.co.jp/uploads/imported_images/uploads/2019/07/f-quakepredict-a-20190708.jpg",
@@ -196,6 +287,9 @@ public class HomeFrag extends Fragment {
             //DISPLAY CONTENT
             recyclerView.setAdapter(new AdapterFeatured(getContext(), featuredDataList));
             recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+
+
 
 
         return view;

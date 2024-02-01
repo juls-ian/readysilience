@@ -10,15 +10,15 @@
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="180dp"
-        android:layout_height="240dp"
+        android:layout_height="200dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
         android:elevation="4dp"
-        app:cardCornerRadius="25dp">
+        app:cardCornerRadius="15dp">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -26,21 +26,25 @@
             <ImageView
                 android:id="@+id/centerImage"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="155dp"
                 android:layout_weight="1"
-                android:scaleType="fitCenter" />
+                android:src="@drawable/center_cabrini"
+                android:scaleType="fitXY" />
 
             <TextView
                 android:gravity="center"
                 android:id="@+id/text1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:layout_weight="1"
+                android:textColor="@color/black"
                 android:textStyle="bold"
+                android:layout_below="@+id/centerImage"
                 android:text="Your Text" />
 
 >
-        </LinearLayout>
+        </RelativeLayout>
     </com.google.android.material.card.MaterialCardView>
 
 

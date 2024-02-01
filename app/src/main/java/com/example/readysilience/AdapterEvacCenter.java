@@ -3,6 +3,9 @@ package com.example.readysilience;
 import static com.example.readysilience.R.*;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +29,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import android.widget.Toast;
 
+
+
 import java.util.ArrayList;
 
 public class AdapterEvacCenter extends PagerAdapter {
@@ -33,9 +38,19 @@ public class AdapterEvacCenter extends PagerAdapter {
     Context context;
     ArrayList<DataEvacCenters> evacCentersList;
 
+    private OnItemClickListener onItemClickListener;
+
+
+
+
     public AdapterEvacCenter(Context context, ArrayList<DataEvacCenters> evacCentersList) {
         this.context = context;
         this.evacCentersList = evacCentersList;
+
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.onItemClickListener = listener;
     }
 
     @Override
@@ -51,9 +66,8 @@ public class AdapterEvacCenter extends PagerAdapter {
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
-
         if (evacCentersList.size() == 0) {
-            return new Object();
+            return new Object(); // Handle empty list to prevent IndexOutOfBoundsException
         }
 
         int realPosition = position % evacCentersList.size();
@@ -151,6 +165,7 @@ public class AdapterEvacCenter extends PagerAdapter {
         textView5.setText(dataEvacCenters.getMedicSupply());
         textView6.setText(dataEvacCenters.getCenterAvailability());
 
+
         setIconBackground(textView2.getText().toString(), waterBottleIcon);
         setIconBackground(textView3.getText().toString(), cannedFoodIcon);
         setIconBackground(textView4.getText().toString(), blanketIcon);
@@ -158,12 +173,33 @@ public class AdapterEvacCenter extends PagerAdapter {
 
         setBackgroundColorBasedOnAvailability(dataEvacCenters.getCenterAvailability(), textView6);
 
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Get the corresponding DataEvacCenters object
+                int realPosition = position % evacCentersList.size();
+                DataEvacCenters dataEvacCenters = evacCentersList.get(realPosition);
 
+                // Open Google Maps with the address
+                openGoogleMaps(dataEvacCenters.getCenterName(), dataEvacCenters.getLatitude(), dataEvacCenters.getLongitude());
+            }
+        });
 
         container.addView(view, 0);
         return view;
     }
 
+    private void openGoogleMaps(String locationName, double latitude, double longitude) {
+        // Construct a Google Maps URI with the precise location
+        String uri = "https://www.google.com/maps/search/?api=1" +
+                "&query=" + Uri.encode(locationName) +
+                "&ll=" + latitude + "," + longitude;
+
+        Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(uri));
+        context.startActivity(intent);
+
+
+    }
     private void showToast(String message) {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
     }
@@ -194,8 +230,14 @@ public class AdapterEvacCenter extends PagerAdapter {
 
     @Override
     public float getPageWidth(int position) {
-        return 0.9f;
+        return 0.8f;
     }
+
+    public interface OnItemClickListener {
+        void onItemClick(String address);
+    }
+
+
 
     private static class Evacuee {
         private String firstName;
