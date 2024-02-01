@@ -57,6 +57,9 @@ public class HomeFrag extends Fragment {
                     "Visibility",
                     R.drawable.weather_sunny
                     ));
+
+
+
             recyclerView.setAdapter(new AdapterWeather(getContext(), weatherDataList));
             recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 

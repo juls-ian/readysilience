@@ -1,6 +1,7 @@
 package com.example.readysilience;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
+import com.example.readysilience.ExpandedViews.WeatherExpandedView;
 
 import java.util.List;
 
@@ -45,6 +47,15 @@ public class AdapterWeather extends RecyclerView.Adapter<AdapterWeather.WeatherV
         holder.windPressureTV.setText(weatherData.getWindPressure());
         holder.visibilityTV.setText(weatherData.getVisibility());
 
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Launch the expanded view activity
+                Intent intent = new Intent(context, WeatherExpandedView.class);
+                context.startActivity(intent);
+            }
+        });
 
     }
 
