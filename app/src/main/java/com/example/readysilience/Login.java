@@ -60,8 +60,9 @@ public class Login extends AppCompatActivity {
         signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Start the TermsFrag fragment
-                replaceFragment(new TermsFrag());
+                Intent intent = new Intent(Login.this, TCActivity.class);
+                // Start the new activity
+                startActivity(intent);
             }
         });
 

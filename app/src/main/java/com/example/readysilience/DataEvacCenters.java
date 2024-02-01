@@ -10,10 +10,14 @@ public class DataEvacCenters {
     String foodSupply;
     String blanketSupply;
     String medicSupply;
+    double latitude;
+    double longitude;
+
 
     public DataEvacCenters(int evaCenterPic, String centerName,
                            String centerLocation, String waterSupply, String foodSupply,
-                        String blanketSupply, String medicSupply, String centerAvailability) {
+                        String blanketSupply, String medicSupply, String centerAvailability,
+                           double latitude, double longitude) {
         this.evaCenterPic = evaCenterPic;
         this.centerAvailability = centerAvailability;
         this.centerName = centerName;
@@ -22,6 +26,8 @@ public class DataEvacCenters {
         this.foodSupply = foodSupply;
         this.blanketSupply = blanketSupply;
         this.medicSupply = medicSupply;
+        this.latitude = latitude;
+        this.longitude = longitude;
 
     }
 
@@ -56,5 +62,13 @@ public class DataEvacCenters {
 
     public String getCenterAvailability(){
         return centerAvailability;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
     }
 }

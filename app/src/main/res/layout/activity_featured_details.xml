@@ -78,7 +78,6 @@
                 android:textSize="25sp"
                 android:fontFamily="@font/alata"
                 android:textStyle="bold"
-                android:lineSpacingMultiplier="0.9"
                 android:gravity="top|left"
                 android:textColor="@color/blue"
                 android:layout_marginHorizontal="15dp"
@@ -94,7 +93,6 @@
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="normal"
-                android:lineSpacingMultiplier="0.9"
                 android:layout_marginHorizontal="10dp" />
 
             <TextView
@@ -105,7 +103,6 @@
                 android:textColor="@color/blue1"
                 android:textSize="22sp"
                 android:textStyle="bold"
-                android:lineSpacingMultiplier="0.9"
                 android:layout_marginHorizontal="10dp" />
 
             <TextView
@@ -116,7 +113,6 @@
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:lineSpacingMultiplier="0.9"
                 android:layout_marginHorizontal="10dp" />
 
             <TextView
@@ -126,7 +122,6 @@
                 android:id="@+id/child_subhead1_details1"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                android:lineSpacingMultiplier="0.9"
                 android:layout_marginHorizontal="10dp" />
 
             <ImageView
@@ -143,7 +138,6 @@
                 android:id="@+id/child_subhead1_details2"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                android:lineSpacingMultiplier="0.9"
                 android:layout_marginHorizontal="10dp" />
 
             <TextView
@@ -154,7 +148,6 @@
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:lineSpacingMultiplier="0.9"
                 android:layout_marginHorizontal="10dp" />
 
             <TextView
@@ -164,7 +157,6 @@
                 android:id="@+id/second_subheading2_text"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                android:lineSpacingMultiplier="0.9"
                 android:layout_marginHorizontal="10dp" />
 
             <TextView
@@ -175,7 +167,6 @@
                 android:textColor="@color/blue1"
                 android:textSize="22sp"
                 android:textStyle="bold"
-                android:lineSpacingMultiplier="0.9"
                 android:layout_marginHorizontal="10dp" />
 
             <ImageView
@@ -192,7 +183,6 @@
                 android:id="@+id/parent_subhead2_details"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                android:lineSpacingMultiplier="0.9"
                 android:layout_marginHorizontal="10dp" />
 
             <TextView
@@ -203,7 +193,6 @@
                 android:textColor="@color/blue1"
                 android:textSize="22sp"
                 android:textStyle="bold"
-                android:lineSpacingMultiplier="0.9"
                 android:layout_marginHorizontal="10dp" />
 
             <ImageView
@@ -220,7 +209,6 @@
                 android:id="@+id/parent_subhead3_details"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                android:lineSpacingMultiplier="0.9"
                 android:layout_marginHorizontal="10dp" />
 
             <TextView
@@ -242,7 +230,6 @@
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:lineSpacingMultiplier="0.9"
                 android:layout_marginHorizontal="10dp" />
 
             <TextView
@@ -252,7 +239,6 @@
                 android:id="@+id/child_subhead3_details"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                android:lineSpacingMultiplier="0.9"
                 android:layout_marginHorizontal="10dp" />
 
             <TextView
@@ -263,7 +249,6 @@
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:lineSpacingMultiplier="0.9"
                 android:layout_marginHorizontal="10dp" />
 
             <TextView
@@ -273,7 +258,6 @@
                 android:id="@+id/child_subhead4_details"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                android:lineSpacingMultiplier="0.9"
                 android:layout_marginHorizontal="10dp" />
 
             <TextView
@@ -284,7 +268,6 @@
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:lineSpacingMultiplier="0.9"
                 android:layout_marginHorizontal="10dp" />
 
             <TextView
@@ -294,7 +277,6 @@
                 android:id="@+id/child_subhead5_details"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                android:lineSpacingMultiplier="0.9"
                 android:layout_marginHorizontal="10dp" />
 
             <TextView
@@ -305,7 +287,6 @@
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:lineSpacingMultiplier="0.9"
                 android:layout_marginHorizontal="10dp" />
 
             <TextView
@@ -315,7 +296,6 @@
                 android:id="@+id/child_subhead6_details"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                android:lineSpacingMultiplier="0.9"
                 android:layout_marginHorizontal="10dp" />
 
         </LinearLayout>

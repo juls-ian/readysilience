@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -53,7 +54,7 @@ public class MapFragment extends Fragment {
                 LatLng location2 = new LatLng(14.107370804876277, 121.13893671320922); // Sto. Tomas Evac Center
                 LatLng location3 = new LatLng(14.072573669982877, 121.19574727683766); // Sta. Ana Elementary School
 
-                MarkerOptions markerOptions1 = new MarkerOptions().position(location1).title("Sta. Ana Gymnasium ");
+                MarkerOptions markerOptions1 = new MarkerOptions().position(location1).title("Sta. Ana Basketball Court ");
                 MarkerOptions markerOptions2 = new MarkerOptions().position(location2).title("City Evacuation Center of Sto. Tomas, Batangas");
                 MarkerOptions markerOptions3 = new MarkerOptions().position(location3).title("Sta. Ana Elementary School");
 
@@ -71,10 +72,19 @@ public class MapFragment extends Fragment {
                         markerOptions.position(latLng);
                         markerOptions.title(latLng.latitude + "kg" + latLng.longitude);
                         googleMap.clear();
-                        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 40));
+                        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 20));
                         googleMap.addMarker(markerOptions);
                     }
                 });
+            }
+        });
+
+        mapView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                // Enable ScrollView's touch events
+                v.getParent().requestDisallowInterceptTouchEvent(true);
+                return false;
             }
         });
 

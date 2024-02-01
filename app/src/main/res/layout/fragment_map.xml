@@ -7,17 +7,18 @@
     tools:context=".MapFragment">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="360dp"
+        android:layout_width="350dp"
         app:cardCornerRadius="20dp"
         android:layout_gravity="top|center"
         android:layout_height="400dp">
 
 
-    <com.google.android.gms.maps.MapView
-        android:id="@+id/evacenter_map"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center" />
+        <com.example.readysilience.CustomMapView
+            android:id="@+id/evacenter_map"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center" />
+
 
     </androidx.cardview.widget.CardView>
 </FrameLayout>

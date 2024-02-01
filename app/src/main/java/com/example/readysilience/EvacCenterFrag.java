@@ -1,14 +1,19 @@
 package com.example.readysilience;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.viewpager.widget.ViewPager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.rd.PageIndicatorView;
 
@@ -71,27 +76,34 @@ public class EvacCenterFrag extends Fragment {
                 // Not needed for this implementation
             }
         });
-        FragmentManager childFragmentManager = getChildFragmentManager();
+        FragmentManager fragmentManager = getFragmentManager();
         MapFragment mapFragment = new MapFragment();
-        childFragmentManager.beginTransaction().replace(R.id.map_layout, mapFragment).commit();
+        fragmentManager.beginTransaction().replace(R.id.map_layout, mapFragment).commit();
 
 
         //EVAC CENTERS
         viewPagerCenters = view.findViewById(R.id.evacuation_center_viewpager);
 
-        evacCentersList.add(new DataEvacCenters(R.drawable.evac_center_court, "Sta. Ana Gynasium", "Brgy. Sta. Ana",
-                "Need Donation", "Equipped", "Equipped", "Need Donation",
-                "Available"));
-
-        evacCentersList.add(new DataEvacCenters(R.drawable.evac_center_stomas, "Sto. Tomas Evacuation Center", "Sto. Tomas Batangas",
+        evacCentersList.add(new DataEvacCenters(R.drawable.evac_center_stomas, "Sto. Tomas Evacuation Center", "444Q+P98, Sto. Tomas, Batangas",
                 "Need Donation", "Equipped", "Equipped", "Equipped",
-                "Available"));
+                "Available",14.10712419186952, 121.13908182353603));
 
-        evacCentersList.add(new DataEvacCenters(R.drawable.evac_center_school, "Sta. Ana Elementary School", "Brgy. Sta. Ana",
+        evacCentersList.add(new DataEvacCenters(R.drawable.evac_center_court, "Brgy. Sta. Ana Basketball Court", "358V+WV5, Sto. Tomas, Batangas",
+                "Need Donation", "Equipped", "Equipped", "Need Donation",
+                "Available", 14.067415392647591, 121.19463666402055));
+
+        evacCentersList.add(new DataEvacCenters(R.drawable.evac_center_school, "Sta Ana Elementary School", "358V+CW5, Sto. Tomas, Batangas",
                 "Equipped", "Need Donation", "Equipped", "Need Donation",
-                "Crowded"));
+                "Crowded", 14.066051218977245, 121.19486635995683));
 
-
+        viewPagerMaps.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                // Disable ScrollView's touch events
+                view.getParent().requestDisallowInterceptTouchEvent(true);
+                return false;
+            }
+        });
         viewPagerCenters.setAdapter(new AdapterEvacCenter(getContext(), evacCentersList));
         viewPagerCenters.setPadding(50, 0, 50, 0);
 
@@ -99,5 +111,7 @@ public class EvacCenterFrag extends Fragment {
     }
 
 
+    }
 
-}
+
+

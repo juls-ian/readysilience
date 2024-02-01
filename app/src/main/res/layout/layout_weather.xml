@@ -25,7 +25,7 @@
 
 
         <ImageView
-            android:id="@+id/disaster_pic"
+            android:id="@+id/weather_bg"
             android:src="@drawable/final_weatherbg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -68,6 +68,7 @@
                 android:text="63"
                 android:paddingLeft="10dp"
                 android:layout_alignParentLeft="true"
+                android:layout_marginBottom="5dp"
                 android:fontFamily="@font/alata"
                 android:textColor="@color/white"
                 android:textStyle="bold"
@@ -80,7 +81,8 @@
                 android:id="@+id/loc_name"
                 android:text="Brgy. Sta Ana"
                 android:paddingLeft="10dp"
-                android:layout_marginTop="-10dp"
+                android:layout_marginTop="-15dp"
+                android:layout_marginBottom="3dp"
                 android:layout_below="@+id/temperature"
                 android:fontFamily="@font/alata"
                 android:textColor="@color/white"
@@ -94,6 +96,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_below="@+id/loc_name"
+                android:layout_marginVertical="2dp"
                 android:id="@+id/layout_humidity"
                 android:layout_marginHorizontal="15dp">
 
@@ -123,6 +126,7 @@
                 android:orientation="horizontal"
                 android:id="@+id/layout_atmospheric_pressure"
                 android:layout_below="@+id/layout_humidity"
+                android:layout_marginVertical="2dp"
                 android:layout_marginHorizontal="15dp">
 
                 <ImageView
@@ -152,6 +156,7 @@
                 android:id="@+id/layout_windpressure"
                 android:orientation="horizontal"
                 android:layout_below="@+id/layout_atmospheric_pressure"
+                android:layout_marginVertical="2dp"
                 android:layout_marginHorizontal="15dp">
 
                 <ImageView
@@ -180,6 +185,7 @@
                 android:id="@+id/layout_visibility"
                 android:layout_below="@+id/layout_windpressure"
                 android:orientation="horizontal"
+                android:layout_marginVertical="2dp"
                 android:layout_marginHorizontal="15dp">
 
 

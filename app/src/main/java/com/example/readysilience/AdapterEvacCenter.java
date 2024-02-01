@@ -3,9 +3,13 @@ package com.example.readysilience;
 import static com.example.readysilience.R.*;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,12 +28,19 @@ public class AdapterEvacCenter extends PagerAdapter {
     Context context;
     ArrayList<DataEvacCenters> evacCentersList;
 
+    private OnItemClickListener onItemClickListener;
+
+
 
 
     public AdapterEvacCenter(Context context, ArrayList<DataEvacCenters> evacCentersList) {
         this.context = context;
         this.evacCentersList = evacCentersList;
 
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.onItemClickListener = listener;
     }
 
     @Override
@@ -84,12 +95,33 @@ public class AdapterEvacCenter extends PagerAdapter {
 
         setBackgroundColorBasedOnAvailability(dataEvacCenters.getCenterAvailability(), textView6);
 
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Get the corresponding DataEvacCenters object
+                int realPosition = position % evacCentersList.size();
+                DataEvacCenters dataEvacCenters = evacCentersList.get(realPosition);
 
+                // Open Google Maps with the address
+                openGoogleMaps(dataEvacCenters.getCenterName(), dataEvacCenters.getLatitude(), dataEvacCenters.getLongitude());
+            }
+        });
 
         container.addView(view, 0);
         return view;
     }
 
+    private void openGoogleMaps(String locationName, double latitude, double longitude) {
+        // Construct a Google Maps URI with the precise location
+        String uri = "https://www.google.com/maps/search/?api=1" +
+                "&query=" + Uri.encode(locationName) +
+                "&ll=" + latitude + "," + longitude;
+
+        Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(uri));
+        context.startActivity(intent);
+
+
+    }
     private void setIconBackground(String status, ImageView waterBottleIcon) {
         if (status.equals("Equipped")) {
             waterBottleIcon.setBackgroundResource(R.drawable.bg_3needs_ready);
@@ -122,4 +154,6 @@ public class AdapterEvacCenter extends PagerAdapter {
     public interface OnItemClickListener {
         void onItemClick(String address);
     }
+
+
 }
