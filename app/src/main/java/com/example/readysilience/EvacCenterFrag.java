@@ -88,11 +88,11 @@ public class EvacCenterFrag extends Fragment {
         //EVAC CENTERS
         viewPagerCenters = view.findViewById(R.id.evacuation_center_viewpager);
 
-        evacCentersList.add(new DataEvacCenters(R.drawable.evac_center_stomas, "Sto. Tomas Evacuation Center", "444Q+P98, Sto. Tomas, Batangas",
+        evacCentersList.add(new DataEvacCenters(R.drawable.evac_center_stomas, "Sto Tomas Evacuation Center", "444Q+P98, Sto. Tomas, Batangas",
                 "Need Donation", "Equipped", "Equipped", "Equipped",
                 "Available",14.10712419186952, 121.13908182353603));
 
-        evacCentersList.add(new DataEvacCenters(R.drawable.evac_center_court, "Brgy. Sta. Ana Basketball Court", "358V+WV5, Sto. Tomas, Batangas",
+        evacCentersList.add(new DataEvacCenters(R.drawable.evac_center_court, "Sta Ana Basketball Court", "358V+WV5, Sto. Tomas, Batangas",
                 "Need Donation", "Equipped", "Equipped", "Need Donation",
                 "Available", 14.067415392647591, 121.19463666402055));
 

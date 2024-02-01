@@ -112,7 +112,6 @@
                         android:layout_height="28dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="5dp"
-                        android:background="@drawable/bg_3needs_ready"
                         android:contentDescription="Waterbottle"
                         android:src="@drawable/icon_bottlewater" />
 
@@ -138,7 +137,6 @@
                         android:layout_height="28dp"
                         android:layout_marginLeft="70dp"
                         android:layout_marginTop="5dp"
-                        android:background="@drawable/bg_3needs_ready"
                         android:src="@drawable/icon_can"
 
                         />
@@ -166,7 +164,6 @@
                         android:layout_height="28dp"
                         android:layout_marginLeft="130dp"
                         android:layout_marginTop="5dp"
-                        android:background="@drawable/bg_3needs_not"
                         android:contentDescription="Medic"
                         android:src="@drawable/icon_blanket" />
 
@@ -194,7 +191,6 @@
                         android:layout_height="28dp"
                         android:layout_marginLeft="130dp"
                         android:layout_marginTop="5dp"
-                        android:background="@drawable/bg_3needs_not"
                         android:contentDescription="Blanket"
                         android:src="@drawable/icon_medicsupp" />
 
@@ -221,7 +217,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="155dp"
                         android:layout_marginTop="115dp"
-                        android:background="@drawable/bg_evac_available"
                         android:fontFamily="@font/alatsi"
                         android:padding="4dp"
                         android:text="Available"

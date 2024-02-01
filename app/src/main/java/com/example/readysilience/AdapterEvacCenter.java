@@ -67,7 +67,7 @@ public class AdapterEvacCenter extends PagerAdapter {
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
         if (evacCentersList.size() == 0) {
-            return new Object(); // Handle empty list to prevent IndexOutOfBoundsException
+            return new Object();
         }
 
         int realPosition = position % evacCentersList.size();
@@ -113,28 +113,22 @@ public class AdapterEvacCenter extends PagerAdapter {
 
                                 DatabaseReference evacueesRef = FirebaseDatabase.getInstance().getReference().child("Evacuees").child(userId);
 
-                                // Check if the user has already checked in
                                 evacueesRef.addListenerForSingleValueEvent(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                         if (dataSnapshot.exists()) {
-                                            // User has already checked in
                                             String previousCenterName = dataSnapshot.child("centerName").getValue(String.class);
 
-                                            // Check if the selected evacuation center is the same as the previous one
                                             if (centerName.equals(previousCenterName)) {
                                                 showToast("You have already chosen " + centerName + " as your evacuation center");
                                             } else {
-                                                // Update the evacuation center and show a Toast message
                                                 dataSnapshot.getRef().child("centerName").setValue(centerName);
                                                 showToast("Evacuation center updated to " + centerName);
                                             }
                                         } else {
-                                            // User hasn't checked in yet, proceed to check in
                                             Evacuee evacuee = new Evacuee(firstName, lastName, houseNumber, purok, phoneNumber, centerName, age);
                                             evacueesRef.setValue(evacuee);
 
-                                            // Show a Toast message after data is stored
                                             showToast("Safety registered at " + centerName);
                                         }
                                     }
@@ -156,6 +150,52 @@ public class AdapterEvacCenter extends PagerAdapter {
             }
         });
 
+        DatabaseReference evacDatabaseRef = null;
+
+        String centerName = dataEvacCenters.getCenterName();
+        switch (centerName) {
+            case "Sta Ana Elementary School":
+                evacDatabaseRef = FirebaseDatabase.getInstance().getReference().child("Sta Ana Elementary School");
+                break;
+            case "Sta Ana Basketball Court":
+                evacDatabaseRef = FirebaseDatabase.getInstance().getReference().child("Sta Ana Basketball Court");
+                break;
+            case "Sto Tomas Evacuation Center":
+                evacDatabaseRef = FirebaseDatabase.getInstance().getReference().child("Sto Tomas Evacuation Center");
+                break;
+            default:
+                Log.e("AdapterEvacCenter", "Unknown centerName: " + centerName);
+                break;
+        }
+
+        if (evacDatabaseRef != null) {
+            evacDatabaseRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        String waterStatus = dataSnapshot.child("Water").getValue(String.class);
+                        String foodStatus = dataSnapshot.child("Foods").getValue(String.class);
+                        String garmentStatus = dataSnapshot.child("Garments").getValue(String.class);
+                        String medicStatus = dataSnapshot.child("Medicine").getValue(String.class);
+                        String availabilityStatus = dataSnapshot.child("Availability").getValue(String.class);
+
+                        setIconBackground(waterStatus, waterBottleIcon, textView2);
+                        setIconBackground(foodStatus, cannedFoodIcon, textView3);
+                        setIconBackground(garmentStatus, blanketIcon, textView4);
+                        setIconBackground(medicStatus, medicIcon, textView5);
+                        setBackgroundColorBasedOnAvailability(availabilityStatus, textView6);
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    // Handle onCancelled event
+                }
+            });
+        } else {
+            Log.e("AdapterEvacCenter", "evacDatabaseRef is null for centerName: " + centerName);
+        }
+
         Glide.with(context).asBitmap().load(dataEvacCenters.getEvaCenterPic()).into(imageView);
         textView.setText(dataEvacCenters.getCenterName());
         textView1.setText(dataEvacCenters.getCenterLocation());
@@ -164,12 +204,6 @@ public class AdapterEvacCenter extends PagerAdapter {
         textView4.setText(dataEvacCenters.getBlanketSupply());
         textView5.setText(dataEvacCenters.getMedicSupply());
         textView6.setText(dataEvacCenters.getCenterAvailability());
-
-
-        setIconBackground(textView2.getText().toString(), waterBottleIcon);
-        setIconBackground(textView3.getText().toString(), cannedFoodIcon);
-        setIconBackground(textView4.getText().toString(), blanketIcon);
-        setIconBackground(textView5.getText().toString(), medicIcon);
 
         setBackgroundColorBasedOnAvailability(dataEvacCenters.getCenterAvailability(), textView6);
 
@@ -204,24 +238,48 @@ public class AdapterEvacCenter extends PagerAdapter {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
     }
 
-    private void setIconBackground(String status, ImageView waterBottleIcon) {
-        if (status.equals("Equipped")) {
-            waterBottleIcon.setBackgroundResource(R.drawable.bg_3needs_ready);
-        } else if (status.equals("Need Donation")) {
-            waterBottleIcon.setBackgroundResource(R.drawable.bg_3needs_not);
+    private void setIconBackground(String status, ImageView imageView, TextView textView) {
+        if (status != null) {
+            if (status.equals("Equipped")) {
+                imageView.setBackgroundResource(R.drawable.bg_3needs_ready);
+                if (textView != null) {
+                    textView.setText("Equipped");
+                }
+            } else if (status.equals("Need Donation")) {
+                imageView.setBackgroundResource(R.drawable.bg_3needs_not);
+                if (textView != null) {
+                    textView.setText("Need Donation");
+                }
+            }
         }
-
     }
 
     private void setBackgroundColorBasedOnAvailability(String availabilityStatus, TextView centerAvailabilityTextView) {
         int backgroundDrawable;
-        if ("Available".equals(availabilityStatus)) {
-            backgroundDrawable = drawable.bg_evac_available;
-        } else {
-            backgroundDrawable = drawable.bg_evac_unavailable;
+
+        switch (availabilityStatus) {
+            case "Available":
+                backgroundDrawable = R.drawable.bg_evac_available;
+                centerAvailabilityTextView.setText("Available");
+                break;
+            case "Unavailable":
+                backgroundDrawable = R.drawable.bg_evac_unavailable;
+                centerAvailabilityTextView.setText("Unavailable");
+                break;
+            case "Crowded":
+                backgroundDrawable = R.drawable.bg_evac_crowded;
+                centerAvailabilityTextView.setText("Crowded");
+                break;
+            default:
+                backgroundDrawable = R.drawable.bg_evac_unavailable;
+                centerAvailabilityTextView.setText("Unknown");
+                Log.e("AdapterEvacCenter", "Unknown availabilityStatus: " + availabilityStatus);
+                break;
         }
+
         centerAvailabilityTextView.setBackgroundResource(backgroundDrawable);
     }
+
 
     @Override
     public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
