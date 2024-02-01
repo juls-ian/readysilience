@@ -37,8 +37,8 @@ public class AdapterCenters extends PagerAdapter {
 
     @Override
     public int getCount() {
-//        return Integer.MAX_VALUE;
-        return dataCenterList.size();
+        return Integer.MAX_VALUE;
+//        return dataCenterList.size();
     }
 
     @Override

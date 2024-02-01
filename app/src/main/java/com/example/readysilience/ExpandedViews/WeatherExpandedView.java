@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import com.example.readysilience.R;
 
+
 public class WeatherExpandedView extends AppCompatActivity {
 
     @Override
