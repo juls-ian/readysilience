@@ -61,6 +61,17 @@
         android:orientation="vertical"
         android:layout_marginVertical="20dp">
 
+        <TextView
+            android:id="@+id/empty_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="You don't have anything to do"
+            android:layout_gravity="center"
+            android:textColor="@color/blue"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_marginTop="16dp"/>
+
 
 
         <androidx.recyclerview.widget.RecyclerView
@@ -68,6 +79,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:id="@+id/todo_recyclerview"/>
+
+
+
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -88,7 +102,11 @@
                 app:elevation="0dp"
                 android:src="@drawable/icon_add" />
 
+
+
         </LinearLayout>
+
+
 
     </LinearLayout>
 

@@ -19,6 +19,7 @@ import java.util.List;
 public class AdapterInjuries extends RecyclerView.Adapter<AdapterInjuries.InjuryViewHolder> {
     private Context context;
     private List<DataInjuries> injuriesList;
+    private OnItemClickListener onItemClickListener;
 
     public AdapterInjuries(Context context, List<DataInjuries> injuriesList) {
         this.context = context;
@@ -30,6 +31,14 @@ public class AdapterInjuries extends RecyclerView.Adapter<AdapterInjuries.Injury
     public InjuryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_firstaid_injuries, parent, false);
         return new InjuryViewHolder(view);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(DataInjuries injuriesData);
     }
 
     @Override
@@ -48,6 +57,14 @@ public class AdapterInjuries extends RecyclerView.Adapter<AdapterInjuries.Injury
         holder.injuryTypeIcon.setImageResource(typeIcon);
 
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (onItemClickListener != null) {
+                    onItemClickListener.onItemClick(injuriesData);
+                }
+            }
+        });
     }
 
     private int getTypeIcon(String injuryType) {

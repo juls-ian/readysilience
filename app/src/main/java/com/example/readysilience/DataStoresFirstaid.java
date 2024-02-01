@@ -1,19 +1,32 @@
 package com.example.readysilience;
 
 public class DataStoresFirstaid {
-    private String storePic;
+    private int storePic;
     private String storeName;
+    private double latitude;
+    private double longitude;
 
-    public DataStoresFirstaid(String storePic, String storeName) {
+
+    public DataStoresFirstaid(int storePic, String storeName, double latitude, double longitude) {
         this.storePic = storePic;
         this.storeName = storeName;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 
-    public String getStorePic() {
+    public int getStorePic() {
         return storePic;
     }
 
     public String getStoreName() {
         return storeName;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
     }
 }

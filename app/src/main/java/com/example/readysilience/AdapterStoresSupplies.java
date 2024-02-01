@@ -1,6 +1,8 @@
 package com.example.readysilience;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,9 +57,34 @@ public class AdapterStoresSupplies extends PagerAdapter {
         Glide.with(context).asBitmap().load(storesSupplies.getStorePic()).into(imageView);
         textView.setText(storesSupplies.getStoreName());
 
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Get the corresponding DataEvacCenters object
+                int realPosition = position % storeSuppliesList.size();
+                DataStoresSupplies dataStoresSupplies = storeSuppliesList.get(realPosition);
+
+                // Open Google Maps with the address
+                openGoogleMaps(dataStoresSupplies.getStoreName(), dataStoresSupplies.getLatitude(), dataStoresSupplies.getLongitude());
+            }
+        });
+
         container.addView(view, 0);
         return view;
     }
+
+    private void openGoogleMaps(String locationName, double latitude, double longitude) {
+        // Construct a Google Maps URI with the precise location
+        String uri = "https://www.google.com/maps/search/?api=1" +
+                "&query=" + Uri.encode(locationName) +
+                "&ll=" + latitude + "," + longitude;
+
+        Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(uri));
+        context.startActivity(intent);
+
+
+    }
+
 
     @Override
     public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
