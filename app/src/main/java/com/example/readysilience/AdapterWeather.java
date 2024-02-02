@@ -116,6 +116,7 @@ public class AdapterWeather extends RecyclerView.Adapter<AdapterWeather.WeatherV
                     holder.windPressureTV.setText(weatherInfoData.getWindPressure());
                     holder.visibilityTV.setText(weatherInfoData.getVisibility());
                     holder.cloudStatusTV.setText(weatherInfoData.getWeatherDescription());
+                    holder.weatherIconIV.setImageResource(weatherInfoData.getWeatherIcon());
                 }
             }
         }, new Response.ErrorListener() {

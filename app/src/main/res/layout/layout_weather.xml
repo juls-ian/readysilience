@@ -85,7 +85,7 @@
                 android:fontFamily="@font/alata"
                 android:paddingLeft="10dp"
                 android:text="63°"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="40sp"
                 android:textStyle="bold"
                 tools:ignore="NotSibling" />
@@ -170,7 +170,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/layout_atmospheric_pressure"
                 android:layout_marginHorizontal="15dp"
-                android:layout_marginVertical="2dp"
+                android:layout_marginVertical="8dp"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -180,10 +180,9 @@
 
                 <TextView
                     android:id="@+id/wind_speed_pressure"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/atmospheric_pressure"
-                    android:layout_alignParentLeft="true"
                     android:fontFamily="@font/alata"
                     android:paddingLeft="5dp"
                     android:text="Wind Pressure"
@@ -191,23 +190,11 @@
                     android:textSize="13sp"
                     tools:ignore="NotSibling" />
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/layout_visibility"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/layout_windpressure"
-                android:layout_marginHorizontal="15dp"
-                android:layout_marginVertical="2dp"
-                android:orientation="horizontal">
-
-
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
+                    android:layout_marginStart="15dp"
                     android:src="@drawable/weather_visibility" />
-
                 <TextView
                     android:id="@+id/visibility"
                     android:layout_width="match_parent"
