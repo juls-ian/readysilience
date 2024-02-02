@@ -37,16 +37,16 @@
             android:layout_marginHorizontal="15dp"/>
 
         <TextView
+            android:id="@+id/announcement_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/announcement_date"
-            android:text="Announcement Date"
-            android:textSize="15sp"
+            android:layout_marginHorizontal="15dp"
             android:fontFamily="@font/alata"
-            android:textStyle="normal"
             android:gravity="top|left"
+            android:text="Announcement Date"
             android:textColor="@color/black"
-            android:layout_marginHorizontal="15dp"/>
+            android:textSize="15sp"
+            android:textStyle="normal" />
 
 
         <ImageView

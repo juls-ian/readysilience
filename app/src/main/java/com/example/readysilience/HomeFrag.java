@@ -28,6 +28,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.example.readysilience.ExpandedViews.AnnouncementExpandedActivity;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.smarteist.autoimageslider.SliderView;
 
 
@@ -42,7 +44,7 @@ public class HomeFrag extends Fragment {
     ViewPager viewPager;
 
     ArrayList<DataCenter> dataCenterList = new ArrayList<>();
-    RecyclerView updatesRecyclerView;
+    DatabaseReference databaseReference;
 
     public HomeFrag() {
         // Required empty public constructor
@@ -56,9 +58,6 @@ public class HomeFrag extends Fragment {
         super.onCreate(savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-            updatesRecyclerView = view.findViewById(R.id.weather_recycler_view);
-            getWeatherInfoForLocation();
-
         //WEATHER
 
             recyclerView = view.findViewById(R.id.weather_recycler_view);
@@ -68,10 +67,9 @@ public class HomeFrag extends Fragment {
                     "Atmospheric Pressure",
                     "Wind Pressure",
                     "Visibility",
+                    "Cloudy",
                     R.drawable.weather_sunny
                     ));
-
-
 
             recyclerView.setAdapter(new AdapterWeather(getContext(), weatherDataList));
             recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -80,10 +78,9 @@ public class HomeFrag extends Fragment {
             //ANNOUNCEMENTS
 
             SliderView sliderView = view.findViewById(R.id.announcement_slider);
-
-            AdapterImageSlider adapterImageSlider = new AdapterImageSlider(getContext());
+            databaseReference = FirebaseDatabase.getInstance().getReference().child("Admin Announcements");
+            AdapterImageSlider adapterImageSlider = new AdapterImageSlider(getContext(), databaseReference);
             sliderView.setSliderAdapter(adapterImageSlider);
-
 
         //NEARBY CENTERS
         viewPager = view.findViewById(R.id.viewPager);
@@ -288,56 +285,6 @@ public class HomeFrag extends Fragment {
             recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         return view;
-    }
-
-    private void getWeatherInfoForLocation() {
-        String city = "Santo Tomas";
-        String country = "Philippines";
-
-        String apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "," + country + "&appid=43f6f5726e6143864cf4b139376f2029";
-
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, apiUrl, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                List<WeatherInfoData> weatherInfoDataList = parseWeatherData(response);
-
-                WeatherAdapter weatherAdapter = new WeatherAdapter(weatherInfoDataList);
-                updatesRecyclerView.setAdapter(weatherAdapter);
-                updatesRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-                Toast.makeText(getContext(), error.toString(), Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        RequestQueue requestQueue = Volley.newRequestQueue(requireContext());
-        requestQueue.add(stringRequest);
-    }
-
-    private List<WeatherInfoData> parseWeatherData(String response) {
-        List<WeatherInfoData> weatherInfoDataList = new ArrayList<>();
-
-        try {
-            JSONObject jsonResponse = new JSONObject(response);
-
-            // Extract necessary information from the JSON response
-            String cityName = jsonResponse.optString("name");
-            String countryName = jsonResponse.optJSONObject("sys").optString("country");
-            double temperature = jsonResponse.optJSONObject("main").optDouble("temp");
-            String description = jsonResponse.optJSONArray("weather").optJSONObject(0).optString("description");
-
-            // Create a WeatherInfoData object and add it to the list
-            WeatherInfoData weatherInfoData = new WeatherInfoData(cityName, countryName, temperature, description);
-            weatherInfoDataList.add(weatherInfoData);
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        return weatherInfoDataList;
     }
 
     private void showExpandedView(SlideModel slideModel) {

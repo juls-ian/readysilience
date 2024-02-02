@@ -31,7 +31,6 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.WeatherV
         holder.countryTextView.setText(weatherInfoData.getCountryName());
         holder.temperatureTextView.setText(String.valueOf(weatherInfoData.getTemperature()));
         holder.descriptionTextView.setText(weatherInfoData.getDescription());
-        // Bind other fields as needed
     }
 
     @Override
@@ -48,7 +47,6 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.WeatherV
             countryTextView = itemView.findViewById(R.id.countryTextView);
             temperatureTextView = itemView.findViewById(R.id.temperatureTextView);
             descriptionTextView = itemView.findViewById(R.id.descriptionTextView);
-            // Initialize other TextViews as needed
         }
     }
 }

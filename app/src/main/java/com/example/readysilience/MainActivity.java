@@ -235,6 +235,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public static class Report {
         private String firstName;
         private String lastName;
+        private String age;
         private String phoneNumber;
         private String incidentType;
         private String description;
@@ -243,9 +244,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         public Report() {
         }
 
-        public Report(String firstName, String lastName, String phoneNumber, String incidentType, String description, long timestamp) {
+        public Report(String firstName, String lastName, String age, String phoneNumber, String incidentType, String description, long timestamp) {
             this.firstName = firstName;
             this.lastName = lastName;
+            this.age = age;
             this.phoneNumber = phoneNumber;
             this.incidentType = incidentType;
             this.description = description;
@@ -266,6 +268,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         public void setLastName(String lastName) {
             this.lastName = lastName;
+        }
+
+        public String getAge() {
+            return age;
+        }
+
+        public void setAge(String age) {
+            this.age = age;
         }
 
         public String getPhoneNumber() {
@@ -332,6 +342,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         if (userProfileData != null) {
                             String firstName = userProfileData.getFirstName();
                             String lastName = userProfileData.getLastName();
+                            String age = userProfileData.getAge();
                             String phoneNumber = userProfileData.getPhoneNumber();
 
                             RadioGroup disastersRadioGroup1 = dialog.findViewById(R.id.disasters_radio_group1);
@@ -367,7 +378,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             Log.d("MainActivity", "Incident Type: " + selectedIncidentType);
                             Log.d("MainActivity", "Description: " + description);
 
-                            Report report = new Report(firstName, lastName, phoneNumber, selectedIncidentType, description, System.currentTimeMillis());
+                            Report report = new Report(firstName, lastName, age, phoneNumber, selectedIncidentType, description, System.currentTimeMillis());
 
                             String finalSelectedIncidentType = selectedIncidentType;
                             reportsReference.push().setValue(report)
@@ -375,7 +386,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
                                             if (task.isSuccessful()) {
-                                                Toast.makeText(MainActivity.this, "Report sent successfully", Toast.LENGTH_SHORT).show();
                                                 Log.d("MainActivity", "Report sent successfully");
 
                                                 Intent intent = new Intent(MainActivity.this, SuccessSOS.class);
@@ -411,7 +421,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onClick(View view) {
                 dialog.dismiss();
-                Toast.makeText(MainActivity.this, "Upload video is clicked", Toast.LENGTH_SHORT).show();
             }
         });
 

@@ -77,58 +77,57 @@
             >
 
             <TextView
+                android:id="@+id/temperature"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/temperature"
-                android:text="63°"
-                android:paddingLeft="10dp"
                 android:layout_alignParentLeft="true"
                 android:layout_marginBottom="5dp"
                 android:fontFamily="@font/alata"
+                android:paddingLeft="10dp"
+                android:text="63°"
                 android:textColor="@color/white"
-                android:textStyle="bold"
                 android:textSize="40sp"
+                android:textStyle="bold"
                 tools:ignore="NotSibling" />
 
             <TextView
+                android:id="@+id/loc_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/loc_name"
-                android:text="Brgy. Sta Ana"
-                android:paddingLeft="10dp"
+                android:layout_below="@+id/temperature"
                 android:layout_marginTop="-15dp"
                 android:layout_marginBottom="3dp"
-                android:layout_below="@+id/temperature"
                 android:fontFamily="@font/alata"
+                android:paddingLeft="10dp"
+                android:text="Brgy. Sta Ana"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 tools:ignore="NotSibling" />
 
 
-
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_below="@+id/loc_name"
-                android:layout_marginVertical="2dp"
                 android:id="@+id/layout_humidity"
-                android:layout_marginHorizontal="15dp">
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/loc_name"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginVertical="2dp"
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/weather_humidity"/>
+                    android:src="@drawable/weather_humidity" />
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:id="@+id/humidity"
-                    android:text="Humidity"
-                    android:paddingLeft="5dp"
-                    android:layout_alignParentLeft="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_below="@+id/loc_name"
+                    android:layout_alignParentLeft="true"
                     android:fontFamily="@font/alata"
+                    android:paddingLeft="5dp"
+                    android:text="Humidity"
                     android:textColor="@color/white"
                     android:textSize="13sp"
                     tools:ignore="NotSibling" />
@@ -136,28 +135,28 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:id="@+id/layout_atmospheric_pressure"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/layout_humidity"
+                android:layout_marginHorizontal="15dp"
                 android:layout_marginVertical="2dp"
-                android:layout_marginHorizontal="15dp">
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/weather_atmospheric_pressure"/>
+                    android:src="@drawable/weather_atmospheric_pressure" />
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:id="@+id/atmospheric_pressure"
-                    android:text="Atmospheric Pressure"
-                    android:paddingLeft="5dp"
-                    android:layout_alignParentLeft="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_below="@+id/humidity"
+                    android:layout_alignParentLeft="true"
                     android:fontFamily="@font/alata"
+                    android:paddingLeft="5dp"
+                    android:text="Atmospheric Pressure"
                     android:textColor="@color/white"
                     android:textSize="13sp"
                     tools:ignore="NotSibling" />
@@ -166,28 +165,28 @@
 
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:id="@+id/layout_windpressure"
-                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/layout_atmospheric_pressure"
+                android:layout_marginHorizontal="15dp"
                 android:layout_marginVertical="2dp"
-                android:layout_marginHorizontal="15dp">
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/weather_air_pressure"/>
+                    android:src="@drawable/weather_air_pressure" />
 
                 <TextView
+                    android:id="@+id/wind_speed_pressure"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/wind_speed_pressure"
-                    android:text="Wind Pressure"
-                    android:paddingLeft="5dp"
-                    android:layout_alignParentLeft="true"
                     android:layout_below="@+id/atmospheric_pressure"
+                    android:layout_alignParentLeft="true"
                     android:fontFamily="@font/alata"
+                    android:paddingLeft="5dp"
+                    android:text="Wind Pressure"
                     android:textColor="@color/white"
                     android:textSize="13sp"
                     tools:ignore="NotSibling" />
@@ -195,40 +194,33 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/layout_visibility"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/layout_visibility"
                 android:layout_below="@+id/layout_windpressure"
-                android:orientation="horizontal"
+                android:layout_marginHorizontal="15dp"
                 android:layout_marginVertical="2dp"
-                android:layout_marginHorizontal="15dp">
+                android:orientation="horizontal">
 
 
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/weather_visibility"/>
+                    android:src="@drawable/weather_visibility" />
 
                 <TextView
+                    android:id="@+id/visibility"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/visibility"
-                    android:text="Visibility"
-                    android:paddingLeft="5dp"
-                    android:layout_alignParentLeft="true"
                     android:layout_below="@+id/wind_speed_pressure"
+                    android:layout_alignParentLeft="true"
                     android:fontFamily="@font/alata"
+                    android:paddingLeft="5dp"
+                    android:text="Visibility"
                     android:textColor="@color/white"
                     android:textSize="13sp"
                     tools:ignore="NotSibling" />
             </LinearLayout>
-
-
-
-
-
-
-
 
 
         </RelativeLayout>
