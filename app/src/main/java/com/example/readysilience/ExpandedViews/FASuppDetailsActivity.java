@@ -56,9 +56,10 @@ public class FASuppDetailsActivity extends AppCompatActivity {
         viewPager = findViewById(R.id.viewpager_fa_stores);
         ArrayList<DataStoresFirstaid> storesFirstaidsList = new ArrayList<>();
 
-        storesFirstaidsList.add(new DataStoresFirstaid(R.drawable.supplies_store4, "Clinic 1"));
-        storesFirstaidsList.add(new DataStoresFirstaid(R.drawable.supplies_store2, "Clinic 2"));
-
+        storesFirstaidsList.add(new DataStoresFirstaid(R.drawable.pharmacy_generika, "Generika Drugstore",14.08607065481001, 121.1497441388076));
+        storesFirstaidsList.add(new DataStoresFirstaid(R.drawable.pharmacy_pharcilla, "Pharmarinela", 14.062611225178218, 121.15377853695863));
+        storesFirstaidsList.add(new DataStoresFirstaid(R.drawable.pharmacy_sdm, "SDM Farmacia", 14.091072131528026, 121.17643828795177));
+        storesFirstaidsList.add(new DataStoresFirstaid(R.drawable.pharmacy_poggs, "Botika ni Poggs", 14.077321112442194, 121.19368070997187));
 
         int initialPosition = Integer.MAX_VALUE / 2;
         AdapterStoresFirstaid adapter = new AdapterStoresFirstaid(this, storesFirstaidsList);

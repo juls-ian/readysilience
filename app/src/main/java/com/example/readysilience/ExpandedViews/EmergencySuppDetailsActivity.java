@@ -57,10 +57,10 @@ public class EmergencySuppDetailsActivity extends AppCompatActivity {
         viewPager = findViewById(R.id.viewpager_stores_supplies);
         ArrayList<DataStoresSupplies> storeSuppliesList = new ArrayList<>();
 
-        storeSuppliesList.add(new DataStoresSupplies(R.drawable.supplies_store4, "Stella's Sari-sari store"));
-        storeSuppliesList.add(new DataStoresSupplies(R.drawable.supplies_store2, "MMM Deelicious Bakery"));
-        storeSuppliesList.add(new DataStoresSupplies(R.drawable.supplies_store3, "Loida's Sari-sari store"));
-        storeSuppliesList.add(new DataStoresSupplies(R.drawable.supplies_store1, "Vapezilla x MGS Variety Store"));
+        storeSuppliesList.add(new DataStoresSupplies(R.drawable.supplies_store4, "Stella's Sari-sari store",15.951702346148672, 120.39937619466752));
+        storeSuppliesList.add(new DataStoresSupplies(R.drawable.store_kikay, "Kikay's Store",14.07310858854993, 121.20159729153349));
+        storeSuppliesList.add(new DataStoresSupplies(R.drawable.store_leonas, "Leonas", 14.066689842306475, 121.20725039948104));
+        storeSuppliesList.add(new DataStoresSupplies(R.drawable.store_dali, "Dali Everyday Grocery, San Agustin",14.065286758058761, 121.2092400687969));
 
         int initialPosition = Integer.MAX_VALUE / 2;
         AdapterStoresSupplies adapter = new AdapterStoresSupplies(this, storeSuppliesList);

@@ -29,20 +29,33 @@
         android:theme="@style/Theme.Readysilience"
         tools:targetApi="31">
         <activity
+            android:name=".video_thermal_burn"
+            android:exported="false"
+            android:screenOrientation="landscape"/>
+        <activity
+            android:name=".video_choking"
+            android:exported="false"
+            android:screenOrientation="landscape" />
+        <activity
             android:name=".ExpandedViews.WeatherExpandedView"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ExpandedViews.FASuppDetailsActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ExpandedViews.EmergencySuppDetailsActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ExpandedViews.AnnouncementExpandedActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ExpandedViews.FeaturedDetailsActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -127,11 +140,11 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Login"
             android:exported="false"
             android:screenOrientation="portrait" /> <!-- STARTING POINT -->
         <activity
-            android:name=".Login"
+            android:name=".MainActivity"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>

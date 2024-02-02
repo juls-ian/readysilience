@@ -33,7 +33,7 @@
 
                 <ImageView
                     android:id="@+id/evacuation_center_pic"
-                    android:src="@drawable/earthquake"
+                    android:src="@drawable/disaster_earthquake"
                     android:layout_width="300dp"
                     android:layout_height="200dp"
                     android:scaleType="centerCrop"

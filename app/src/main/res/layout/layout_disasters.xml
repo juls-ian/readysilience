@@ -23,9 +23,9 @@
 
         <ImageView
             android:id="@+id/disaster_pic"
-            android:src="@drawable/earthquake"
+            android:src="@drawable/disaster_earthquake"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="175dp"
             android:layout_gravity="top"
             android:maxHeight="100dp"
             android:scaleType="fitXY"/>
@@ -93,7 +93,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/disaster_type"
                     android:text="Natural"
-                    android:paddingLeft="10dp"
+                    android:paddingLeft="0dp"
                     android:fontFamily="@font/alata"
                     android:textColor="@color/white"
                     android:textSize="12sp"
@@ -112,7 +112,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/prone_level"
                     android:text="Prone"
-                    android:paddingLeft="10dp"
+                    android:paddingLeft="4dp"
                     android:fontFamily="@font/alata"
                     android:textColor="@color/white"
                     android:textSize="12sp"
@@ -131,7 +131,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/recent_act"
                     android:text="Active"
-                    android:paddingLeft="10dp"
+                    android:paddingLeft="4dp"
                     android:fontFamily="@font/alata"
                     android:textColor="@color/white"
                     android:textSize="12sp"

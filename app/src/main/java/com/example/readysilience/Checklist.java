@@ -89,6 +89,9 @@ public class Checklist extends AppCompatActivity implements OnDialogCloseListene
                         ToDoModel toDoModel = documentChange.getDocument().toObject(ToDoModel.class).withId(id);
                         modelList.add(toDoModel);
                         adapter.notifyDataSetChanged();
+                        findViewById(R.id.empty_indicator).setVisibility(View.GONE);
+                    }else {
+                        findViewById(R.id.empty_indicator).setVisibility(View.VISIBLE);
                     }
                 }
                 listenerRegistration.remove();

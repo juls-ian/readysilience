@@ -1,5 +1,6 @@
 package com.example.readysilience;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -63,11 +64,21 @@ public class FirstAidFrag extends Fragment {
         recyclerViewInjury = view.findViewById(R.id.injuries_recycler_view);
         injuriesList.add(new DataInjuries(R.drawable.injury_choking, "Choking", R.string.choking_desc, "Medical Emergency"));
         injuriesList.add(new DataInjuries(R.drawable.injury_burn, "Thermal Burn", R.string.burn_desc, "Burn"));
-        injuriesList.add(new DataInjuries(R.drawable.injury_bruise, "Bruise", R.string.bruise_desc, "Traumatic"));
-        injuriesList.add(new DataInjuries(R.drawable.injury_fracture, "Fracture", R.string.fracture_desc, "Traumatic"));
+//        injuriesList.add(new DataInjuries(R.drawable.injury_bruise, "Bruise", R.string.bruise_desc, "Traumatic"));
+//        injuriesList.add(new DataInjuries(R.drawable.injury_fracture, "Fracture", R.string.fracture_desc, "Traumatic"));
 
         recyclerViewInjury.setAdapter(new AdapterInjuries(getContext(), injuriesList));
         recyclerViewInjury.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        AdapterInjuries adapterInjuries = new AdapterInjuries(getContext(), injuriesList);
+        adapterInjuries.setOnItemClickListener(new AdapterInjuries.OnItemClickListener() {
+            @Override
+            public void onItemClick(DataInjuries injuriesData) {
+                // Handle the item click, e.g., open a new activity
+                openNewActivity(injuriesData);
+            }
+        });
+        recyclerViewInjury.setAdapter(adapterInjuries);
 
         //FIRST AID ITEMS
 
@@ -142,4 +153,25 @@ public class FirstAidFrag extends Fragment {
                     }
                 });
     }
+
+    private void openNewActivity(DataInjuries injuriesData) {
+        Intent intent = null;
+
+        // Determine which activity to open based on the item clicked
+        switch (injuriesData.getInjuryName()) {
+            case "Choking":
+                intent = new Intent(getContext(), video_choking.class);
+                break;
+            case "Thermal Burn":
+                intent = new Intent(getContext(), video_thermal_burn.class);
+                break;
+            // Add more cases for other items
+            default:
+        }
+
+
+        // Start the new activity
+        startActivity(intent);
+    }
+
 }
