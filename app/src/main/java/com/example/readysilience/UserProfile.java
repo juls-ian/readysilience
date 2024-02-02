@@ -204,14 +204,12 @@ public class UserProfile extends AppCompatActivity {
         }
     }
 
-    // Add this method to handle the result from the image picker
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
             selectedImageUri = data.getData();
 
-            // Clear Glide cache and load the new image into the CircleImageView
             Glide.with(this).clear(userIcon);
             Glide.with(this).load(selectedImageUri).into(userIcon);
         }
@@ -235,7 +233,6 @@ public class UserProfile extends AppCompatActivity {
                 if (selectedImageUri != null) {
                     uploadImage(selectedImageUri);
                 } else {
-                    // If no new image is selected, directly update the user profile data in the database
                     updateUserProfileInDatabase();
                 }
             }
@@ -251,15 +248,11 @@ public class UserProfile extends AppCompatActivity {
 
         profileImageRef.putFile(imageUri)
                 .addOnSuccessListener(taskSnapshot -> {
-                    // Image uploaded successfully
-                    // Now, get the download URL
                     profileImageRef.getDownloadUrl().addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
                             Uri downloadUri = task.getResult();
                             if (downloadUri != null) {
-                                // Update the profile image URL in the user profile data
                                 userProfileData.setProfileImageUrl(downloadUri.toString());
-                                // Update the user profile data in the database
                                 updateUserProfileInDatabase();
                             } else {
                                 // Handle the case where the download URL is null
@@ -282,12 +275,10 @@ public class UserProfile extends AppCompatActivity {
         databaseReference.child(currentUser.getUid()).setValue(userProfileData)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        // Display a toast indicating successful profile update
-                        Toast.makeText(UserProfile.this, "Profile updated successfully", Toast.LENGTH_SHORT).show();
-                        // Load the updated user profile data
+                        Intent successIntent = new Intent(UserProfile.this, SuccessProfileUpdate.class);
+                        startActivity(successIntent);
                         loadUserProfile();
                     } else {
-                        // Display a toast indicating failed profile update
                         Toast.makeText(UserProfile.this, "Failed to update profile", Toast.LENGTH_SHORT).show();
                         Log.e("UserProfile", "Failed to update profile: " + task.getException().getMessage());
                     }

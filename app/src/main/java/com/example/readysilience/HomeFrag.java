@@ -11,14 +11,30 @@ import androidx.viewpager.widget.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
 
 import com.denzcoskun.imageslider.models.SlideModel;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.example.readysilience.ExpandedViews.AnnouncementExpandedActivity;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.smarteist.autoimageslider.SliderView;
+
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class HomeFrag extends Fragment {
 
@@ -28,22 +44,18 @@ public class HomeFrag extends Fragment {
     ViewPager viewPager;
 
     ArrayList<DataCenter> dataCenterList = new ArrayList<>();
-
-
-
+    DatabaseReference databaseReference;
 
     public HomeFrag() {
         // Required empty public constructor
 
     }
 
-
         @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         //WEATHER
@@ -55,10 +67,9 @@ public class HomeFrag extends Fragment {
                     "Atmospheric Pressure",
                     "Wind Pressure",
                     "Visibility",
+                    "Cloudy",
                     R.drawable.weather_sunny
                     ));
-
-
 
             recyclerView.setAdapter(new AdapterWeather(getContext(), weatherDataList));
             recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -67,14 +78,9 @@ public class HomeFrag extends Fragment {
             //ANNOUNCEMENTS
 
             SliderView sliderView = view.findViewById(R.id.announcement_slider);
-
-            AdapterImageSlider adapterImageSlider = new AdapterImageSlider(getContext());
+            databaseReference = FirebaseDatabase.getInstance().getReference().child("Admin Announcements");
+            AdapterImageSlider adapterImageSlider = new AdapterImageSlider(getContext(), databaseReference);
             sliderView.setSliderAdapter(adapterImageSlider);
-
-
-
-        //UPDATES
-
 
         //NEARBY CENTERS
         viewPager = view.findViewById(R.id.viewPager);
@@ -270,14 +276,13 @@ public class HomeFrag extends Fragment {
                     ""));
 
 
+//            featuredDataList.add(new DataFeatured("https://www.japantimes.co.jp/uploads/imported_images/uploads/2019/07/f-quakepredict-a-20190708.jpg",
+//                    "Fire 101: Tips for prevention and survival", "Article 2 Intro", "Detail 2","Sub-subheading1", "Subheading 1 Text" ));
+
 
             //DISPLAY CONTENT
             recyclerView.setAdapter(new AdapterFeatured(getContext(), featuredDataList));
             recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
-
-
-
 
         return view;
     }

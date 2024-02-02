@@ -7,52 +7,81 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
+
 import com.bumptech.glide.Glide;
 import com.example.readysilience.ExpandedViews.AnnouncementExpandedActivity;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 import com.smarteist.autoimageslider.SliderViewAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AdapterImageSlider extends SliderViewAdapter<AdapterImageSlider.SliderAdapterVH> {
 
     private Context context;
+    private DatabaseReference databaseReference;
+    private List<AnnouncementData> dataList;
 
-    private String[] bannerUrl = {"https://depeddasma.edu.ph/wp-content/uploads/2023/06/Web-Banner.png",
-            "https://www.deped.gov.ph/wp-content/uploads/2021/08/be2021-web-banner-04.png",
-            "https://connect-assets.prosple.com/cdn/ff/9mTtj6yfOvnjiHzh2tPaA5Qv8WTh7BSzaMNqi7CR-HM/1633490570/public/2021-10/banner-department-of-health-philippines-1786x642-2021.png"};
-
-
-    public AdapterImageSlider(Context context) {
+    public AdapterImageSlider(Context context, DatabaseReference databaseReference) {
         this.context = context;
+        this.databaseReference = databaseReference;
+        this.dataList = new ArrayList<>();
+        fetchAnnouncements();
     }
 
+    private void fetchAnnouncements() {
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    AnnouncementData data = dataSnapshot.getValue(AnnouncementData.class);
+                    dataList.add(data);
+                }
+                notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    @NonNull
     @Override
-    public SliderAdapterVH  onCreateViewHolder(ViewGroup parent) {
+    public SliderAdapterVH onCreateViewHolder(@NonNull ViewGroup parent) {
         View inflate = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_image_slider, null);
         return new SliderAdapterVH(inflate);
     }
 
     @Override
     public void onBindViewHolder(AdapterImageSlider.SliderAdapterVH viewHolder, int position) {
+        AnnouncementData data = dataList.get(position);
 
         Glide.with(context)
-                .load(bannerUrl[position])
+                .load(data.getImageUrl())
                 .into(viewHolder.bannerPic);
 
         viewHolder.bannerPic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Pass the clicked image URL to the expanded view activity
-                String clickedImageUrl = bannerUrl[position];
                 Intent intent = new Intent(context, AnnouncementExpandedActivity.class);
-                intent.putExtra("imageUrl", clickedImageUrl);
+                intent.putExtra("date", data.getDate());
+                intent.putExtra("title", data.getTitle());
+                intent.putExtra("description", data.getDescription());
+                intent.putExtra("imageUrl", data.getImageUrl());
                 context.startActivity(intent);
             }
         });
-
     }
 
     @Override
     public int getCount() {
-        return bannerUrl.length;
+        return dataList.size();
     }
 
     static class SliderAdapterVH extends SliderViewAdapter.ViewHolder {
@@ -62,13 +91,5 @@ public class AdapterImageSlider extends SliderViewAdapter<AdapterImageSlider.Sli
             super(itemView);
             bannerPic = itemView.findViewById(R.id.image_slider_item);
         }
-    }
-
-    private void showExpandedView(Context context, String imageUrl) {
-        Intent intent = new Intent(context, AnnouncementExpandedActivity.class);
-        intent.putExtra("bannerImage", imageUrl);
-        context.startActivity(intent);
-
-
     }
 }

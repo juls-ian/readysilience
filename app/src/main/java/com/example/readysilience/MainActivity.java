@@ -216,8 +216,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     if (userProfileData != null) {
                         // Load the profile image from the URL
                         String profileImageUrl = userProfileData.getProfileImageUrl();
-                        if (profileImageUrl != null && !profileImageUrl.isEmpty()) {
-                            // Use Glide to load the image into the CircleImageView
+                        if (profileImageUrl != null && !profileImageUrl.isEmpty() && !isDestroyed()) {
+                            // Use Glide to load the image into the CircleImageView only if the activity is not destroyed
                             Glide.with(MainActivity.this).load(profileImageUrl).into(userProfileIcon);
                         }
                     }
@@ -235,6 +235,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public static class Report {
         private String firstName;
         private String lastName;
+        private String age;
         private String phoneNumber;
         private String incidentType;
         private String description;
@@ -243,9 +244,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         public Report() {
         }
 
-        public Report(String firstName, String lastName, String phoneNumber, String incidentType, String description, long timestamp) {
+        public Report(String firstName, String lastName, String age, String phoneNumber, String incidentType, String description, long timestamp) {
             this.firstName = firstName;
             this.lastName = lastName;
+            this.age = age;
             this.phoneNumber = phoneNumber;
             this.incidentType = incidentType;
             this.description = description;
@@ -266,6 +268,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         public void setLastName(String lastName) {
             this.lastName = lastName;
+        }
+
+        public String getAge() {
+            return age;
+        }
+
+        public void setAge(String age) {
+            this.age = age;
         }
 
         public String getPhoneNumber() {
@@ -321,7 +331,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         reportButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Fetch user information from the "Users" database
                 FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
                 DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("Users").child(currentUser.getUid());
 
@@ -333,9 +342,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         if (userProfileData != null) {
                             String firstName = userProfileData.getFirstName();
                             String lastName = userProfileData.getLastName();
+                            String age = userProfileData.getAge();
                             String phoneNumber = userProfileData.getPhoneNumber();
 
-                            // Find the RadioGroup views
                             RadioGroup disastersRadioGroup1 = dialog.findViewById(R.id.disasters_radio_group1);
                             RadioGroup disastersRadioGroup2 = dialog.findViewById(R.id.disasters_radio_group2);
 
@@ -369,7 +378,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             Log.d("MainActivity", "Incident Type: " + selectedIncidentType);
                             Log.d("MainActivity", "Description: " + description);
 
-                            Report report = new Report(firstName, lastName, phoneNumber, selectedIncidentType, description, System.currentTimeMillis());
+                            Report report = new Report(firstName, lastName, age, phoneNumber, selectedIncidentType, description, System.currentTimeMillis());
 
                             String finalSelectedIncidentType = selectedIncidentType;
                             reportsReference.push().setValue(report)
@@ -377,10 +386,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
                                             if (task.isSuccessful()) {
-                                                Toast.makeText(MainActivity.this, "Report sent successfully", Toast.LENGTH_SHORT).show();
                                                 Log.d("MainActivity", "Report sent successfully");
 
-                                                // Start the SuccessSOS activity
                                                 Intent intent = new Intent(MainActivity.this, SuccessSOS.class);
                                                 intent.putExtra("incidentType", finalSelectedIncidentType);
                                                 intent.putExtra("description", description);
@@ -414,7 +421,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onClick(View view) {
                 dialog.dismiss();
-                Toast.makeText(MainActivity.this, "Upload video is clicked", Toast.LENGTH_SHORT).show();
             }
         });
 

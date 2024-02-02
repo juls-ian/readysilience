@@ -12,7 +12,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.readysilience.AdapterCenters;
+//import com.example.readysilience.AdapterCenters;
 import com.example.readysilience.AdapterStoresSupplies;
 import com.example.readysilience.DataCenter;
 import com.example.readysilience.DataStoresSupplies;

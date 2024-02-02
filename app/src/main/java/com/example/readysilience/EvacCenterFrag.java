@@ -13,18 +13,22 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+import android.widget.ImageButton;
 
 import com.rd.PageIndicatorView;
 
 import java.util.ArrayList;
+import android.view.View;
+import android.widget.Toast;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class EvacCenterFrag extends Fragment {
 
     ViewPager viewPagerMaps, viewPagerCenters;
     PageIndicatorView pageIndicatorView;
     ArrayList<DataEvacMaps> evacMapsList = new ArrayList<>();
-
     ArrayList<DataEvacCenters> evacCentersList = new ArrayList<>();
 
     public EvacCenterFrag() {
@@ -84,11 +88,11 @@ public class EvacCenterFrag extends Fragment {
         //EVAC CENTERS
         viewPagerCenters = view.findViewById(R.id.evacuation_center_viewpager);
 
-        evacCentersList.add(new DataEvacCenters(R.drawable.evac_center_stomas, "Sto. Tomas Evacuation Center", "444Q+P98, Sto. Tomas, Batangas",
+        evacCentersList.add(new DataEvacCenters(R.drawable.evac_center_stomas, "Sto Tomas Evacuation Center", "444Q+P98, Sto. Tomas, Batangas",
                 "Need Donation", "Equipped", "Equipped", "Equipped",
                 "Available",14.10712419186952, 121.13908182353603));
 
-        evacCentersList.add(new DataEvacCenters(R.drawable.evac_center_court, "Brgy. Sta. Ana Basketball Court", "358V+WV5, Sto. Tomas, Batangas",
+        evacCentersList.add(new DataEvacCenters(R.drawable.evac_center_court, "Sta Ana Basketball Court", "358V+WV5, Sto. Tomas, Batangas",
                 "Need Donation", "Equipped", "Equipped", "Need Donation",
                 "Available", 14.067415392647591, 121.19463666402055));
 
