@@ -65,7 +65,7 @@
             android:textStyle="normal"
             android:gravity="top|left"
             android:textColor="@color/black"
-            android:layout_marginHorizontal="15dp"/>
+            android:layout_marginHorizontal="10dp"/>
 
 
 
