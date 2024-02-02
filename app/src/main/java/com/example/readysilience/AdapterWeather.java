@@ -181,7 +181,7 @@ public class AdapterWeather extends RecyclerView.Adapter<AdapterWeather.WeatherV
             return iconResourceId;
         } else {
             Log.d("AdapterWeather", "Resource not found for icon: " + iconName);
-            return R.drawable.weather_sunny; // Default to weather_sunny if resource not found
+            return R.drawable.weather_sunny;
         }
     }
 }

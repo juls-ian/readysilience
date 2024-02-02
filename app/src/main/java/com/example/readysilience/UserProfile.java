@@ -228,12 +228,28 @@ public class UserProfile extends AppCompatActivity {
                 String houseNum = houseNumEditText.getText().toString();
                 String purok = purokEditText.getText().toString();
 
-                userProfileData = new UserProfileData(firstName, lastName, age, email, phoneNumber, sex, houseNum, purok);
+                // Check if the data has changed
+                if (userProfileData != null &&
+                        firstName.equals(userProfileData.getFirstName()) &&
+                        lastName.equals(userProfileData.getLastName()) &&
+                        email.equals(userProfileData.getEmail()) &&
+                        phoneNumber.equals(userProfileData.getPhoneNumber()) &&
+                        sex.equals(userProfileData.getSex()) &&
+                        age.equals(userProfileData.getAge()) &&
+                        houseNum.equals(userProfileData.getHouseNumber()) &&
+                        purok.equals(userProfileData.getPurok())) {
 
-                if (selectedImageUri != null) {
-                    uploadImage(selectedImageUri);
+                    // Data has not changed, no need to update
+                    Toast.makeText(UserProfile.this, "No changes to save", Toast.LENGTH_SHORT).show();
                 } else {
-                    updateUserProfileInDatabase();
+                    // Data has changed, update the user profile
+                    userProfileData = new UserProfileData(firstName, lastName, age, email, phoneNumber, sex, houseNum, purok);
+
+                    if (selectedImageUri != null) {
+                        uploadImage(selectedImageUri);
+                    } else {
+                        updateUserProfileInDatabase();
+                    }
                 }
             }
         } catch (Exception e) {

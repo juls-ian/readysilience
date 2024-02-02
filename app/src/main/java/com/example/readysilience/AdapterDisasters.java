@@ -80,11 +80,6 @@ public class AdapterDisasters extends RecyclerView.Adapter<AdapterDisasters.Disa
                     .into(holder.bg);
         }
 
-
-
-
-
-
         //TEXT COLORING
         if ("Natural".equals(disasterData.getDisasterType())) {
             holder.disasterTypeText.setTextColor(context.getResources().getColor(R.color.green1)); // Set your green color

@@ -27,6 +27,9 @@ import com.google.firebase.storage.StorageReference;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class FirstAidFrag extends Fragment {
