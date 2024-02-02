@@ -58,7 +58,24 @@ public class FirstAidFrag extends Fragment {
         super.onCreate(savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_first_aid, container, false);
         viewPagerVid = view.findViewById(R.id.vids_viewpager);
-        loadVideosForViewPager();
+//        loadVideosForViewPager();
+
+        viewPagerVid = view.findViewById(R.id.vids_viewpager);
+        vidList.add(new DataFirstAidVid(R.drawable.firstaid_sling, "Sling Basics", "3:00", R.drawable.logo_stjohn_ambulance));
+        vidList.add(new DataFirstAidVid(R.drawable.firstaid_cuts, "Cuts and Grazes", "1:29", R.drawable.logo_stjohn_ambulance));
+        vidList.add(new DataFirstAidVid(R.drawable.firstaid_primarysurvey, "Primary Survey", "4:02", R.drawable.logo_stjohn_ambulance));
+
+        int initialPosition = vidList.size() / 2;
+        viewPagerVid.setAdapter(new AdapterVid(getContext(), vidList));
+        viewPagerVid.setPadding(50, 0, 50, 0);
+        AdapterVid adapterVid = new AdapterVid(getContext(), vidList);
+        viewPagerVid.setAdapter(adapterVid);
+        adapterVid.setOnItemClickListener(new AdapterVid.OnItemClickListener() {
+            @Override
+            public void onItemClick(DataFirstAidVid videoData) {
+                openVidResources(videoData);
+            }
+        });
 
         //INJURIES
         recyclerViewInjury = view.findViewById(R.id.injuries_recycler_view);
@@ -108,51 +125,51 @@ public class FirstAidFrag extends Fragment {
         return view;
     }
 
-    private void loadVideosForViewPager() {
-        if (!isAdded()) {
-            // Fragment is not attached, avoid unnecessary operations
-            return;
-        }
-
-        FirebaseStorage.getInstance().getReference().child("videos").listAll()
-                .addOnSuccessListener(new OnSuccessListener<ListResult>() {
-                    @Override
-                    public void onSuccess(ListResult listResult) {
-                        ArrayList<Video> videoList = new ArrayList<>();
-
-                        for (StorageReference storageReference : listResult.getItems()) {
-                            Video video = new Video();
-                            video.setTitle(storageReference.getName());
-
-                            storageReference.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Uri> task) {
-                                    if (isAdded() && task.isSuccessful()) {
-                                        String url = task.getResult().toString();
-                                        video.setUrl(url);
-                                        videoList.add(video);
-                                    }
-
-                                    // Set up the ViewPager adapter
-                                    if (isAdded() && viewPagerVid != null) {
-                                        AdapterVid adapterVid = new AdapterVid(requireContext(), videoList);
-                                        viewPagerVid.setAdapter(adapterVid);
-                                        viewPagerVid.setPadding(50, 0, 50, 0);
-                                    }
-                                }
-                            });
-                        }
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        if (isAdded()) {
-                            Toast.makeText(requireContext(), "Failed to retrieve videos", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-    }
+//    private void loadVideosForViewPager() {
+//        if (!isAdded()) {
+//            // Fragment is not attached, avoid unnecessary operations
+//            return;
+//        }
+//
+//        FirebaseStorage.getInstance().getReference().child("videos").listAll()
+//                .addOnSuccessListener(new OnSuccessListener<ListResult>() {
+//                    @Override
+//                    public void onSuccess(ListResult listResult) {
+//                        ArrayList<Video> videoList = new ArrayList<>();
+//
+//                        for (StorageReference storageReference : listResult.getItems()) {
+//                            Video video = new Video();
+//                            video.setTitle(storageReference.getName());
+//
+//                            storageReference.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+//                                @Override
+//                                public void onComplete(@NonNull Task<Uri> task) {
+//                                    if (isAdded() && task.isSuccessful()) {
+//                                        String url = task.getResult().toString();
+//                                        video.setUrl(url);
+//                                        videoList.add(video);
+//                                    }
+//
+//                                    // Set up the ViewPager adapter
+//                                    if (isAdded() && viewPagerVid != null) {
+//                                        AdapterVid adapterVid = new AdapterVid(requireContext(), videoList);
+//                                        viewPagerVid.setAdapter(adapterVid);
+//                                        viewPagerVid.setPadding(50, 0, 50, 0);
+//                                    }
+//                                }
+//                            });
+//                        }
+//                    }
+//                })
+//                .addOnFailureListener(new OnFailureListener() {
+//                    @Override
+//                    public void onFailure(@NonNull Exception e) {
+//                        if (isAdded()) {
+//                            Toast.makeText(requireContext(), "Failed to retrieve videos", Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//                });
+//    }
 
     private void openNewActivity(DataInjuries injuriesData) {
         Intent intent = null;
@@ -164,6 +181,29 @@ public class FirstAidFrag extends Fragment {
                 break;
             case "Thermal Burn":
                 intent = new Intent(getContext(), video_thermal_burn.class);
+                break;
+            // Add more cases for other items
+            default:
+        }
+
+
+        // Start the new activity
+        startActivity(intent);
+    }
+
+    private void openVidResources(DataFirstAidVid videoData) {
+        Intent intent = null;
+
+        // Determine which activity to open based on the item clicked
+        switch (videoData.getVidTitle()) {
+            case "Sling Basics":
+                intent = new Intent(getContext(), video_sling.class);
+                break;
+            case "Cuts and Grazes":
+                intent = new Intent(getContext(), video_cuts.class);
+                break;
+            case "Primary Survey":
+                intent = new Intent(getContext(), video_primary_survey.class);
                 break;
             // Add more cases for other items
             default:

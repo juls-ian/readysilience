@@ -13,8 +13,10 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
+
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
@@ -29,9 +31,21 @@
         android:theme="@style/Theme.Readysilience"
         tools:targetApi="31">
         <activity
-            android:name=".video_thermal_burn"
+            android:name=".video_primary_survey"
             android:exported="false"
             android:screenOrientation="landscape"/>
+        <activity
+            android:name=".video_cuts"
+            android:exported="false"
+            android:screenOrientation="landscape"/>
+        <activity
+            android:name=".video_sling"
+            android:exported="false"
+            android:screenOrientation="landscape"/>
+        <activity
+            android:name=".video_thermal_burn"
+            android:exported="false"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".video_choking"
             android:exported="false"
@@ -39,28 +53,27 @@
         <activity
             android:name=".ExpandedViews.WeatherExpandedView"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ExpandedViews.FASuppDetailsActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ExpandedViews.EmergencySuppDetailsActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ExpandedViews.AnnouncementExpandedActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ExpandedViews.FeaturedDetailsActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBn1y7fYsInZOeXsGyixmKzsKmaBsLkHTQ" />
-
 
         <activity
             android:name=".TCActivity"
@@ -69,16 +82,15 @@
         <activity
             android:name=".VideoActivity"
             android:label="Video Activity"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".SuccessProfileUpdate"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".SuccessFeedbackSent"
             android:exported="false"
-            android:screenOrientation="portrait"/>
-
+            android:screenOrientation="portrait" />
         <activity
             android:name=".UserProfile"
             android:exported="false"
