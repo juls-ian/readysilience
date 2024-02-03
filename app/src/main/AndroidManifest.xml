@@ -58,10 +58,10 @@
             android:name=".video_choking"
             android:exported="false"
             android:screenOrientation="landscape" />
-        <activity
-            android:name=".ExpandedViews.WeatherExpandedView"
-            android:exported="false"
-            android:screenOrientation="portrait" />
+<!--        <activity-->
+<!--            android:name=".ExpandedViews.WeatherExpandedView"-->
+<!--            android:exported="false"-->
+<!--            android:screenOrientation="portrait" />-->
         <activity
             android:name=".ExpandedViews.FASuppDetailsActivity"
             android:exported="false"

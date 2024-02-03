@@ -138,14 +138,14 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <!--                            SEX-->
+                <!--                            GENDER-->
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="15dp"
                     android:padding="10dp"
                     android:id="@+id/sex"
-                    android:hint="Sex"
+                    android:hint="Gender"
                     app:hintTextColor="@color/blue"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                     >
