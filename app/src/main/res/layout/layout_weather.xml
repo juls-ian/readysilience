@@ -5,14 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-
     android:gravity="center"
     android:orientation="horizontal">
 
 
 
     <com.google.android.material.card.MaterialCardView
-        android:layout_width="310dp"
+        android:layout_width="330dp"
         android:layout_height="240dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
@@ -48,7 +47,7 @@
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_gravity="bottom"
-            android:layout_marginStart="195dp"
+            android:layout_marginStart="200dp"
             android:layout_marginBottom="50dp"
             android:elevation="5dp"
             android:scaleType="fitXY"/>
@@ -58,9 +57,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/cloud_status"
             android:text="Party Cloudy"
-            android:paddingLeft="10dp"
             android:layout_marginTop="165dp"
-            android:layout_marginStart="200dp"
+            android:layout_marginStart="220dp"
             android:layout_below="@+id/indication_icon"
             android:fontFamily="@font/alata"
             android:textColor="@color/white"
@@ -85,7 +83,7 @@
                 android:fontFamily="@font/alata"
                 android:paddingLeft="10dp"
                 android:text="63°"
-                android:textColor="@color/black"
+                android:textColor="@color/blue1"
                 android:textSize="40sp"
                 android:textStyle="bold"
                 tools:ignore="NotSibling" />
@@ -101,7 +99,7 @@
                 android:paddingLeft="10dp"
                 android:text="Brgy. Sta Ana"
                 android:textColor="@color/white"
-                android:textSize="18sp"
+                android:textSize="15sp"
                 tools:ignore="NotSibling" />
 
 
